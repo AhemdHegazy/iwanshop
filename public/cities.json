@@ -1,0 +1,130 @@
+{
+  "items": [
+    {
+      "id": 131,
+      "name": "بغداد",
+      "country_id" : 1,
+      "status" : 1,
+      "cost" : 50
+    },
+    {
+      "id": 132,
+      "name": "الموصل",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 133,
+      "name": "البصرة",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 135,
+      "name": "اربيل",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 139,
+      "name": "النجف",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 140,
+      "name": "كربلاء",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 141,
+      "name": "صلاح الدين",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 143,
+      "name": "السليمانية",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 144,
+      "name": "الأنبار",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 188,
+      "name": "بابل",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 190,
+      "name": "كركوك",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 192,
+      "name": "دهوك",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 194,
+      "name": "ديالى",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 196,
+      "name": "ذي قار",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 202,
+      "name": "القادسية",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 204,
+      "name": "المثنى",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 206,
+      "name": "ميسان",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    },
+    {
+      "id": 208,
+      "name": "واسط",
+      "country_id" : 1,
+      "status" :  1,
+      "cost" : 50
+    }
+  ]
+}

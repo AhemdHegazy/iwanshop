@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('classifications', function (Blueprint $table) {
+            $table->id();
+            $table->string("name")->nullable();
+            $table->text("description")->nullable();
+            $table->string("logo")->nullable();
+            $table->integer("max")->nullable();
+            $table->enum("related",["orders_count","orders_sum_grand_total","category","badge"])->nullable();
+            $table->unsignedBigInteger("badge_id")->nullable();
+            $table->unsignedBigInteger("category_id")->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('classifications');
+    }
+};

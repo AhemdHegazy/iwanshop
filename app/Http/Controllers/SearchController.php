@@ -50,9 +50,9 @@ class SearchController extends Controller
             $category = Category::with('childrenCategories')->find($category_id);
 
             $products = $category->products();
-
             $attribute_ids = AttributeCategory::whereIn('category_id', $category_ids)->pluck('attribute_id')->toArray();
             $attributes = Attribute::whereIn('id', $attribute_ids)->get();
+
         } else {
             $categories = Category::with('childrenCategories', 'coverImage')->where('level', 0)->orderBy('order_level', 'desc')->get();
             // if ($query != null) {
@@ -134,7 +134,6 @@ class SearchController extends Controller
         }
 
         $products = filter_products($products)->with('taxes')->paginate(24)->appends(request()->query());
-
         return view('frontend.product_listing', compact('products', 'query', 'category', 'categories', 'category_id', 'brand_id', 'sort_by', 'seller_id', 'min_price', 'max_price', 'attributes', 'selected_attribute_values', 'colors', 'selected_color'));
     }
 

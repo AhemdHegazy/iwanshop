@@ -385,7 +385,7 @@
             style="background-color: {{ get_setting('cupon_background_color', '#292933') }}">
             <div class="container">
                 <div class="position-relative py-5">
-                    <div class="text-center text-xl-left z-5">
+                    <div class="text-center text-xl-left z-5" style="position: relative !important;z-index: 5 !important;">
                         <div class="d-lg-flex">
                             <div class="mb-3 mb-lg-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -441,8 +441,8 @@
                                 </svg>
                             </div>
                             <div class="ml-lg-3">
-                                <h5 class="fs-36 fw-400 text-white mb-3">{{ translate(get_setting('cupon_title')) }}</h5>
-                                <h5 class="fs-20 fw-400 text-gray">{{ translate(get_setting('cupon_subtitle')) }}</h5>
+                                <h5 class="fs-36 fw-400 text-white mb-3">{{ get_setting('cupon_title') }}</h5>
+                                <h5 class="fs-20 fw-400 text-gray">{{get_setting('cupon_subtitle') }}</h5>
                                 <div class="mt-5 pt-5">
                                     <a href="{{ route('coupons.all') }}"
                                         class="btn text-white hov-bg-white hov-text-dark border border-width-2 fs-16 px-5"

@@ -33,7 +33,9 @@ class CustomerController extends Controller
         if ($request->has('search')){
             $sort_search = $request->search;
             $users->where(function ($q) use ($sort_search){
-                $q->where('name', 'like', '%'.$sort_search.'%')->orWhere('email', 'like', '%'.$sort_search.'%');
+                $q->where('name', 'like', '%'.$sort_search.'%')
+                    ->orWhere('email', 'like', '%'.$sort_search.'%')
+                    ->orWhere('phone', 'like', '%'.$sort_search.'%');
             });
         }
         $users = $users->paginate(15);
@@ -59,8 +61,8 @@ class CustomerController extends Controller
         /*Phone Code ***/
         $request->validate([
             'name'                   => 'required',
-            'email'                  => 'required',
-            'phone' =>          'regex:/^7[3-9]\d{8}$/',
+            'email'                  => 'required|unique:users',
+            'phone' =>          'regex:/^7[3-9]\d{8}$/|unique:users',
 
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -114,8 +116,8 @@ class CustomerController extends Controller
 
         $array=[
             'name'                   => 'required',
-            'email'                  => 'required',
-            'phone' =>          'regex:/^7[3-9]\d{8}$/',
+            'email'                  => 'required|unique:users',
+            'phone' =>          'regex:/^7[3-9]\d{8}$/|unique:users,'.$id,
         ];
 
         $password =$delivery_boy->password;

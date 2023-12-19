@@ -386,32 +386,36 @@
             </div>
 
             <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0 h6">{{ translate('Product Category') }}</h5>
-                        <h6 class="float-right fs-13 mb-0">
-                            {{ translate('Select Main') }}
-                            <span class="position-relative main-category-info-icon">
+                <div class="card-header">
+                    <h5 class="mb-0 h6">{{ translate('Product Category') }}</h5>
+                    <h6 class="float-right fs-13 mb-0">
+                        {{ translate('Select Main') }}
+                        <span class="position-relative main-category-info-icon">
                                 <i class="las la-question-circle fs-18 text-info"></i>
                                 <span class="main-category-info bg-soft-info p-2 position-absolute d-none border">{{ translate('This will be used for commission based calculations and homepage category wise product Show.') }}</span>
                             </span>
-                        </h6>
-                    </div>
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <label for="category_id">{{translate("Select Main Category")}}</label>
+                    <select id="category_id" class="form-control aiz-selectpicker" data-live-search="true" name="category_id" >
+                        <option disabled selected>{{translate("Select Main Category")}}</option>
+                        @foreach ($categories as $category)
+                            <option id="{{ $category->id }}" {{$product->category_id == $category->id ? "selected" : ""}} value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                @foreach ($categories as $category)
+                    <div class="card-body categories" id="category_ids_div_{{$category->id}}" style="display: {{$product->category_id == $category->id ? "block" : "none"}}">
+                        <label for="category_ids">{{translate("Select Categories")}}</label>
 
-                    <div class="card-body">
-                        @php
-                            $old_categories = $product->categories()->pluck('category_id')->toArray();
-                        @endphp
-                        <select class="form-control mb-3 aiz-selectpicker" id="category_id" data-live-search="true" name="category_ids[]" multiple>
-                            @foreach ($categories as $category)
-                                <option id="{{ $category->id }}" value="{{ $category->id }}">{{ $category->name }}</option>
-                                @foreach ($category->childrenCategories as $childCategory)
-                                    @include('backend.product.products.child_categories', ['child_category' => $childCategory])
-                                @endforeach
+                        <select class="form-control mb-3 aiz-selectpicker" id="category_ids" data-live-search="true" name="category_ids_{{$category->id}}[]" multiple>
+                            @foreach ($category->childrenCategories as $childCategory)
+                                @include('backend.product.products.child_categories_edit', ['child_category' => $childCategory,"array" => $array])
                             @endforeach
                         </select>
                     </div>
-                </div>
+                @endforeach
 
                 <div class="card">
                     <div class="card-header">
@@ -715,19 +719,7 @@
 <script src="{{ asset('assets/js/hummingbird-treeview.js') }}"></script>
 
 <script type="text/javascript">
-    $(document).ready(function (){
-        show_hide_shipping_div();
 
-        $("#treeview").hummingbird();
-        var main_id = '{{ $product->category_id != null ? $product->category_id : 0 }}';
-        var selected_ids = '{{ implode(",",$old_categories) }}';
-        if (selected_ids != '') {
-            const myArray = selected_ids.split(",");
-            $('#category_id').val(myArray);
-        }
-        AIZ.plugins.bootstrapSelect('refresh');
-
-    });
 
     $("[name=shipping_type]").on("change", function (){
         show_hide_shipping_div();

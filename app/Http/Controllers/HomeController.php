@@ -525,7 +525,9 @@ class HomeController extends Controller
         }
 
         $price += $tax;
-
+        if ($product->max_qty <= $max_limit){
+            $max_limit =$product->max_qty;
+        }
         return array(
             'price' => single_price($price * $request->quantity),
             'quantity' => $quantity,

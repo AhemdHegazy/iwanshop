@@ -19,8 +19,18 @@
         <h5 class="mb-0 h6">{{translate('Drag & drop your files')}}</h5>
     </div>
     <div class="card-body">
+
+        <div class="form-group ">
+
+                <label class="aiz-switch aiz-switch-success mb-0">
+                    <input type="checkbox" {{session("watermark") == "yes" ? "checked" : ""}} name="watermark" id="watermark">
+                    <span></span>
+                </label>
+            <label class=" col-from-label" style="font-size: 14px">{{translate("Enable Watermark in this image")}}</label>
+
+        </div>
     	<div id="aiz-upload-files" class="h-420px" style="min-height: 65vh">
-    		
+
     	</div>
     </div>
 </div>
@@ -31,5 +41,6 @@
 		$(document).ready(function() {
 			AIZ.plugins.aizUppy();
 		});
+
 	</script>
 @endsection

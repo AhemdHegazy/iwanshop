@@ -207,7 +207,10 @@ class ProductController extends Controller
         ]));
         $request->merge(['product_id' => $product->id]);
         //Product categories
-        $product->categories()->attach($request->category_ids);
+        $name = "category_ids_".$request->category_id;
+
+        $product->categories()->attach($request->$name);
+        $product->categories()->attach($request->category_id);
 
         //VAT & Tax
         if ($request->tax_id) {
@@ -259,6 +262,7 @@ class ProductController extends Controller
 
 
         $product = Product::findOrFail($id);
+        $array = $product->categories->pluck("id")->toArray();
         if ($product->digital == 1) {
             return redirect('admin/digitalproducts/' . $id . '/edit');
         }
@@ -269,7 +273,7 @@ class ProductController extends Controller
             ->where('digital', 0)
             ->with('childrenCategories')
             ->get();
-        return view('backend.product.products.edit', compact('product', 'categories', 'tags', 'lang'));
+        return view('backend.product.products.edit', compact('array','product', 'categories', 'tags', 'lang'));
     }
 
     /**
@@ -312,7 +316,10 @@ class ProductController extends Controller
         $request->merge(['product_id' => $product->id]);
 
         //Product categories
-        $product->categories()->sync($request->category_ids);
+        $name = "category_ids_".$request->category_id;
+
+        $product->categories()->attach($request->$name);
+        $product->categories()->attach($request->category_id);
 
         //Product Stock
         $product->stocks()->delete();

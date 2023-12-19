@@ -35,14 +35,23 @@ class OrderController extends Controller
     }
 
     // All Orders
+    public function sessionSave(Request $request){
+        if ($request->session_set == "true"){
+            session()->put("watermark","yes");
+        }else{
+            session()->put("watermark","no");
+        }
+    }
     public function all_orders(Request $request)
     {
 
 
         $date = $request->date;
         $sort_search = null;
+        $sort_search_customer = null;
         $delivery_status = null;
         $payment_status = '';
+        $payment_method = '';
 
         $orders = Order::orderBy('id', 'desc');
         $admin_user_id = User::where('user_type', 'admin')->first()->id;
@@ -89,6 +98,14 @@ class OrderController extends Controller
                 $q->where("state_id",$request->state_id);
             });
         }
+        if ($request->search_customer) {
+            $orders = $orders->whereHas('user',function ($q) use($request){
+                $q->where('name', 'like', '%'.$request->search_customer.'%')
+                    ->orWhere('email', 'like', '%'.$request->search_customer.'%')
+                    ->orWhere('phone', 'like', '%'.$request->search_customer.'%');
+            });
+            $sort_search_customer=$request->search_customer;
+        }
 
         if ($request->city_id) {
             $orders = $orders->whereHas('address',function ($q) use($request){
@@ -103,6 +120,10 @@ class OrderController extends Controller
             $orders = $orders->where('payment_status', $request->payment_status);
             $payment_status = $request->payment_status;
         }
+        if ($request->payment_method != null) {
+            $orders = $orders->where('payment_type', $request->payment_method);
+            $payment_method = $request->payment_method;
+        }
         if ($request->delivery_status != null) {
             $orders = $orders->where('delivery_status', $request->delivery_status);
             $delivery_status = $request->delivery_status;
@@ -112,7 +133,7 @@ class OrderController extends Controller
                 ->where('created_at', '<=', date('Y-m-d', strtotime(explode(" to ", $date)[1])) . '  23:59:59');
         }
         $orders = $orders->paginate(15);
-        return view('backend.sales.index', compact('orders', 'sort_search', 'payment_status', 'delivery_status', 'date'));
+        return view('backend.sales.index', compact('orders','payment_method','sort_search_customer', 'sort_search', 'payment_status', 'delivery_status', 'date'));
     }
 
     public function save(Request $request){
@@ -214,7 +235,7 @@ class OrderController extends Controller
             $order->payment_type = $request->payment_option;
             $order->delivery_viewed = '0';
             $order->payment_status_viewed = '0';
-            $order->code = rand(10, 99);
+            $order->code = Auth::user()->id.rand(10, 99);
             $order->date = strtotime('now');
             $order->save();
 

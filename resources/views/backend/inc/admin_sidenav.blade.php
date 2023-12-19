@@ -95,13 +95,13 @@
                         </a>
                         <!--Submenu-->
                         <ul class="aiz-side-nav-list level-2">
-                            @can('add_new_product')
+                            {{--@can('add_new_product')
                                 <li class="aiz-side-nav-item">
                                     <a class="aiz-side-nav-link" href="{{route('products.create')}}">
                                         <span class="aiz-side-nav-text">{{translate('Add New product')}}</span>
                                     </a>
                                 </li>
-                            @endcan
+                            @endcan--}}
                             @can('show_all_products')
                                 <li class="aiz-side-nav-item">
                                     <a href="{{route('products.all')}}" class="aiz-side-nav-link">
@@ -135,7 +135,7 @@
                         </ul>
                     </li>
                 @endcanany
-                @canany(['view_product_attributes','view_colors'])
+               {{-- @canany(['view_product_attributes','view_colors'])
                     <li class="aiz-side-nav-item">
                         <a href="#" class="aiz-side-nav-link">
                             <div class="aiz-side-nav-icon">
@@ -168,7 +168,7 @@
                             @endcan
                         </ul>
                     </li>
-                @endcanany
+                @endcanany--}}
 
                 @canany(['view_all_orders','order_configuration', 'view_inhouse_orders','view_seller_orders','view_pickup_point_orders'])
                     <li class="aiz-side-nav-item">

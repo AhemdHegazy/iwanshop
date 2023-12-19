@@ -1,62 +1,41 @@
 @extends('backend.layouts.app')
 
 @section('content')
+    <style>
+        .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+            background-color: #19a09c;
+            color: #fff !important;
+            padding: 16px 39px;
+            margin: 5px;
 
+        }
+        .nav-pills .nav-link {
+            border-radius: 0.25rem;
+            padding: 16px 39px;
+            background: #fff;
+            margin: 5px;
 
-    <ul class="nav nav-tabs border-0">
+        }
+    </style>
+
+    <ul class="nav nav-pills border-0">
         <li class="nav-item">
-            <a class="nav-link btn- active text-center font-weight-medium text-dark h6" data-toggle="tab" href="#aiz-select-file">
-                <i class="la la-users lax"></i>
-                تصنيفات العملاء
-            </a>
-        </li>
         <li class="nav-item">
-            <a class="nav-link font-weight-medium text-dark h6"  data-toggle="tab" href="#aiz-upload-new">
+            <a class="nav-link active font-weight-medium text-dark h6"  data-toggle="tab" href="#aiz-upload-new">
                 <i class="la la-cog lax"></i>
                 التحكم بالعملاء
             </a>
         </li>
+            <a class="nav-link text-center font-weight-medium text-dark h6" data-toggle="tab" href="#aiz-select-file">
+                <i class="la la-users lax"></i>
+                تصنيفات العملاء
+            </a>
+        </li>
+
     </ul>
     <div class="tab-content h-100">
-        <div class="tab-pane active h-100" id="aiz-select-file">
 
-            <div class="aiz-titlebar row text-left  mb-1">
-                <div class="col-lg-6 mt-3">
-                    <h1 class="h3">{{translate('تصنيفات العملاء')}}</h1>
-                </div>
-
-                <div class="col text-right col-lg-6">
-                    <a href="{{ route('classifications.index') }}" class="btn btn-primary">
-                        <span>أضافة  تصنيف </span>
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class=" col-lg-12 ">
-                    <div class="row">
-                        @foreach($classifications as $class)
-                            <div class="col-lg-3">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <p class="text-center">{{$class->name}}</p>
-                                        <img src="{{uploaded_asset($class->logo)}}" class="img-fluid" style="max-height: 100px" alt="">
-
-                                    </div>
-                                    <div class="card-footer text-center">
-                                        <a href="{{route("classifications.show",$class->id)}}" class="btn btn-primary m-auto">
-                                        <i class="la la-eye"></i>
-                                            عرض التصنيف
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-pane h-100" id="aiz-upload-new">
+        <div class="tab-pane active h-100" id="aiz-upload-new">
 
             <div class="aiz-titlebar row text-left  mb-1">
                 <div class="col-lg-6 mt-3">
@@ -87,7 +66,7 @@
 
                         <div class="col-md-3">
                             <div class="form-group mb-0">
-                                <input type="text" class="form-control" id="search" name="search"@isset($sort_search) value="{{ $sort_search }}" @endisset placeholder="{{ translate('Type email or name & Enter') }}">
+                                <input type="text" class="form-control" id="search" name="search"@isset($sort_search) value="{{ $sort_search }}" @endisset placeholder="{{ translate('Type email or name or phone & Enter') }}">
                             </div>
                         </div>
                     </div>
@@ -110,8 +89,8 @@
                                 <th>{{translate('Name')}}</th>
                                 <th data-breakpoints="lg">{{translate('Email Address')}}</th>
                                 <th data-breakpoints="lg">{{translate('Phone')}}</th>
-                                <th data-breakpoints="lg">{{translate('عدد الطلبات')}}</th>
-                                <th data-breakpoints="lg">{{translate('حجم الإنفاق')}}</th>
+                                <th data-breakpoints="lg">{{translate('Number Of Requests')}}</th>
+                                <th data-breakpoints="lg">{{translate('Spend Money')}}</th>
                                 <th class="text-right">{{translate('Options')}}</th>
                             </tr>
                             </thead>
@@ -182,6 +161,44 @@
             </div>
 
         </div>
+        <div class="tab-pane h-100" id="aiz-select-file">
+
+            <div class="aiz-titlebar row text-left  mb-1">
+                <div class="col-lg-6 mt-3">
+                    <h1 class="h3">{{translate('تصنيفات العملاء')}}</h1>
+                </div>
+
+                <div class="col text-right col-lg-6">
+                    <a href="{{ route('classifications.index') }}" class="btn btn-primary">
+                        <span>أضافة  تصنيف </span>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class=" col-lg-12 ">
+                    <div class="row">
+                        @foreach($classifications as $class)
+                            <div class="col-lg-3">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p class="text-center">{{$class->name}}</p>
+                                        <img src="{{uploaded_asset($class->logo)}}" class="img-fluid" style="max-height: 100px" alt="">
+
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <a href="{{route("classifications.show",$class->id)}}" class="btn btn-primary m-auto btn-block">
+                                        <i class="la la-eye"></i>
+                                            عرض التصنيف
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <!-- delete Modal -->
     <div id="deletes-modal" class="modal fade">

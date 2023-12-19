@@ -4,9 +4,9 @@
         $value .= '_';
     }
 @endphp
-<option id="{{ $childCategory->id }}" {{$child_category->childrenCategories ? "" : "disabled"}} value="{{ $category->id }}">{{ $value." " }}{{ $childCategory->name }}</option>
+<option id="{{ $childCategory->id }}" value="{{ $childCategory->id }}">{{ $value." " }}{{ $childCategory->name }}</option>
 @if ($child_category->childrenCategories)
     @foreach ($child_category->childrenCategories as $childCategory)
-        @include('backend.product.products.child_category', ['child_category' => $childCategory])
+        @include('backend.product.products.child_categories', ['child_category' => $childCategory])
     @endforeach
 @endif

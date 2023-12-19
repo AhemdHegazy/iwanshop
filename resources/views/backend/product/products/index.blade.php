@@ -26,28 +26,23 @@
     </div>
     <div class="row align-items-center pb-2">
         <div class="col text-right">
-            <a href="{{route('attributes.index')}}"  class="btn btn-primary">
-                <span class="aiz-side-nav-text">
-                    <i class="la la-list"></i>{{translate('Attribute')}}</span>
-            </a>
-            <a href="{{route('colors')}}"  class="btn btn-primary" >
-                <span class="aiz-side-nav-text">
-                      <i class="la la-pallet"></i>{{translate('Colors')}}</span>
-            </a>
+
         </div>
     </div>
     <div class="row align-items-center">
-
-        <div class="col-auto">
-            <h1 class="h3">{{translate('All products')}}</h1>
-
-        </div>
         @if($type != 'Seller' && auth()->user()->can('add_new_product'))
             <div class="col text-right">
-                <a href="{{ route('products.create') }}" class="btn btn-primary">
-                    <span>{{translate('Add New Product')}}</span>
+                <a href="{{ route('products.create') }}" class="btn btn-primary pl-1 pr-3">
+                    <i class="la la-plus mr-2"></i> <span>{{translate('Add New Product')}}</span>
                 </a>
-
+                <a href="{{route('attributes.index')}}"  class="btn btn-primary pl-1 pr-3">
+                <span class="aiz-side-nav-text">
+                    <i class="la la-list mr-2"></i>{{translate('Attribute')}}</span>
+                </a>
+                <a href="{{route('colors')}}"  class="btn btn-primary pl-1 pr-3" >
+                <span class="aiz-side-nav-text">
+                      <i class="la la-pallet mr-2"></i>{{translate('Colors')}}</span>
+                </a>
             </div>
         @endif
     </div>

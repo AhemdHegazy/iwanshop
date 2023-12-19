@@ -1626,21 +1626,18 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
             $(".confirm-delete").click(function (e) {
                 e.preventDefault();
                 var url = $(this).data("href");
+                var id = $(this).attr("id");
+
                 $("#delete-modal").modal("show");
+                $("#delete-modal .modal-body").removeClass("bg-danger text-white")
+                $("#delete-modal .modal-header").removeClass("bg-danger text-white")
+                if (id == "yes"){
+                    $("#delete-modal .modal-body").addClass("bg-danger text-white")
+                    $("#delete-modal .modal-header").addClass("bg-danger text-white")
+                }
                 $("#delete-link").attr("href", url);
             });
-            $(".confirm-1-delete").click(function (e) {
-                e.preventDefault();
-                var url = $(this).data("href");
-                var id = $(this).attr("id");
-                $("#delete-1-modal #message").html("").removeClass("alert alert-danger")
 
-                if (id == "yes"){
-                    $("#delete-1-modal #message").html("يوجد مستخدمين لهذا الدور , من فضلك أنتبه هذه الخطوة لا يمكن الرجوع بها ").addClass("alert alert-danger")
-                }
-                $("#delete-1-modal").modal("show");
-                $("#delete-1-link").attr("href", url);
-            });
             $(".confirms-delete").click(function (e) {
                 e.preventDefault();
                 var id = $(this).prop("id");

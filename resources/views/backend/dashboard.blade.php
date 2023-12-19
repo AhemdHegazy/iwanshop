@@ -16,41 +16,16 @@
             <div class="col-6">
                 <div class="bg-grad-2 text-white rounded-lg mb-4 overflow-hidden">
                     <div class="px-3 pt-3">
+                        <a href="{{route("customers.index")}}" class="text-white">
                         <div class="opacity-50">
                             <span class="fs-12 d-block">{{ translate('Total') }}</span>
                             {{ translate('Customer') }}
                         </div>
-                        <div class="h3 fw-700 mb-3">
-                            {{ \App\Models\User::where('user_type', 'customer')->where('email_verified_at', '!=', null)->count() }}
-                        </div>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                        <path fill="rgba(255,255,255,0.3)" fill-opacity="1" d="M0,128L34.3,112C68.6,96,137,64,206,96C274.3,128,343,224,411,250.7C480,277,549,235,617,213.3C685.7,192,754,192,823,181.3C891.4,171,960,149,1029,117.3C1097.1,85,1166,43,1234,58.7C1302.9,75,1371,149,1406,186.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
-                    </svg>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="bg-grad-3 text-white rounded-lg mb-4 overflow-hidden">
-                    <div class="px-3 pt-3">
-                        <div class="opacity-50">
-                            <span class="fs-12 d-block">{{ translate('Total') }}</span>
-                            {{ translate('Order') }}
-                        </div>
-                        <div class="h3 fw-700 mb-3">{{ \App\Models\Order::count() }}</div>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                        <path fill="rgba(255,255,255,0.3)" fill-opacity="1" d="M0,128L34.3,112C68.6,96,137,64,206,96C274.3,128,343,224,411,250.7C480,277,549,235,617,213.3C685.7,192,754,192,823,181.3C891.4,171,960,149,1029,117.3C1097.1,85,1166,43,1234,58.7C1302.9,75,1371,149,1406,186.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
-                    </svg>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="bg-grad-1 text-white rounded-lg mb-4 overflow-hidden">
-                    <div class="px-3 pt-3">
-                        <div class="opacity-50">
-                            <span class="fs-12 d-block">{{ translate('Total') }}</span>
-                            {{ translate('Product category') }}
-                        </div>
-                        <div class="h3 fw-700 mb-3">{{ \App\Models\Category::count() }}</div>
+                            <div class="h3 fw-700 mb-3">
+                                {{ \App\Models\User::where('user_type', 'customer')->where('email_verified_at', '!=', null)->count() }}
+                            </div>
+                        </a>
+
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                         <path fill="rgba(255,255,255,0.3)" fill-opacity="1" d="M0,128L34.3,112C68.6,96,137,64,206,96C274.3,128,343,224,411,250.7C480,277,549,235,617,213.3C685.7,192,754,192,823,181.3C891.4,171,960,149,1029,117.3C1097.1,85,1166,43,1234,58.7C1302.9,75,1371,149,1406,186.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
@@ -60,11 +35,82 @@
             <div class="col-6">
                 <div class="bg-grad-4 text-white rounded-lg mb-4 overflow-hidden">
                     <div class="px-3 pt-3">
+                        <a href="{{route("all_orders.index")}}" class="text-white">
+                        <div class="opacity-50">
+                            <span class="fs-12 d-block">{{ translate('Total') }}</span>
+                            {{ translate('Order') }}
+                        </div>
+                            <div class="h3 fw-700 mb-3">{{ \App\Models\Order::count() }}</div>
+                        </a>
+
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                        <path fill="rgba(255,255,255,0.3)" fill-opacity="1" d="M0,128L34.3,112C68.6,96,137,64,206,96C274.3,128,343,224,411,250.7C480,277,549,235,617,213.3C685.7,192,754,192,823,181.3C891.4,171,960,149,1029,117.3C1097.1,85,1166,43,1234,58.7C1302.9,75,1371,149,1406,186.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="bg-grad-1 text-white rounded-lg mb-4 overflow-hidden">
+                    <div class="px-3 pt-3">
+                        <a href="{{route("categories.index")}}" class="text-white">
+                        <div class="opacity-50">
+                            <span class="fs-12 d-block">{{ translate('Total') }}</span>
+                            {{ translate('Product category') }}
+                        </div>
+                            <div class="h3 fw-700 mb-3">{{ \App\Models\Category::count() }}</div>
+
+                        </a>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                        <path fill="rgba(255,255,255,0.3)" fill-opacity="1" d="M0,128L34.3,112C68.6,96,137,64,206,96C274.3,128,343,224,411,250.7C480,277,549,235,617,213.3C685.7,192,754,192,823,181.3C891.4,171,960,149,1029,117.3C1097.1,85,1166,43,1234,58.7C1302.9,75,1371,149,1406,186.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="bg-grad-4 text-white rounded-lg mb-4 overflow-hidden">
+                    <div class="px-3 pt-3">
+                        <a href="{{route("brands.index")}}" class="text-white">
                         <div class="opacity-50">
                             <span class="fs-12 d-block">{{ translate('Total') }}</span>
                             {{ translate('Product brand') }}
                         </div>
-                        <div class="h3 fw-700 mb-3">{{ \App\Models\Brand::count() }}</div>
+                            <div class="h3 fw-700 mb-3">{{ \App\Models\Brand::count() }}</div>
+
+                        </a>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                        <path fill="rgba(255,255,255,0.3)" fill-opacity="1" d="M0,128L34.3,112C68.6,96,137,64,206,96C274.3,128,343,224,411,250.7C480,277,549,235,617,213.3C685.7,192,754,192,823,181.3C891.4,171,960,149,1029,117.3C1097.1,85,1166,43,1234,58.7C1302.9,75,1371,149,1406,186.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="bg-grad-4 text-white rounded-lg mb-4 overflow-hidden">
+                    <div class="px-3 pt-3">
+                        <a href="{{route("staffs.index")}}" class="text-white">
+                        <div class="opacity-50">
+                            <span class="fs-12 d-block">{{ translate('Total') }}</span>
+                            {{ translate('Staff') }}
+                        </div>
+                            <div class="h3 fw-700 mb-3">{{ \App\Models\Staff::count() }}</div>
+
+                        </a>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                        <path fill="rgba(255,255,255,0.3)" fill-opacity="1" d="M0,128L34.3,112C68.6,96,137,64,206,96C274.3,128,343,224,411,250.7C480,277,549,235,617,213.3C685.7,192,754,192,823,181.3C891.4,171,960,149,1029,117.3C1097.1,85,1166,43,1234,58.7C1302.9,75,1371,149,1406,186.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="bg-grad-4 text-white rounded-lg mb-4 overflow-hidden">
+                    <div class="px-3 pt-3">
+                        <a href="{{route("support_ticket.admin_index")}}" class="text-white">
+                        <div class="opacity-50">
+                            <span class="fs-12 d-block">{{ translate('Total') }}</span>
+                            {{ translate('Ticket') }}
+                        </div>
+                            <div class="h3 fw-700 mb-3">{{ \App\Models\Ticket::count() }}</div>
+
+                        </a>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                         <path fill="rgba(255,255,255,0.3)" fill-opacity="1" d="M0,128L34.3,112C68.6,96,137,64,206,96C274.3,128,343,224,411,250.7C480,277,549,235,617,213.3C685.7,192,754,192,823,181.3C891.4,171,960,149,1029,117.3C1097.1,85,1166,43,1234,58.7C1302.9,75,1371,149,1406,186.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
@@ -76,6 +122,41 @@
 
     <div class="col-lg-6">
         <div class="row gutters-10">
+            <div class="col-6">
+                <div class="bg-grad-4 text-white rounded-lg mb-4 overflow-hidden">
+                    <div class="px-3 pt-3">
+                        <a href="{{route("attributes.index")}}" class="text-white">
+                        <div class="opacity-50">
+                            <span class="fs-12 d-block">{{ translate('Total') }}</span>
+                            {{ translate('Attribute') }}
+                        </div>
+                            <div class="h3 fw-700 mb-3">{{ \App\Models\Attribute::count() }}</div>
+
+                        </a>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                        <path fill="rgba(255,255,255,0.3)" fill-opacity="1" d="M0,128L34.3,112C68.6,96,137,64,206,96C274.3,128,343,224,411,250.7C480,277,549,235,617,213.3C685.7,192,754,192,823,181.3C891.4,171,960,149,1029,117.3C1097.1,85,1166,43,1234,58.7C1302.9,75,1371,149,1406,186.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="bg-grad-4 text-white rounded-lg mb-4 overflow-hidden">
+                    <div class="px-3 pt-3">
+                        <a href="{{route("states.index")}}" class="text-white">
+                            <div class="opacity-50">
+                                <span class="fs-12 d-block">{{ translate('Total') }}</span>
+                                {{ translate('States') }}
+                            </div>
+                            <div class="h3 fw-700 mb-3">{{ \App\Models\Ticket::count() }}</div>
+
+                        </a>
+
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                        <path fill="rgba(255,255,255,0.3)" fill-opacity="1" d="M0,128L34.3,112C68.6,96,137,64,206,96C274.3,128,343,224,411,250.7C480,277,549,235,617,213.3C685.7,192,754,192,823,181.3C891.4,171,960,149,1029,117.3C1097.1,85,1166,43,1234,58.7C1302.9,75,1371,149,1406,186.7L1440,224L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+                    </svg>
+                </div>
+            </div>
             <div class="col-6">
                 <div class="card">
                     <div class="card-header">
@@ -119,6 +200,59 @@
             <div class="card-body">
                 <canvas id="graph-2" class="w-100" height="500"></canvas>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h6 class="mb-0">{{ translate('Products Stock Alert') }}</h6>
+    </div>
+    <div class="card-body">
+        <div class="aiz-carousel gutters-10 half-outside-arrow" data-items="6" data-xl-items="5" data-lg-items="4" data-md-items="3" data-sm-items="2" data-arrows='true'>
+            foreach (\App\Models\ProductStock::all() as $item) {
+            // dd($item->orderDetails);
+            // dd($item->low_stock_quantity);
+            $item->product->low_stock_quantity
+            }
+            @foreach (\App\Models\ProductStock::whereHas("product",function ($q){
+                   $q->whereRaw("low_stock_quantity > qty");
+                })->get() as $key => $product)
+                <div class="carousel-box">
+                    <div class="aiz-card-box border border-light rounded shadow-sm hov-shadow-md mb-2 has-transition bg-white">
+                        <div class="position-relative">
+                            <a href="{{ route('product', $product->product->slug) }}" class="d-block">
+                                <img
+                                    class="img-fit lazyload mx-auto h-210px"
+                                    src="{{ asset('assets/img/placeholder.jpg') }}"
+                                    data-src="{{ uploaded_asset($product->product->thumbnail_img) }}"
+                                    alt="{{  $product->name  }}"
+                                    onerror="this.onerror=null;this.src='{{ asset('assets/img/placeholder.jpg') }}';"
+                                >
+                            </a>
+                        </div>
+                        <div class="p-md-3 p-2 text-center">
+                            <div class="fs-15  text-center">
+                                @if(home_base_price($product->product) != home_discounted_base_price($product->product))
+                                    <del class="fw-600 opacity-50 mr-1 ">{{ home_base_price($product->product) }}</del>
+                                @endif
+                                <span class="fw-700 text-primary">{{ home_discounted_base_price($product->product) }}</span>
+                            </div>
+                           {{-- <div class="rating rating-sm mt-1">
+                                {{ renderStarRating($product->rating) }}
+                            </div>--}}
+                            <h3 class="fw-600 fs-13 text-truncate-2 lh-1-4 mb-0 text-center">
+                                <a href="{{ route('product', $product->product->slug) }}" class="d-block text-reset">{{ $product->variant }}</a>
+                            </h3>
+                           <h6 class="text-center">
+                               {{$product->product->low_stock_quantity}}  {{translate("Alerted")}}<br> {{$product->qty}} {{translate("In Stock")}}
+                           </h6>
+                            <a href="{{ route('products.admin.edit', $product->product->id) }}" class="btn btn-danger">تعديل</a>
+
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </div>

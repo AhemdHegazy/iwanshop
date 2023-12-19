@@ -409,8 +409,8 @@
                                 </svg>
                             </div>
                             <div class="ml-lg-3">
-                                <h5 class="fs-36 fw-400 text-white mb-3">{{ translate(get_setting('cupon_title')) }}</h5>
-                                <h5 class="fs-20 fw-400 text-gray">{{ translate(get_setting('cupon_subtitle')) }}</h5>
+                                <h5 class="fs-36 fw-400 text-white mb-3">{{ get_setting('cupon_title') }}</h5>
+                                <h5 class="fs-20 fw-400 text-gray">{{ get_setting('cupon_subtitle') }}</h5>
                             </div>
                         </div>
                     </div>

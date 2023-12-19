@@ -189,7 +189,7 @@ class CategoryController extends Controller
         $category->attributes()->sync($request->filtering_attributes);
         Cache::forget('featured_categories');
         flash(translate('Category has been updated successfully'))->success();
-        return back();
+        return redirect()->route('categories.index');
     }
 
     /**

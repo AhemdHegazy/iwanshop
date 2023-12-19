@@ -44,8 +44,8 @@
                                                     <input type="number" name="quantity[{{ $cartItem['id'] }}]"
                                                         class="col border-0 text-left px-0 flex-grow-1 fs-14 input-number"
                                                         placeholder="1" value="{{ $cartItem['quantity'] }}"
-                                                        min="{{ $product->min_qty }}"
-                                                        max="{{ $product_stock->qty }}"
+                                                        min="{{ $product->min_qty }}" readonly
+                                                        max="{{--{{ $product_stock->qty }}--}}{{ $product->max_qty }}"
                                                         onchange="updateQuantity({{ $cartItem['id'] }}, this)" style="padding-left:0.75rem !important;">
                                                     <button
                                                         class="btn col-auto btn-icon btn-sm btn-circle btn-light"

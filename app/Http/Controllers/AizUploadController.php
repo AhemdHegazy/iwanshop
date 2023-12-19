@@ -54,6 +54,7 @@ class AizUploadController extends Controller
 
     public function create()
     {
+        //dd(session("watermark"));
         return view('backend.uploaded_files.create');
     }
 
@@ -137,7 +138,6 @@ class AizUploadController extends Controller
                         $image = $request->file('aiz_file');
 
                         $img = Image::make($request->file('aiz_file')->getRealPath());
-                        $watermark = Image::make(asset("assets/img/watermark.png"));
 
                         $height = $img->height();
                         $width = $img->width();
@@ -150,7 +150,12 @@ class AizUploadController extends Controller
                                 $constraint->aspectRatio();
                             });
                         }
-                        $img->insert($watermark, 'center', 0, 0);
+                        if (session("watermark") == "yes"){
+                            $watermark = Image::make(asset("assets/img/watermark.png"));
+
+                             $img->insert($watermark, 'center', 0, 0);
+
+                        }
 
                         // Convert and save as WebP
                         $img->save(public_path('uploads/all/' . explode(".",$image->getClientOriginalName())[0] . '.webp'), 90, 'webp');                        clearstatcache();

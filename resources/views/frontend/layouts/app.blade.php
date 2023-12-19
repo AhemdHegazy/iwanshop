@@ -594,7 +594,8 @@
                         AIZ.extra.plusMinus();
                     }
                 });
-            }
+            }else{
+             }
         }
 
         function checkAddToCartValidity(){

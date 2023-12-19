@@ -28,8 +28,14 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-from-label" for="mobile">{{translate('Phone')}}</label>
                         <div class="col-sm-9">
-                            <input type="text" placeholder="{{translate('Phone')}}" id="mobile" name="mobile" value="{{ $staff->user->phone }}" class="form-control" required>
+                            <div class="input-group  mb-3">
+                                <input type="text" placeholder="{{translate('Phone')}}" id="mobile" name="mobile" value="{{ $staff->user->phone }}" class="form-control" required>
+                                <div class="input-group-prepend">
+                                    <span  class="input-group-text" style="height: 42px;" id="basic-addon1">  +964  <img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-3 col-from-label" for="password">{{translate('Password')}}</label>
@@ -47,7 +53,7 @@
                         <div class="col-sm-9">
                             <div class="input-group mb-2 mr-sm-2">
 
-                                <input type="password" class="form-control" placeholder="{{translate('Confirm Password')}}" id="confirm_password_con" name="password_confirmation">
+                                <input type="password" class="form-control" placeholder="{{translate('Confirm Password')}}" id="confirm_password" name="password_confirmation">
                                 <div class="input-group-prepend" onclick="showPassword('confirm_password')">
                                     <div  class="input-group-text" style="height: 42px;"><i class="la la-eye-slash" style="font-size: 16px;" id="eye_confirm_password"></i></div>
                                 </div>

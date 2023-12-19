@@ -69,7 +69,7 @@
                                 </a>
                             @endcan
                             @if($role->id != 1 && auth()->user()->can('delete_staff_role'))
-                                <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-1-delete" id="{{count($role->users) >0 ?"yes":"no"}}" data-href="{{route('roles.destroy', $role->id)}}" title="{{ translate('Delete') }}">
+                                <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" id="{{count($role->users) >0 ?"yes":"no"}}" data-href="{{route('roles.destroy', $role->id)}}" title="{{ translate('Delete') }}">
                                     <i class="las la-trash"></i>
                                 </a>
                             @endif
@@ -84,7 +84,7 @@
     </div>
 </div>
 <div class="modal fade" id="delete-1-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
 
             <div class="modal-header">
@@ -92,9 +92,8 @@
                 <h4 class="modal-title" id="myModalLabel">{{ translate('Confirmation')}}</h4>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body text-center">
                 <p>{{ translate('Delete confirmation message')}}</p>
-                <span id="message"></span>
             </div>
 
             <div class="modal-footer">
@@ -106,17 +105,6 @@
 </div>
 @endsection
 
-@section('script')
-    <script>
-        function confirm_modal(delete_url)
-        {
-            jQuery('#confirm-1-delete').modal('show', {backdrop: 'static'});
-            document.getElementById('delete_link').setAttribute('href' , delete_url);
-        }
-    </script>
-
-
-@endsection
 @section('modal')
     @include('modals.delete_modal')
 @endsection

@@ -75,7 +75,13 @@ Route::get('/refresh-csrf', function () {
     return csrf_token();
 });
 Route::get('/refreshs-csrf', function () {
-
+    foreach (\App\Models\ProductStock::whereHas("product",function ($q){
+        $q->whereRaw("low_stock_quantity > qty");
+    })->get() as $item) {
+       // dd($item->orderDetails);
+       // dd($item->low_stock_quantity);
+    }
+    dd(get_setting('homepage_select'));
     $jsonContent = file_get_contents(base_path("resources/lang/ar.json"));
     // Decode JSON content to an associative array
     $data = json_decode($jsonContent, true);

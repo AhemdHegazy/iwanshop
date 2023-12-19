@@ -462,6 +462,7 @@
 							<div class="bg-white p-3 p-sm-2rem">
 								<div class="w-100">
 									<label class="col-from-label fs-13 fw-500 mb-3">{{ translate('Banner & Links (Max 3)') }}</label>
+                                    <div>{{ translate('We have limited banner height to maintain UI. We had to crop from both left & right side in view for different devices to make it responsive. Before designing banner keep these points in mind.') }}</div>
 
 									<input type="hidden" name="types[]" value="home_banner1_images">
 									<input type="hidden" name="types[]" value="home_banner1_links">
@@ -571,6 +572,7 @@
 							<div class="bg-white p-3 p-sm-2rem">
 								<div class="w-100">
 									<label class="col-from-label fs-13 fw-500 mb-3">{{ translate('Banner & Links (Max 3)') }}</label>
+                                    <div>{{ translate('We have limited banner height to maintain UI. We had to crop from both left & right side in view for different devices to make it responsive. Before designing banner keep these points in mind.') }}</div>
 
 									<input type="hidden" name="types[]" value="home_banner2_images">
 									<input type="hidden" name="types[]" value="home_banner2_links">
@@ -680,6 +682,7 @@
 							<div class="bg-white p-3 p-sm-2rem">
 								<div class="w-100">
 									<label class="col-from-label fs-13 fw-500 mb-3">{{ translate('Banner & Links (Max 3)') }}</label>
+                                    <div>{{ translate('We have limited banner height to maintain UI. We had to crop from both left & right side in view for different devices to make it responsive. Before designing banner keep these points in mind.') }}</div>
 
 									<input type="hidden" name="types[]" value="home_banner3_images">
 									<input type="hidden" name="types[]" value="home_banner3_links">

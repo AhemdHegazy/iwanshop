@@ -141,6 +141,18 @@
     <script type="text/javascript">
 
 
+        $("#watermark").click(function (){
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ route('session-save') }}?session_set="+$(this).prop("checked"),
+                type: 'GET',
+                success: function(response) {
+
+                }
+            });
+        })
         @foreach (session('flash_notification', collect())->toArray() as $message)
             AIZ.plugins.notify('{{ $message['level'] }}', '{{ $message['message'] }}');
         @endforeach

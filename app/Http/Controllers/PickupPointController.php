@@ -61,7 +61,7 @@ class PickupPointController extends Controller
         }
         else{
             flash(translate('Something went wrong'))->error();
-            return back();
+            return redirect()->route('pick_up_points.index');
         }
     }
 
@@ -112,7 +112,7 @@ class PickupPointController extends Controller
         }
         else{
             flash(translate('Something went wrong'))->error();
-            return back();
+            return redirect()->route('pick_up_points.index');
         }
     }
 

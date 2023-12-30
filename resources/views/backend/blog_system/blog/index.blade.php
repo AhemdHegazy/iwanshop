@@ -3,6 +3,22 @@
 @section('content')
 
 <div class="aiz-titlebar text-left mt-2 mb-3">
+    <div class="row">
+        <div class="col-lg-6">
+            <ul class="breadcrumb bg-transparent p-0 justify-content-center justify-content-lg-start">
+                <li class="breadcrumb-item has-transition opacity-60 hov-opacity-100">
+                    <a class="text-reset" href="{{ route('admin.dashboard') }}">{{ translate('Home') }}</a>
+                </li>
+                <li class="text-dark fw-600 breadcrumb-item">
+                    "{{ translate('All Posts') }}
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+
+        </div>
+
+    </div>
     <div class="row align-items-center">
         <div class="col-auto">
             <h1 class="h3">{{translate('All Posts')}}</h1>

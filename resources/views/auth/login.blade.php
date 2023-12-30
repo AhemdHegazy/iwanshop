@@ -16,7 +16,7 @@
             <div class="container">
                 <div class="row">
             <div class="col-xl-6 col-lg-10 mx-auto">
-                <div class="card shadow-none rounded-0 border">
+                <div class="card shadow-none rounded-1 border">
                     <div class="row">
                         <!-- Left Side -->
                         <div class="col-lg-12 p-4 p-lg-5">
@@ -37,15 +37,15 @@
                                     @csrf
                                     <!-- Email or Phone -->
                                         <div class="form-group email-form-group mb-1">
-                                            <label for="email" class="fs-12 fw-700 text-dark">البريد الإلكتروني </label>
-                                            <input type="email" class="form-control rounded-0 " value="" placeholder="البريد الإلكتروني " name="email" id="email" autocomplete="off">
+                                            <label for="email" class="fs-12 fw-700 text-dark">{{translate("Email Address")}}</label>
+                                            <input type="email" class="form-control rounded-1 " value="" placeholder=">{{translate("Email Address")}}" name="email" id="email" autocomplete="off">
                                         </div>
 
                                         <!-- password -->
                                         <div class="form-group">
-                                            <label for="password" class="fs-12 fw-700 text-dark">كلمة المرور</label>
-                                            <div class="input-group mb-2 mr-sm-2">
-                                            <input type="password" class="form-control rounded-0 " placeholder="كلمة المرور" name="password" id="password">
+                                            <label for="password" class="fs-12 fw-700 text-dark">{{translate("Password")}}</label>
+                                            <div class="input-group mb-2 ">
+                                            <input type="password" class="form-control rounded-1 " placeholder=">{{translate("Password")}}" name="password" id="password">
                                                 <div class="input-group-prepend" onclick="showPassword('password')">
                                                     <div  class="input-group-text" style="height: 42px;"><i class="la la-eye-slash" style="font-size: 16px;" id="eye_password"></i></div>
                                                 </div>
@@ -69,7 +69,7 @@
 
                                         <!-- Submit Button -->
                                         <div class="mb-4 mt-4">
-                                            <button type="submit" class="btn btn-primary btn-block fw-700 fs-14 rounded-4">دخول </button>
+                                            <button type="submit" class="btn btn-primary btn-block fw-700 fs-14 rounded-2">دخول </button>
                                         </div>
                                     </form>
 

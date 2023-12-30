@@ -18,7 +18,7 @@
                                 class="las la-language text-danger" title="{{ translate('Translatable') }}"></i></label>
                         <div class="col-sm-9">
                             <input type="text" placeholder="{{ translate('Name') }}" id="name" name="name"
-                                class="form-control" required value="{{ $attribute->name }}">
+                                class="form-control"oninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required value="{{ $attribute->name }}">
                         </div>
                     </div>
 

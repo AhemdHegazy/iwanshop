@@ -30,16 +30,6 @@
         <h5 class="mb-0 h6">{{translate('Add New Product')}}</h5>
     </div>
     <div class="">
-        <!-- Error Meassages -->
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         <form class="form form-horizontal mar-top" action="{{route('products.store')}}" method="POST" enctype="multipart/form-data" id="choice_form">
             <div class="row gutters-5">
                 <div class="col-lg-8">

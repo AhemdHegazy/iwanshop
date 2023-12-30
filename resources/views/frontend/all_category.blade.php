@@ -26,54 +26,29 @@
     <!-- All Categories -->
     <section class="mb-5 pb-3">
         <div class="container">
-            @foreach ($categories as $key => $category)
-                <div class="mb-4 bg-white rounded-0 border">
-                    <!-- Category Name -->
-                    <div class="text-dark p-4 d-flex align-items-center">
-                        <div class="size-60px overflow-hidden p-1 border mr-3">
-                            <img src="{{ uploaded_asset($category->banner) }}" alt="" class="img-fit h-100">
-                        </div>
-                        <a href="{{ route('products.category', $category->slug) }}"
-                            class="text-reset fs-16 fs-md-20 fw-700 hov-text-primary">
-                            {{ $category->name }}
-                        </a>
-                    </div>
-                    <div class="px-4 py-2">
-                        <div class="row row-cols-xl-5 row-cols-md-3 row-cols-sm-2 row-cols-1 gutters-16">
-                            @foreach ($category->childrenCategories as $key => $child_category)
-                                <div class="col text-left mb-3">
-                                    <!-- Sub Category Name -->
-                                    <h6 class="text-dark mb-3">
-                                        <a class="text-reset fw-700 fs-14 hov-text-primary"
-                                            href="{{ route('products.category', $child_category->slug) }}">
-                                            {{ $child_category->name }}
-                                        </a>
-                                    </h6>
+            <div class="row">
+                @foreach ($categories as $key => $category)
+                  <div class="col-lg-3 col-md-6 col-sm-12 mt-sm-3" style="border-radius: 15px">
+                      <div class="row p-3 pt-3 mr-1 bg-light">
+                          <div class="col-sm-4">
+                              <img src="{{ uploaded_asset($category->banner) }}" alt="" class="img-fluid" style="max-height: 80px;min-height: 80px">
+                          </div>
+                          <div class="col-sm-8">
+                              <h5>{{ $category->name }}</h5>
 
-                                    <!-- Sub-sub Categories -->
-                                    <ul
-                                        class="mb-2 list-unstyled has-transition mh-100 @if ($child_category->childrenCategories->count() > 5) less @endif">
-                                        @foreach ($child_category->childrenCategories as $key => $second_level_category)
-                                            <li class="text-dark mb-2">
-                                                <a class="text-reset fw-400 fs-14 hov-text-primary animate-underline-primary"
-                                                    href="{{ route('products.category', $second_level_category->slug) }}">
-                                                    {{ $second_level_category->name }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                    @if ($child_category->childrenCategories->count() > 5)
-                                        <a href="javascript:void(1)"
-                                            class="show-hide-cetegoty text-primary hov-text-primary fs-12 fw-700">{{ translate('More') }}
-                                            <i class="las la-angle-down"></i></a>
-                                    @endif
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
+                              @foreach ($category->childrenCategories()->limit(3)->get() as $key => $child_category)
+                                  <a class="text-reset fw-700 fs-10 hov-text-primary"
+                                     href="{{ route('products.category', $child_category->slug) }}">
+                                      {{ $child_category->name }}
+                                      @if(!$loop->last) ,@endif
+                                  </a>
+                              @endforeach
+                          </div>
+                      </div>
 
-                </div>
-            @endforeach
+                  </div>
+                @endforeach
+            </div>
         </div>
     </section>
 @endsection

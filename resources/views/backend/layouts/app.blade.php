@@ -6,7 +6,7 @@
     <meta name="app-url" content="{{ getBaseURL() }}">
     <meta name="file-base-url" content="{{ getFileBaseURL() }}">
 
-    <!-- Required meta tags -->
+    <!--oninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -231,6 +231,9 @@
                 $('#'+id).attr('type','password');
             }
         }
+
+        $(".bs-select-all").html("تحديد الكل")
+        $(".bs-deselect-all").html("إلغاء تحديد الكل")
     </script>
 </body>
 

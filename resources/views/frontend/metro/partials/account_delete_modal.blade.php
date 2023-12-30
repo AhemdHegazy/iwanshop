@@ -23,27 +23,26 @@
                     </span>
                 </div>
                 <h4 class="modal-title text-center fw-700" id="account_delete_confirmModalLabel" style="color: #ff9819;">{{ translate('Delete Your Account')}}</h4>
-                <p class="fs-16 fw-600 text-center" style="color: #8d8d8d;">{{ translate('تنبيه : هل أنت متأكد من هذه الخطوة ')}}</p>
+                <p class="fs-16 fw-600 text-center" style="color: #8d8d8d;">{{ translate('Caution: Are you sure about this step')}}</p>
             </div>
 
             <div class="modal-body pt-3 pb-5 px-xl-5">
-                <p class="text-danger mt-3 fw-800"><i>{{ translate('تنبيه :')}}&nbsp;{{ translate("ملحوظة: لا تنقر على أي زر أو لا تقم بأي إجراء أثناء حذف الحساب، فقد يستغرق ذلك بعض الوقت..")}}</i></p>
-                <p class="fs-14 fw-700" style="color: #8d8d8d;">{{ translate('حذف حسابي يعني : ')}}</p>
+                <p class="text-danger mt-3 fw-800"><i>{{ translate('Caution:')}}&nbsp;{{ translate("Note: Do not click any button or perform any action while Delete the account, it may take some time...")}}</i></p>
+                <p class="fs-14 fw-700" style="color: #8d8d8d;">{{ translate('Deleting my account means: ')}}</p>
 
                 <div class="row bg-soft-warning py-3 ml-0 mr-0 border-left border-width-2 border-danger">
                     <div class="col-1">
                         <img src="{{ asset('assets/img/warning.png') }}" class="h-20px" alt="{{ translate('warning') }}">
                     </div>
                     <div class="col">
-                        <p class="fw-600 mb-0">{{ translate('بعد حذف حسابك، لن يعد رصيد المحفظة موجودًا في نظامنا') }}</p>
+                        <p class="fw-600 mb-0">{{ translate('After deleting your account, the wallet balance will no longer exist in our system') }}</p>
                     </div>
                 </div>
             </div>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary rounded-0 w-150px" data-dismiss="modal">{{ translate('Cancel')}}</button>
-                <a id="account_delete_link" class="btn btn-danger rounded-0 w-150px">{{ translate('نعم , أحذف')}}</a>
-            </div>
+                <a id="account_delete_link" class="btn btn-danger rounded-0 w-150px">{{ translate('Yes, delete')}}</a>            </div>
         </div>
     </div>
 </div>

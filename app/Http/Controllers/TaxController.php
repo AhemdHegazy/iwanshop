@@ -52,7 +52,7 @@ class TaxController extends Controller
             return redirect()->route('tax.index');
         } else {
             flash(translate('Something went wrong'))->error();
-            return back();
+            return redirect()->route('tax.index');
         }
     }
 
@@ -96,7 +96,7 @@ class TaxController extends Controller
             return redirect()->route('tax.index');
         } else {
             flash(translate('Something went wrong'))->error();
-            return back();
+            return redirect()->route('tax.index');
         }
     }
 

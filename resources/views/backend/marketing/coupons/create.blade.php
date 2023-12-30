@@ -29,7 +29,7 @@
                         </select>
                     </div>
                 </div>
-            
+
                 <div id="coupon_form">
 
                 </div>

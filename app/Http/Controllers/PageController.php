@@ -125,7 +125,7 @@ class PageController extends Controller
         }
 
       flash(translate('Slug has been used already'))->warning();
-      return back();
+        return redirect()->route('website.pages');
 
     }
 

@@ -1,9 +1,27 @@
 @extends('backend.layouts.app')
 
 @section('content')
+    <div class="row">
+        <div class="col-lg-6">
+            <ul class="breadcrumb bg-transparent p-0 justify-content-center justify-content-lg-start">
+                <li class="breadcrumb-item has-transition opacity-60 hov-opacity-100">
+                    <a class="text-reset" href="{{ route('admin.dashboard') }}">{{ translate('Home') }}</a>
+                </li>
+                <li class="breadcrumb-item has-transition opacity-60 hov-opacity-100">
+                    <a class="text-reset" href="{{ route('classifications.index') }}">{{ translate('Classifications') }}</a>
+                </li>
+                <li class="text-dark fw-600 breadcrumb-item">
+                    "{{ translate('Show Customers Classifications') }}"
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
 
+        </div>
+
+    </div>
 <div class="aiz-titlebar text-left mt-2 mb-3">
-    <h5 class="mb-0 h6">عرض عملاء التصنيف </h5>
+    <h5 class="mb-0 h6">{{translate("Show Customers Classifications")}}   </h5>
 </div>
 
 <div class="col-lg-12 mx-auto">

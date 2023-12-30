@@ -23,12 +23,12 @@
                     </span>
                 </div>
                 <h4 class="modal-title text-center fw-700" id="account_delete_confirmModalLabel" style="color: #ff9819;">{{ translate('Delete Your Account')}}</h4>
-                <p class="fs-16 fw-600 text-center" style="color: #8d8d8d;">{{ translate('تنبيه : هل أنت متأكد من هذه الخطوة ')}}</p>
+                <p class="fs-16 fw-600 text-center" style="color: #8d8d8d;">{{ translate('Caution: Are you sure about this step')}}</p>
             </div>
 
             <div class="modal-body pt-3 pb-5 px-xl-5">
-                <p class="text-danger mt-3 fw-800"><i>{{ translate('تنبيه :')}}&nbsp;{{ translate("ملحوظة: لا تنقر على أي زر أو لا تقم بأي إجراء أثناء حذف الحساب، فقد يستغرق ذلك بعض الوقت..")}}</i></p>
-                <p class="fs-14 fw-700" style="color: #8d8d8d;">{{ translate('حذف حسابي يعني : ')}}</p>
+                <p class="text-danger mt-3 fw-800"><i>{{ translate('Caution:')}}&nbsp;{{ translate("Note: Do not click any button or perform any action while Delete the account, it may take some time...")}}</i></p>
+                <p class="fs-14 fw-700" style="color: #8d8d8d;">{{ translate('Deleting my account means: ')}}</p>
                 <div class="row bg-soft-warning py-2 mb-2 ml-0 mr-0 border-left border-width-2 border-danger">
                     <div class="col-1">
                         <img src="{{ asset('assets/img/warning.png') }}" class="h-20px" alt="{{ translate('warning') }}">

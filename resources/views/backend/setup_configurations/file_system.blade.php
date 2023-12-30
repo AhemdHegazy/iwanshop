@@ -269,10 +269,10 @@
 @section('script')
     <script type="text/javascript">
         function updateSettings(el, type, value_type){
-            
+
             $.post('{{ route('business_settings.update.activation') }}', {
-                _token:'{{ csrf_token() }}', 
-                type:type, 
+                _token:'{{ csrf_token() }}',
+                type:type,
                 value:value_type
             }, function(data){
                 if(data == '1'){

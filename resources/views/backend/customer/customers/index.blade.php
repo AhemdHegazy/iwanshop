@@ -16,19 +16,25 @@
             margin: 5px;
 
         }
+        .modal-content .modal-body {
+            padding: 20px 25px;
+            overflow-y: unset !important;
+            max-height: 70vh;
+        }
     </style>
 
     <ul class="nav nav-pills border-0">
-        <li class="nav-item">
+
         <li class="nav-item">
             <a class="nav-link active font-weight-medium text-dark h6"  data-toggle="tab" href="#aiz-upload-new">
                 <i class="la la-cog lax"></i>
-                التحكم بالعملاء
+                {{translate("Control Customers")}}
             </a>
         </li>
+        <li class="nav-item">
             <a class="nav-link text-center font-weight-medium text-dark h6" data-toggle="tab" href="#aiz-select-file">
                 <i class="la la-users lax"></i>
-                تصنيفات العملاء
+                {{translate("Customers Classifications")}}
             </a>
         </li>
 
@@ -44,7 +50,7 @@
 
                 <div class="col text-right col-lg-6">
                     <a href="{{ route('customers.create') }}" class="btn btn-primary">
-                        <span>أضافة عميل جديد</span>
+                        <span>{{translate("Add New Customer")}}</span>
                     </a>
                 </div>
             </div>
@@ -111,9 +117,9 @@
                                         </td>
                                         <td>@if($user->banned == 1) <i class="fa fa-ban text-danger" aria-hidden="true"></i> @endif {{$user->name}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>{{$user->phone ?? "لا يوجد "}}</td>
+                                        <td>{{$user->phone ?? translate("Not Exists")}}</td>
                                         <td>
-                                            {{ $user->orders_count}} طلب
+                                            {{ $user->orders_count}} {{translate("Order")}}
                                         </td>
                                         <td>{{single_price($user->orders_sum_grand_total)}}</td>
                                         <td class="text-right">
@@ -121,7 +127,7 @@
                                             @can('login_as_customer')
                                                 <a href="{{route('customers.login', encrypt($user->id))}}" class="btn btn-soft-primary btn-circle btn-sm" title="{{ translate('Log in as this Customer') }}">
                                                     <i class="la la-sign-in"></i>
-                                                    تسجيل الدخول بهذا العميل
+                                                    {{translate("Login With Customer")}}
                                                 </a>
                                             @endcan
                                             @can('ban_customer')
@@ -135,7 +141,7 @@
                                                     </a>
                                                 @endif
                                             @endcan
-                                            <a  class="btn btn-soft-warning btn-icon btn-circle btn-sm " href="{{route('customers.edit', $user->id)}}">
+                                            <a  class="btn btn-soft-warning btn-icon btn-circle btn-sm " href="{{route('customers.edit', $user->id)}}" title="{{ translate('Edit') }}">
                                                 <i class="las la-edit"></i>
                                             </a>
                                             @can('delete_customer')
@@ -143,7 +149,7 @@
                                                     <i class="las la-trash"></i>
                                                 </a>
                                             @endcan
-                                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirms-delete" id="{{$user->id}}" title="أضافة إلى تصنيفات">
+                                            <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirms-delete" id="{{$user->id}}" title="{{translate("Add Classification")}}">
                                                 <i class="las la-plus"></i>
                                             </a>
 
@@ -165,12 +171,12 @@
 
             <div class="aiz-titlebar row text-left  mb-1">
                 <div class="col-lg-6 mt-3">
-                    <h1 class="h3">{{translate('تصنيفات العملاء')}}</h1>
+                    <h1 class="h3">{{translate('Customers Classifications')}}</h1>
                 </div>
 
                 <div class="col text-right col-lg-6">
                     <a href="{{ route('classifications.index') }}" class="btn btn-primary">
-                        <span>أضافة  تصنيف </span>
+                        <span>{{translate("Add Classification")}}   </span>
                     </a>
                 </div>
             </div>
@@ -205,7 +211,7 @@
         <div class="modal-dialog modal-md modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title h6">أضافة المستخدم للتصنيفات </h4>
+                    <h4 class="modal-title h6">{{translate("Add Customer To Classifications")}} </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                 </div>
                 <div class="modal-body text-center">

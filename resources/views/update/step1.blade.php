@@ -64,7 +64,7 @@
                             </svg>
                         </div>
                         <div class="mb-4 pb-4 absolute-bottom-left right-0 d-flex justify-content-center">
-                          <a href="{{ url('/') }}" class="back-btn-svg mr-3" title="Go Back" style="box-shadow: 0px 8px 16px rgb(255 88 0 / 16%); border-radius: 50%;">
+                          <a href="{{ url('/') }}" class="back-btn-svg mr-3" title="{{translate("Go Back")}}" style="box-shadow: 0px 8px 16px rgb(255 88 0 / 16%); border-radius: 50%;">
                               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
                                   <g id="Group_22706" data-name="Group 22706" transform="translate(-770 -653)">
                                     <g id="Ellipse_26" data-name="Ellipse 26" transform="translate(770 653)" fill="none" stroke="#cccccc" stroke-width="1">
@@ -82,7 +82,7 @@
 
                 <!-- Common file -->
                 @include('update.common')
-                
+
             </div>
         </div>
     </div>

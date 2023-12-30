@@ -8,7 +8,7 @@
             <div class="d-flex mb-2 mb-md-3 align-items-baseline justify-content-between">
                 <!-- Title -->
                 <h3 class="fs-16 fs-md-20 fw-700 mb-2 mb-sm-0">
-                    <span class="">{{ translate('Best Selling') }}</span>
+                    <span class="text-primary border-primary" style="border-bottom: 2px solid #0ea09b !important">{{ translate('Best Selling') }}</span>
                 </h3>
                 <!-- Links -->
                 <div class="d-flex">
@@ -20,7 +20,7 @@
             <div class="px-sm-3">
                 <div class="aiz-carousel sm-gutters-16 arrow-none" data-items="6" data-xl-items="5" data-lg-items="4"  data-md-items="3" data-sm-items="2" data-xs-items="2" data-arrows='true' data-infinite='false'>
                     @foreach ($best_selling_products as $key => $product)
-                        <div class="carousel-box px-3 position-relative has-transition hov-animate-outline border-right border-top border-bottom @if($key == 0) border-left @endif">
+                        <div class="carousel-box mr-1 px-3 position-relative has-transition hov-animate-outline border-right border-top border-bottom @if($key == 0) border-left @endif">
                             @include('frontend.partials.product_box_1',['product' => $product])
                         </div>
                     @endforeach

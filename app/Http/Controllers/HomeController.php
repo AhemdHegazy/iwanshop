@@ -137,11 +137,10 @@ class HomeController extends Controller
     {
         $user = null;
         if ($request->get('phone') != null) {
-            $user = User::whereIn('user_type', ['customer', 'seller'])->where('phone', "+{$request['country_code']}{$request['phone']}")->first();
+            $user = User::whereIn('user_type', ['customer', 'seller'])->where('phone', "+964{$request['phone']}")->first();
         } elseif ($request->get('email') != null) {
             $user = User::whereIn('user_type', ['customer', 'seller'])->where('email', $request->email)->first();
         }
-
         if ($user != null) {
             if (Hash::check($request->password, $user->password)) {
                 if ($request->has('remember')) {

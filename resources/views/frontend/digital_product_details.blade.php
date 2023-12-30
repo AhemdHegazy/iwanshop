@@ -76,7 +76,7 @@
                     </div>
 
                     <!-- Product Details -->
-                    <div class="col-xl-7 col-lg-6">
+                    <div class="col-xl-6 col-lg-6">
                         <div class="text-left">
                             <!-- Product Name -->
                             <h1 class="mb-4 fs-16 fw-700 text-dark">
@@ -294,7 +294,7 @@
 
                             <!-- Add to cart & Buy now Buttons -->
                             <div class="mt-3">
-                                <button type="button" class="btn btn-secondary-base mr-2 add-to-cart fw-600 w-150px rounded-0 text-white" onclick="addToCart()">
+                                <button type="button" class="btn btn-secondary mr-2 add-to-cart fw-600 w-150px rounded-0 text-white" onclick="addToCart()">
                                     <i class="las la-shopping-bag"></i>
                                     <span class="d-none d-md-inline-block"> {{ translate('Add to cart')}}</span>
                                 </button>
@@ -471,7 +471,7 @@
                                 <!-- shop link button -->
                                 <div class="mt-3">
                                     <a href="{{ route('shop.visit', $detailedProduct->user->shop->slug) }}"
-                                        class="btn btn-block btn-secondary-base text-white fs-14 fw-700 rounded-0">{{ translate('Visit Store') }}</a>
+                                        class="btn btn-block btn-secondary text-white fs-14 fw-700 rounded-0">{{ translate('Visit Store') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -811,7 +811,7 @@
                             <input type="text" class="form-control mb-3" name="title" value="{{ $detailedProduct->name }}" placeholder="{{ translate('Product Name') }}" required>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="8" name="message" required placeholder="{{ translate('Your Question') }}">{{ route('product', $detailedProduct->slug) }}</textarea>
+                            <textarea class="form-control" rows="8" name="message"oninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required placeholder="{{ translate('Your Question') }}">{{ route('product', $detailedProduct->slug) }}</textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

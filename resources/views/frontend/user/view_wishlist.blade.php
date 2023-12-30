@@ -85,11 +85,36 @@
 @section('script')
     <script type="text/javascript">
         function removeFromWishlist(id){
-            $.post('{{ route('wishlists.remove') }}',{_token:'{{ csrf_token() }}', id:id}, function(data){
-                $('#wishlist').html(data);
-                $('#wishlist_'+id).hide();
-                AIZ.plugins.notify('success', '{{ translate("Item has been renoved from wishlist") }}');
-            })
+            Swal.fire({
+                title: "{{translate("Are you sure?")}}",
+                text: "{{translate("You won't be able to revert this!")}}",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "{{translate('Yes, delete it!')}}"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.post('{{ route('wishlists.remove') }}',{_token:'{{ csrf_token() }}', id:id}, function(data){
+                        $('#wishlist').html(data);
+                        $('#wishlist_'+id).hide();
+                        AIZ.plugins.notify('success', '{{ translate("Item has been renoved from wishlist") }}');
+                    })
+                    Swal.fire({
+                        title: "{{translate('Deleted!')}}",
+                        text: "{{translate('Your file has been deleted.')}}",
+                        icon: "success"
+                    });
+                    window.location.reload();
+                }else{
+                    Swal.fire({
+                        title: "{{translate('Canceled!')}}",
+                        text: "{{translate('Your Cancel')}}",
+                        icon: "success"
+                    });
+                }
+            });
+
         }
     </script>
 @endsection

@@ -264,7 +264,7 @@
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-header text-center bord-btm">
-                    <h3 class="mb-0 h6 text-center">{{ translate('تفعيل الدفع بزين كاش ') }}</h3>
+                    <h3 class="mb-0 h6 text-center">{{ translate('Enable Payment Of Zine Cache') }}</h3>
                 </div>
                 <div class="card-body text-center">
                     <div class="clearfix">

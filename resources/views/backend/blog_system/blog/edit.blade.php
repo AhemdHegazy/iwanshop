@@ -1,7 +1,30 @@
 @extends('backend.layouts.app')
 
 @section('content')
+    <div class="aiz-titlebar text-left mt-2 mb-3">
+        <div class="row">
+            <div class="col-lg-6">
+                <ul class="breadcrumb bg-transparent p-0 justify-content-center justify-content-lg-start">
+                    <li class="breadcrumb-item has-transition opacity-60 hov-opacity-100">
+                        <a class="text-reset" href="{{ route('admin.dashboard') }}">{{ translate('Home') }}</a>
+                    </li>
+                    <li class="breadcrumb-item has-transition opacity-60 hov-opacity-100">
+                        <a class="text-reset" href="{{ route('blog.index') }}">{{ translate('Posts') }}</a>
+                    </li>
+                    <li class="text-dark fw-600 breadcrumb-item">
+                        "{{ translate('Edit Post') }}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
 
+            </div>
+
+        </div>
+        <div class="align-items-center">
+            <h1 class="h3">{{translate("Edit Post")}}</h1>
+        </div>
+    </div>
 <div class="row">
     <div class="col-lg-8 mx-auto">
         <div class="card">
@@ -23,7 +46,7 @@
                     </div>
                     <div class="form-group row" id="category">
                         <label class="col-md-3 col-from-label">
-                            {{translate('Category')}} 
+                            {{translate('Category')}}
                             <span class="text-danger">*</span>
                         </label>
                         <div class="col-md-9">
@@ -46,18 +69,18 @@
                             </select>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">{{translate('Slug')}}</label>
                         <div class="col-md-9">
                             <input type="text" placeholder="{{translate('Slug')}}" name="slug" id="slug" value="{{ $blog->slug }}" class="form-control" required>
                         </div>
                     </div>
-                    
+
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="signinSrEmail">
-                            {{translate('Banner')}} 
+                            {{translate('Banner')}}
                             <small>(1300x650)</small>
                         </label>
                         <div class="col-md-9">
@@ -74,7 +97,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">
                             {{translate('Short Description')}}
@@ -84,7 +107,7 @@
                             <textarea name="short_description" rows="5" class="form-control">{{ $blog->short_description }}</textarea>
                         </div>
                     </div>
-                    
+
                     <div class="form-group row">
                         <label class="col-md-3 col-from-label">
                             {{translate('Description')}}
@@ -93,17 +116,17 @@
                             <textarea class="aiz-text-editor" name="description">{{ $blog->description }}</textarea>
                         </div>
                     </div>
-                    
+
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label">{{translate('Meta Title')}}</label>
                         <div class="col-md-9">
                             <input type="text" class="form-control" name="meta_title" value="{{ $blog->meta_title }}" placeholder="{{translate('Meta Title')}}">
                         </div>
                     </div>
-                    
+
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label" for="signinSrEmail">
-                            {{translate('Meta Image')}} 
+                            {{translate('Meta Image')}}
                             <small>(200x200)+</small>
                         </label>
                         <div class="col-md-9">
@@ -136,7 +159,7 @@
                             <input type="text" class="form-control" id="meta_keywords" name="meta_keywords" value="{{ $blog->meta_keywords }}" placeholder="{{translate('Meta Keywords')}}">
                         </div>
                     </div>
-                    
+
                     <div class="form-group mb-0 text-right">
                         <button type="submit" class="btn btn-primary">
                             {{translate('Save')}}

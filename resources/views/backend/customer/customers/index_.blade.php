@@ -3,7 +3,7 @@
 @section('content')
     <div class="aiz-titlebar row text-left  mb-1">
         <div class="col-lg-6 mt-3">
-            <h1 class="h3"> عملاء التصنيف {{$classification->name}}</h1>
+            <h1 class="h3"> {{translate("Classification Customers")}}  {{$classification->name}}</h1>
         </div>
 
     </div>
@@ -11,7 +11,7 @@
         <form class="" id="sort_customers" action="" method="GET">
             <div class="card-header row gutters-5">
                 <div class="col">
-                    <h5 class="mb-0 h6"> عملاء التصنيف {{$classification->name}}</h5>
+                    <h5 class="mb-0 h6"> {{translate("Classification Customers")}} {{$classification->name}}</h5>
                 </div>
 
                 <div class="col-md-3">
@@ -20,15 +20,15 @@
                     </div>
                 </div>
                 <div class=" mb-2 mb-md-0">
-                    <a class="btn btn-primary btn-sm" href="javascript:void(0)"  data-target="#bulk-sms-modal" title="أرسال رسالة SMS">
+                   {{-- <a class="btn btn-primary btn-sm" href="javascript:void(0)"  data-target="#bulk-sms-modal" title=" ">
                         <i class="la la-sms la-2x"></i>
-                    </a>
-                    <a class="btn btn-warning btn-sm" href="javascript:void(0)"  data-target="#bulk-mail-modal" title="أرسال رسالة Gmail">
+                    </a>--}}
+                    <a class="btn btn-warning btn-sm" href="javascript:void(0)"  data-target="#bulk-mail-modal" title="{{translate("Send Gmail Message")}}">
                         <i class="la la-envelope la-2x"></i>
                     </a>
-{{--                    <a class="btn btn-success btn-sm" href="javascript:void(0)"  data-target="#bulk-whatsapp-modal">--}}
-{{--                        <i class="la la-whatsapp la-2x"></i>--}}
-{{--                    </a>--}}
+                    <a class="btn btn-success btn-sm" href="javascript:void(0)"  data-target="#bulk-whatsapp-modal" title="{{translate("Send Whatsapp Message")}}">
+                      <i class="la la-whatsapp la-2x"></i>
+                    </a>
                 </div>
             </div>
 
@@ -50,9 +50,9 @@
                         </th>
                         <th>{{translate('Name')}}</th>
                         <th data-breakpoints="lg">{{translate('Email Address')}}</th>
-                        <th data-breakpoints="lg">{{translate('رقم الجوال')}}</th>
-                        <th data-breakpoints="lg">{{translate('التصنيفات')}}</th>
-                        <th data-breakpoints="lg">{{translate('حجم الإنفاق')}}</th>
+                        <th data-breakpoints="lg">{{translate('Phone Number')}}</th>
+                        <th data-breakpoints="lg">{{translate('Classifications')}}</th>
+                        <th data-breakpoints="lg">{{translate('Paid Amount')}}</th>
                         <th class="text-right">{{translate('Options')}}</th>
                     </tr>
                     </thead>
@@ -83,16 +83,16 @@
                                 </td>
                                 <td>{{single_price($user->orders_sum_grand_total)}}</td>
                                 <td class="text-right">
-                                    <a class="btn btn-primary btn-sm btn-icon btn-circle " href="javascript:void(0)" title="أرسال رسالة  SMS"  data-target="#bulk-sms-modal">
+                                    <a class="btn btn-primary btn-sm btn-icon btn-circle " href="javascript:void(0)" title="{{translate("Send SMS Message")}}"  data-target="#bulk-sms-modal">
                                         <i class="la la-sms lax"></i>
                                     </a>
-                                    <a class="btn btn-warning btn-sm btn-icon btn-circle " href="javascript:void(0)" title="أرسال رسالة Gmail"  data-target="#bulk-mail-modal">
+                                    <a class="btn btn-warning btn-sm btn-icon btn-circle " href="javascript:void(0)" title="{{translate("Send Gmail Message")}}"  data-target="#bulk-mail-modal">
                                         <i class="la la-envelope lax"></i>
                                     </a>
-                                    <a class="btn btn-success btn-sm btn-icon btn-circle " href="javascript:void(0)" title="أرسال رسالة إلى واتس اب"  data-target="#bulk-whatsapp-modal">
+                                    <a class="btn btn-success btn-sm btn-icon btn-circle " href="javascript:void(0)" title="{{translate("Send Whatsapp Message")}}"  data-target="#bulk-whatsapp-modal">
                                         <i class="la la-whatsapp lax"></i>
                                     </a>
-                                    <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('customers.destroy', $user->id)}}" title="حذف من التصنيف ">
+                                    <a href="#" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" data-href="{{route('customers.destroy', $user->id)}}" title="{{translate("Delete From Classification")}}   ">
                                         <i class="las la-trash"></i>
                                     </a>
 
@@ -113,14 +113,14 @@
         <div class="modal-dialog modal-md modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title h6">أضافة المستخدم للتصنيفات </h4>
+                    <h4 class="modal-title h6">{{translate("Add Customer To Classifications")}} </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                 </div>
                 <div class="modal-body text-center">
                     <form action="{{route("customers.classifications")}}" method="POST">
                         @csrf
                         <div class="form-group row">
-                            <label class="col-md-12 col-form-label">التصنيفات </label>
+                            <label class="col-md-12 col-form-label">{{translate("Classifications")}} </label>
                             <div class="col-md-12">
                                 <select class="select2 form-control aiz-selectpicker" id="classifications" name="classifications[]" data-toggle="select2" data-placeholder="Choose ..." data-live-search="true" multiple>
                                     @foreach (\App\Models\Classification::all() as $classi)

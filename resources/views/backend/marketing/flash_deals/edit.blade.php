@@ -32,7 +32,7 @@
                         <label class="col-lg-3 col-from-label" for="text_color">{{translate('Text Color')}}</label>
                         <div class="col-lg-9">
                             <select name="text_color" id="text_color" class="form-control demo-select2" required>
-                                <option value="">Select One</option>
+                                <option value="">{{translate("Select One")}}</option>
                                 <option value="white" @if ($flash_deal->text_color == 'white') selected @endif>{{translate('White')}}</option>
                                 <option value="dark" @if ($flash_deal->text_color == 'dark') selected @endif>{{translate('Dark')}}</option>
                             </select>
@@ -68,7 +68,7 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-from-label" for="products">{{translate('Products')}}</label>
                         <div class="col-sm-9">
-                            <select name="products[]" id="products" class="form-control aiz-selectpicker" multiple required data-placeholder="{{ translate('Choose Products') }}" data-live-search="true" data-selected-text-format="count">
+                            <select name="products[]" id="products" class="form-control aiz-selectpicker" multipleoninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required data-placeholder="{{ translate('Choose Products') }}" data-live-search="true" data-selected-text-format="count">
                                 @foreach(\App\Models\Product::where('published', 1)->where('approved', 1)->get() as $product)
                                     @php
                                         $flash_deal_product = \App\Models\FlashDealProduct::where('flash_deal_id', $flash_deal->id)->where('product_id', $product->id)->first();

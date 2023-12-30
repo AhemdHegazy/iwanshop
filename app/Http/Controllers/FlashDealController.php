@@ -159,7 +159,7 @@ class FlashDealController extends Controller
             }
 
             flash(translate('Flash Deal has been updated successfully'))->success();
-            return back();
+            return redirect()->route('flash_deals.index');
         }
         else{
             flash(translate('Something went wrong'))->error();

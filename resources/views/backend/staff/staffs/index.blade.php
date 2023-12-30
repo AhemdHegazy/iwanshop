@@ -29,8 +29,8 @@
                     <th>{{translate('Name')}}</th>
                     <th data-breakpoints="lg">{{translate('Email')}}</th>
                     <th data-breakpoints="lg">{{translate('Phone')}}</th>
-                    <th data-breakpoints="lg">{{translate('Role')}}</th>
                     <th data-breakpoints="lg">{{translate('Image')}}</th>
+                    <th data-breakpoints="lg">{{translate('Role')}}</th>
                     <th width="10%" class="text-right">{{translate('Options')}}</th>
                 </tr>
             </thead>

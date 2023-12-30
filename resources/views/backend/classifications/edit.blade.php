@@ -21,7 +21,7 @@
                     <input type="text" placeholder="{{translate('Name')}}" name="name"  value="{{$classification->name}}" class="form-control" required>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="name">الوصف </label>
+                    <label for="name">{{translate("Description")}} </label>
                     <textarea name="description"  rows="5" class="form-control">{{$classification->description}}</textarea>
                 </div>
                 <div class="form-group mb-3">
@@ -37,34 +37,34 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-12 col-form-label">العلاقة </label>
+                    <label class="col-md-12 col-form-label">{{translate("Relation")}} </label>
                     <div class="col-md-12">
                         <select class="select2 form-control aiz-selectpicker" id="related" name="related" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true">
-                            <option disabled selected>من فضل أختار العلاقة </option>
+                            <option disabled selected>{{translate("Please Choose Relation")}} </option>
                             <option {{$classification->related == "orders_sum_grand_total"  ? "selected" : ""}} value="orders_sum_grand_total">المبلغ </option>
-                            <option {{$classification->related == "orders_count"  ? "selected" : ""}} value="orders_count">عدد الطلبات </option>
-                            <option {{$classification->related == "category"  ? "selected" : ""}} value="category">فئة</option>
-                            <option {{$classification->related == "badge"  ? "selected" : ""}} value="badge">وسم </option>
+                            <option {{$classification->related == "orders_count"  ? "selected" : ""}} value="orders_count">{{translate("Order Count")}}  </option>
+                            <option {{$classification->related == "category"  ? "selected" : ""}} value="category">{{translate("Category")}}</option>
+                            <option {{$classification->related == "badge"  ? "selected" : ""}} value="badge">{{translate("Badge")}} </option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group row" style="display: {{$classification->related == "orders_sum_grand_total" || $classification->related == "orders_count"   ? "" : "none"}}" id="minDiv">
                     <div class="col-md-6">
-                        <label for="min">{{translate('بداية العدد')}}</label>
-                        <input type="number" placeholder="بداية العدد" name="min" class="form-control" >
+                        <label for="min">{{translate('Min Value')}}</label>
+                        <input type="number" placeholder="{{translate("Min Value")}} " name="min" class="form-control" >
                     </div>
 
 
                     <div class="col-md-6">
-                        <label for="max">{{translate('نهاية العدد')}}</label>
+                        <label for="max">{{translate('Max Value')}}</label>
 
-                        <input type="number" placeholder="نهاية العدد" name="max" class="form-control" >
+                        <input type="number" placeholder="{{translate("Max Value")}} " name="max" class="form-control" >
                     </div>
 
                 </div>
                 <div class="form-group row" style="display: {{$classification->related == "badge"  ? "" : "none"}} " id="badgeDiv">
-                    <label class="col-md-12 col-form-label">الوسم </label>
+                    <label class="col-md-12 col-form-label">{{translate("Badge")}} </label>
                     <div class="col-md-12">
                         <select class="select2 form-control aiz-selectpicker" name="badge_id" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true" >
                             @foreach (\App\Models\Badge::all() as $attribute)
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="form-group row" style="display: {{$classification->related == "category"  ? "" : "none"}} " id="categoryDiv">
-                    <label class="col-md-12 col-form-label">الفئة </label>
+                    <label class="col-md-12 col-form-label">{{translate("CAtegory")}} </label>
                     <div class="col-md-12">
                         <select class="select2 form-control aiz-selectpicker" name="category_id" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true" >
                             @foreach (\App\Models\Category::all() as $attribute)

@@ -65,7 +65,7 @@
                                             <i class="las la-edit"></i>
                                         </a>
                                         <a class="btn btn-soft-primary btn-sm" href="{{ route('states.show', $state->id) }}" title="{{ translate('Edit') }}">
-                                            الأحياء
+                                            {{translate("States")}}
                                         </a>
                                     </td>
                                 </tr>

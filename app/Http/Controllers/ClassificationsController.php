@@ -52,6 +52,23 @@ class ClassificationsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+           "name"   => "required",
+           "related"   => "required",
+           "description"   => "required",
+           "max"   => "required_if:related,orders_sum_grand_total,orders_count",
+           "min"   => "required_if:related,orders_sum_grand_total,orders_count",
+           "category_id"   => "required_if:related,category",
+           "badge_id"   => "required_if:related,badge",
+        ],[
+            "name.required" => " الأسم مطلوب",
+            "related.required" => "العلاقة مطلوبة ",
+            "description.required" => "الوصف مطلوب ",
+            "max.required_if" => "القيمة العليا مطلوبة",
+            "min.required_if" => "القيمة السفلية مطلوبة",
+            "category_id.required_if" => "الفئة مطلوبة",
+            "badge_id.required_if" => "الوسم مطلوب ",
+        ]);
         $classification = new Classification;
         $classification->name = $request->name;
         $classification->related = $request->related;
@@ -63,7 +80,7 @@ class ClassificationsController extends Controller
         $classification->logo = $request->logo;
         $classification->save();
 
-        flash(translate('تم أدخال التصنيف بنجاح'))->success();
+        flash(translate('Classification Created Successfully'))->success();
         return redirect()->route('classifications.index');
 
     }
@@ -120,6 +137,23 @@ class ClassificationsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            "name"   => "required",
+            "related"   => "required",
+            "description"   => "required",
+            "max"   => "required_if:related,orders_sum_grand_total,orders_count",
+            "min"   => "required_if:related,orders_sum_grand_total,orders_count",
+            "category_id"   => "required_if:related,category",
+            "badge_id"   => "required_if:related,badge",
+        ],[
+            "name.required" => " الأسم مطلوب",
+            "related.required" => "العلاقة مطلوبة ",
+            "description.required" => "الوصف مطلوب ",
+            "max.required_if" => "القيمة العليا مطلوبة",
+            "min.required_if" => "القيمة السفلية مطلوبة",
+            "category_id.required_if" => "الفئة مطلوبة",
+            "badge_id.required_if" => "الوسم مطلوب ",
+        ]);
         $classification = Classification::findOrFail($id);
         $classification->name = $request->name;
         $classification->related = $request->related;
@@ -131,8 +165,8 @@ class ClassificationsController extends Controller
         $classification->logo = $request->logo;
         $classification->save();
 
-        flash(translate('تم تعديل التصنيف بنجاح'))->success();
-        return back();
+        flash(translate('Classification Updated Successfully'))->success();
+        return redirect()->route('classifications.index');
 
     }
 
@@ -148,7 +182,7 @@ class ClassificationsController extends Controller
         UserClassification::where('classification_id', $classification->id)->delete();
         Classification::destroy($id);
 
-        flash(translate('تم حذف التصنيف بنجاح'))->success();
+        flash(translate('Classification Deleted Successfully'))->success();
         return redirect()->route('classifications.index');
 
     }

@@ -15,14 +15,72 @@
                         <!-- Address -->
                         <div class="row">
                             <div class="col-md-2">
-                                <label>{{ translate('Address')}}</label>
+                                <label>{{ translate('Name')}}</label>
                             </div>
                             <div class="col-md-10">
-                                <textarea class="form-control mb-3 rounded-0" placeholder="{{ translate('Your Address')}}" rows="2" name="address" required></textarea>
+                                <input class="form-control mb-3" id="name" placeholder="{{translate("Name")}}" name="name" required>
+
+                                </input>
                             </div>
                         </div>
-                        <input type="hidden" name="country_id" value="{{\App\Models\Country::first()->id}}">
+                        <style>
+                            /* Style for the checked state */
+                            input[type="radio"]:checked +.icon {
+                                color: #fff; /* Example text color for the checked state */
+                            }
+                        </style>
+                        <div class="row">
+                            <div class="col-md-2">
 
+                            </div>
+                            <div class="col-md-10">
+                                <div class="input-group mb-3">
+
+                                    <input type="url" class="form-control" name="url" id="url" aria-label="Text input with radio button">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text facebook p-0">
+                                            <input type="radio" id="facebook"  name="socialType" onclick="changeSocial('facebook')" value="facebook" aria-label="Radio button for following text input" style="display: none">
+                                            <label for="facebook" style="padding: 10px;margin: 0" class="la la-facebook icon"></label>
+                                        </div>
+                                        <div class="input-group-text instagram p-0">
+                                            <input type="radio" id="instagram" name="socialType" onclick="changeSocial('instagram')" value="instagram" aria-label="Radio button for following text input" style="display: none">
+                                            <label for="instagram" style="padding: 10px;margin: 0" class="la la-instagram icon"></label>
+                                        </div>
+                                        <div class="input-group-text whatsapp p-0">
+                                            <input type="radio" id="whatsapp" name="socialType" onclick="changeSocial('whatsapp')" value="whatsapp"  aria-label="Radio button for following text input"   style="display: none">
+                                            <label for="whatsapp" style="padding: 10px;margin: 0" class="la la-whatsapp icon"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label>{{ translate('Phone')}}</label>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="input-group  mb-3">
+                                    <input type="text" class="form-control mb-3 rounded-0" placeholder="{{ translate('+880')}}" name="phone" value="" required>
+                                    <div class="input-group-prepend">
+                                        <span  class="input-group-text" style="height: 42px;" id="basic-addon1">  +964  <img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Postal Code -->
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label>{{ translate('Another Phone')}}</label>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="input-group  mb-3">
+                                    <input type="text" class="form-control mb-3 rounded-0" placeholder="{{ translate('+880')}}" name="postal_code" value="" required>
+                                    <div class="input-group-prepend">
+                                        <span  class="input-group-text" style="height: 42px;" id="basic-addon1">  +964  <img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- State -->
                         <div class="row">
                             <div class="col-md-2">
@@ -80,30 +138,18 @@
                             </div>
                         @endif
 
-                        <!-- Postal Code -->
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label>{{ translate('Postal Code')}}</label>
-                            </div>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control mb-3 rounded-0" placeholder="{{ translate('Your Postal Code')}}" name="postal_code" value="" required>
-                            </div>
-                        </div>
-
                         <!-- Phone -->
+
                         <div class="row">
                             <div class="col-md-2">
-                                <label>{{ translate('Phone')}}</label>
+                                <label>{{ translate('Address')}}</label>
                             </div>
                             <div class="col-md-10">
-                                <div class="input-group  mb-3">
-                                    <input type="text" class="form-control mb-3 rounded-0" placeholder="{{ translate('+880')}}" name="phone" value="" required>
-                                    <div class="input-group-prepend">
-                                        <span  class="input-group-text" style="height: 42px;" id="basic-addon1">  +964  <img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
-                                    </div>
-                                </div>
+                                <textarea class="form-control mb-3 rounded-0"  placeholder="{{ translate('Your Address')}}" rows="2" name="address" required></textarea>
                             </div>
                         </div>
+                        <input type="hidden" name="country_id" value="{{\App\Models\Country::first()->id}}">
+                        <input type="hidden" name="social_type" id="social_type" value="facebook">
                         <!-- Save button -->
                         <div class="form-group text-right">
                             <button type="submit" class="btn btn-primary rounded-0 w-150px">{{translate('Save')}}</button>
@@ -120,7 +166,7 @@
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ translate('New Address') }}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ translate('Edit Address') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -135,6 +181,24 @@
 
 @section('script')
     <script type="text/javascript">
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        AIZ.plugins.notify('danger', '{{ $error }}');
+        @endforeach
+        @endif
+        changeSocial('facebook')
+
+        function changeSocial(val){
+            $(".whatsapp").css("background","#f7f8fa")
+            $(".whatsapp .icon").css("color","#666")
+            $(".facebook").css("background","#f7f8fa")
+            $(".facebook .icon").css("color","#666")
+            $(".instagram").css("background","#f7f8fa")
+            $(".instagram .icon").css("color","#666")
+            $("."+val).css("background","#19a09c")
+            $("."+val+" .icon").css("color","#fff")
+            $("#social_type").val(val)
+        }
         function add_new_address(){
             $('#new-address-modal').modal('show');
         }
@@ -153,7 +217,7 @@
                     $('#edit_modal_body').html(response.html);
                     $('#edit-address-modal').modal('show');
                     AIZ.plugins.bootstrapSelect('refresh');
-
+                    changeSocial(response.data.address_data.social_type)
                     @if (get_setting('google_map') == 1)
                         var lat     = -33.8688;
                         var long    = 151.2195;

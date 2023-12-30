@@ -93,29 +93,39 @@
                 <div class="">
                     <div class="border p-4 mb-4 position-relative" style="{{$address->set_default ==1 ? "background-color:#19a09c !important;color:#fff": ""}}">
                         <div class="row fs-14 mb-2 mb-md-0">
-                            <span class="col-md-2 {{$address->set_default ==1 ? "text-white": "text-secondary"}}">{{ translate('Address') }}</span>
-                            <span class="col-md-8  {{$address->set_default ==1 ? "text-white": "text-dark"}}"  style="border-right: 2px solid #ddd">{{ $address->address }}</span>
+                            <span class="col-md-3 {{$address->set_default ==1 ? "text-white": "text-secondary"}}">{{ translate('Name') }}</span>
+                            <span class="col-md-9  {{$address->set_default ==1 ? "text-white": "text-dark"}}"  style="border-right: 2px solid #ddd">{{ $address->name }}</span>
                         </div>
                         <div class="row fs-14 mb-2 mb-md-0">
-                            <span class="col-md-2   {{$address->set_default ==1 ? "text-white": "text-secondary"}}">{{ translate('Postal Code') }}</span>
-                            <span class="col-md-10  {{$address->set_default ==1 ? "text-white": "text-dark"}}"  style="border-right: 2px solid #ddd">{{ $address->postal_code }}</span>
+                            <span class="col-md-3 {{$address->set_default ==1 ? "text-white": "text-secondary"}}">{{ translate('Address') }}</span>
+                            <span class="col-md-9  {{$address->set_default ==1 ? "text-white": "text-dark"}}"  style="border-right: 2px solid #ddd">{{ $address->address }}</span>
                         </div>
                         <div class="row fs-14 mb-2 mb-md-0">
-                            <span class="col-md-2 {{$address->set_default ==1 ? "text-white": "text-secondary"}}">{{ translate('City') }}</span>
-                            <span class="col-md-10  {{$address->set_default ==1 ? "text-white": "text-dark"}}"  style="border-right: 2px solid #ddd">{{ optional($address->city)->name }}</span>
+                            <span class="col-md-3 {{$address->set_default ==1 ? "text-white": "text-secondary"}}">{{ translate('Phone') }}</span>
+                            <span class="col-md-9  {{$address->set_default ==1 ? "text-white": "text-dark"}}" style="border-right: 2px solid #ddd">964{{ $address->phone }}+<img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
                         </div>
                         <div class="row fs-14 mb-2 mb-md-0">
-                            <span class="col-md-2 {{$address->set_default ==1 ? "text-white": "text-secondary"}}">{{ translate('State') }}</span>
-                            <span class="col-md-10  {{$address->set_default ==1 ? "text-white": "text-dark"}}"  style="border-right: 2px solid #ddd">{{ optional($address->state)->name }}</span>
+                            <span class="col-md-3   {{$address->set_default ==1 ? "text-white": "text-secondary"}}">{{ translate('Second Phone') }}</span>
+                            <span class="col-md-9  {{$address->set_default ==1 ? "text-white": "text-dark"}}"  style="border-right: 2px solid #ddd">964{{ $address->postal_code }}+<img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
                         </div>
                         <div class="row fs-14 mb-2 mb-md-0">
-                            <span class="col-md-2 {{$address->set_default ==1 ? "text-white": "text-secondary"}}">{{ translate('Country') }}</span>
-                            <span class="col-md-10  {{$address->set_default ==1 ? "text-white": "text-dark"}}"  style="border-right: 2px solid #ddd">{{ optional($address->country)->name }}</span>
+                            <span class="col-md-3 {{$address->set_default ==1 ? "text-white": "text-secondary"}}">{{ translate('City') }}</span>
+                            <span class="col-md-9  {{$address->set_default ==1 ? "text-white": "text-dark"}}"  style="border-right: 2px solid #ddd">{{ optional($address->city)->name }}</span>
                         </div>
                         <div class="row fs-14 mb-2 mb-md-0">
-                            <span class="col-md-2 {{$address->set_default ==1 ? "text-white": "text-secondary"}}">{{ translate('Phone') }}</span>
-                            <span class="col-md-10  {{$address->set_default ==1 ? "text-white": "text-dark"}}" style="border-right: 2px solid #ddd">{{ $address->phone }}</span>
+                            <span class="col-md-3 {{$address->set_default ==1 ? "text-white": "text-secondary"}}">{{ translate('State') }}</span>
+                            <span class="col-md-9  {{$address->set_default ==1 ? "text-white": "text-dark"}}"  style="border-right: 2px solid #ddd">{{ optional($address->state)->name }}</span>
                         </div>
+                        <div class="row fs-14 mb-2 mb-md-0">
+                            <span class="col-md-3 {{$address->set_default ==1 ? "text-white": "text-secondary"}}">{{ translate('Country') }}</span>
+                            <span class="col-md-9  {{$address->set_default ==1 ? "text-white": "text-dark"}}"  style="border-right: 2px solid #ddd">{{ optional($address->country)->name }}</span>
+                        </div>
+                        <div class="row fs-14 mb-2 mb-md-0">
+                            <span class="col-md-3 {{$address->set_default ==1 ? "text-white": "text-secondary"}}"><i class="la la-{{$address->social_type}}"></i></span>
+                            <span class="col-md-9  {{$address->set_default ==1 ? "text-white": "text-dark"}}"  style="border-right: 2px solid #ddd"><a
+                                    href="{{$address->url }}" target="_blank">{{$address->url }}</a></span>
+                        </div>
+
                         @if ($address->set_default)
                             <div class="absolute-md-top-right pt-1 pr-md-5">
                                 <span class="badge badge-inline badge-secondary bg-white text-primary p-3 fs-12" style="border-radius: 25px; min-width: 80px !important;">{{ translate('Default') }}</span>
@@ -132,7 +142,7 @@
                                 @if (!$address->set_default)
                                     <a class="dropdown-item" href="{{ route('addresses.set_default', $address->id) }}">{{ translate('Make This Default') }}</a>
                                 @endif
-                                <a class="dropdown-item" href="{{ route('addresses.destroy', $address->id) }}">{{ translate('Delete') }}</a>
+                                <a class="dropdown-item" onclick="deleteAlert('{{ route('addresses.destroy', $address->id) }}')">{{ translate('Delete') }}</a>
                             </div>
                         </div>
                     </div>

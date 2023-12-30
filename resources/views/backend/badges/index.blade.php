@@ -10,7 +10,7 @@
                     <a class="text-reset" href="{{ route('admin.dashboard') }}">{{ translate('Home') }}</a>
                 </li>
                 <li class="text-dark fw-600 breadcrumb-item">
-                    "{{ translate('Badges') }}"
+                    "{{ translate('Badges') }}
                 </li>
             </ul>
         </div>
@@ -83,7 +83,7 @@
 		<div class="col-md-5">
 			<div class="card">
 				<div class="card-header">
-					<h5 class="mb-0 h6">أضافة وسم </h5>
+					<h5 class="mb-0 h6"> {{translate("Add Badge")}} </h5>
 				</div>
 				<div class="card-body">
 					<form action="{{ route('badges.store') }}" method="POST">

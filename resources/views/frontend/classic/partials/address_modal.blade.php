@@ -28,7 +28,7 @@
                                 <label>{{ translate('State')}}</label>
                             </div>
                             <div class="col-md-10">
-                                <select class="form-control mb-3 aiz-selectpicker rounded-0" data-live-search="true" name="state_id" required>
+                                <select class="form-control mb-3 aiz-selectpicker rounded-0" data-live-search="true" name="state_id"  required>
 
                                 </select>
                             </div>
@@ -152,6 +152,7 @@
                 success: function (response) {
                     $('#edit_modal_body').html(response.html);
                     $('#edit-address-modal').modal('show');
+                    changeSocial(response.data.address_data.social_type)
                     AIZ.plugins.bootstrapSelect('refresh');
 
                     @if (get_setting('google_map') == 1)

@@ -57,7 +57,7 @@ class VerificationController extends Controller
                             : view('auth.verify');
         }
         else {
-            $otpController = new OTPVerificationController;
+           $otpController = new OTPVerificationController;
             $otpController->send_code($request->user());
             return redirect()->route('verification');
         }

@@ -14,7 +14,7 @@
                             @csrf
 
                             <div class="form-group">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus placeholder="{{ translate('Full Name') }}">
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}"oninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required autofocus placeholder="{{ translate('Full Name') }}">
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
@@ -24,7 +24,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group mb-2 mr-sm-2">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="{{ translate('password') }}">
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"oninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required placeholder="{{ translate('password') }}">
                                     <div class="input-group-prepend" onclick="showPassword('password')">
                                         <div  class="input-group-text" style="height: 42px;"><i class="la la-eye-slash" style="font-size: 16px;" id="eye_password"></i></div>
                                     </div>
@@ -36,7 +36,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required placeholder="{{ translate('Email') }}">
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}"oninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required placeholder="{{ translate('Email') }}">
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group mb-2 mr-sm-2">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="{{ translate('Confrim Password') }}">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"oninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required placeholder="{{ translate('Confrim Password') }}">
                                     <div class="input-group-prepend" onclick="showPassword('password-confirm')">
                                         <div  class="input-group-text" style="height: 42px;"><i class="la la-eye-slash" style="font-size: 16px;" id="eye_password-confirm"></i></div>
                                     </div>

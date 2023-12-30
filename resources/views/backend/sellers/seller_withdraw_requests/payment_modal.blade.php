@@ -70,7 +70,7 @@
                     </select>
                 </div>
             </div>
-            
+
             <div class="form-group row" id="txn_div">
                 <label class="col-md-3 col-from-label" for="txn_code">{{translate('Txn Code')}}</label>
                 <div class="col-md-9">

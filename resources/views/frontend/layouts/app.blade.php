@@ -45,7 +45,8 @@
         <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
         <meta property="fb:app_id" content="{{ env('FACEBOOK_PIXEL_ID') }}">
     @endif
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.2/dist/sweetalert2.all.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.2/dist/sweetalert2.min.css" rel="stylesheet">
     <!-- Favicon -->
     @php
         $site_icon = uploaded_asset(get_setting('site_icon'));
@@ -79,6 +80,31 @@
             max-width: 87%;
         }
         }
+       .list-inline-item .header_menu_links:hover{
+           color: #45fff8 !important
+       }
+       #heart:hover i{
+           color: #f00 !important;
+       }
+
+       .jssocials-share-logo {
+           width: 1em;
+           vertical-align: middle;
+           font-size: 1.2em;
+           color: #000;
+       }
+       .jssocials-share >a{
+           background: #ffffff !important;
+           border: 3px solid #797878;
+           border-radius: 50%;
+       }
+       .jssocials-share-link:hover, .jssocials-share-link:focus, .jssocials-share-link:active {
+           border: 3px solid #cdcdcd;
+           color: #cdcdcd;
+       }
+       .slick-initialized .slick-slide{
+           margin-top: 5px !important;
+       }
     </style>
 
     <script>
@@ -266,20 +292,26 @@
     @endif
 
     <!-- website popup -->
-    @if (get_setting('show_website_popup') == 'on')
+    @if (get_setting('show_website_popup') == 'on' && !session()->has("subscribed"))
         <div class="modal website-popup removable-session d-none" data-key="website-popup" data-value="removed">
             <div class="absolute-full bg-black opacity-60"></div>
             <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-md mx-4 mx-md-auto">
                 <div class="modal-content position-relative border-0 rounded-0">
                     <div class="aiz-editor-data">
+
                         {!! get_setting('website_popup_content') !!}
                     </div>
                     @if (get_setting('show_subscribe_form') == 'on')
                         <div class="pb-5 pt-4 px-3 px-md-5">
                             <form class="" method="POST" action="{{ route('subscribers.store') }}">
                                 @csrf
-                                <div class="form-group mb-0">
-                                    <input type="email" class="form-control" placeholder="{{ translate('Your Email Address') }}" name="email" required>
+                                <div class="input-group  mb-3">
+                                    <input type="tel" id="email"
+                                           class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                           value="{{ old('email') }}" placeholder="" name="email" autocomplete="off">
+                                    <div class="input-group-prepend">
+                                        <span  class="input-group-text" style="height: 42px;" id="basic-addon1">  +964  <img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-block mt-3">
                                     {{ translate('Subscribe Now') }}
@@ -321,10 +353,17 @@
     <script src="{{ asset('assets/js/vendors.js') }}"></script>
     <script src="{{ asset('assets/js/aiz-core.js?v=') }}{{ rand(1000, 9999) }}"></script>
 
-
+ {{--   <script>
+        $("#search").focusin(function (){
+            $("#search-input-box").animate({
+                width:'100%'
+            })
+        })
+    </script>--}}
 
     @if (get_setting('facebook_chat') == 1)
         <script type="text/javascript">
+
             window.fbAsyncInit = function() {
                 FB.init({
                   xfbml            : true,
@@ -448,9 +487,11 @@
             search();
         });
 
+
         $('#search').on('focus', function(){
             search();
         });
+
 
         function search(){
             var searchKey = $('#search').val();
@@ -499,17 +540,68 @@
             $('.cart-count').html(count);
             $('#cart_items').html(view);
         }
+        function deleteAlert(url){
+            Swal.fire({
+                title: "{{translate("Are you sure?")}}",
+                text: "{{translate("You won't be able to revert this!")}}",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "{{translate('Yes, delete it!')}}"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.get(url, function(data){
 
-        function removeFromCart(key){
-            $.post('{{ route('cart.removeFromCart') }}', {
-                _token  : AIZ.data.csrf,
-                id      :  key
-            }, function(data){
-                updateNavCart(data.nav_cart_view,data.cart_count);
-                $('#cart-summary').html(data.cart_view);
-                AIZ.plugins.notify('success', "{{ translate('Item has been removed from cart') }}");
-                $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())-1);
+                    });
+                    Swal.fire({
+                        title: "{{translate('Deleted!')}}",
+                        text: "{{translate('Your file has been deleted.')}}",
+                        icon: "success"
+                    });
+                    window.location.reload();
+                }else{
+                    Swal.fire({
+                        title: "{{translate('Canceled!')}}",
+                        text: "{{translate('Your Cancel')}}",
+                        icon: "success"
+                    });
+                }
             });
+        }
+        function removeFromCart(key){
+                Swal.fire({
+                    title: "{{translate("Are you sure?")}}",
+                    text: "{{translate("You won't be able to revert this!")}}",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "{{translate('Yes, delete it!')}}"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.post('{{ route('cart.removeFromCart') }}', {
+                            _token  : AIZ.data.csrf,
+                            id      :  key
+                        }, function(data){
+                            updateNavCart(data.nav_cart_view,data.cart_count);
+                            $('#cart-summary').html(data.cart_view);
+                            AIZ.plugins.notify('success', "{{ translate('Item has been removed from cart') }}");
+                            $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())-1);
+                        });
+                        Swal.fire({
+                            title: "{{translate('Deleted!')}}",
+                            text: "{{translate('Your file has been deleted.')}}",
+                            icon: "success"
+                        });
+                    }else{
+                        Swal.fire({
+                            title: "{{translate('Canceled!')}}",
+                            text: "{{translate('Your Cancel')}}",
+                            icon: "success"
+                        });
+                    }
+                });
         }
 
         function showLoginModal() {
@@ -867,6 +959,27 @@
                 $('#'+id).attr('type','password');
             }
         }
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input[required]');
+            inputs.forEach(function(input) {
+                input.setAttribute('oninvalid', 'this.setCustomValidity("المدخل مطلوب")');
+                input.addEventListener('input', function() {
+                    this.setCustomValidity('');
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('textarea[required]');
+            inputs.forEach(function(input) {
+                input.setAttribute('oninvalid', 'this.setCustomValidity("المدخل مطلوب")');
+                input.addEventListener('input', function() {
+                    this.setCustomValidity('');
+                });
+            });
+        });
+        $(".bs-select-all").html("تحديد الكل")
+        $(".bs-deselect-all").html("إلغاء تحديد الكل")
     </script>
 </body>
 </html>

@@ -5,7 +5,7 @@
             <div class="d-flex mb-2 mb-md-3 align-items-baseline justify-content-between">
                 <!-- Title -->
                 <h3 class="fs-16 fs-md-20 fw-700 mb-2 mb-sm-0">
-                    <span class="">{{ translate('Featured Products') }}</span>
+                    <span class="text-primary border-primary" style="border-bottom: 2px solid #0ea09b !important">{{ translate('Featured Products') }}</span>
                 </h3>
                 <!-- Links -->
                 <div class="d-flex">
@@ -26,5 +26,5 @@
                 </div>
             </div>
         </div>
-    </section>   
+    </section>
 @endif

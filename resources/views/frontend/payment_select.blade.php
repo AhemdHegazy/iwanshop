@@ -21,13 +21,13 @@
                                 </h3>
                             </div>
                         </div>
-                        <div class="col done">
+                       {{-- <div class="col done">
                             <div class="text-center border border-bottom-6px p-2 text-success">
                                 <i class="la-3x mb-2 las la-truck"></i>
                                 <h3 class="fs-14 fw-600 d-none d-lg-block">{{ translate('3. Delivery info') }}
                                 </h3>
                             </div>
-                        </div>
+                        </div>--}}
                         <div class="col active">
                             <div class="text-center border border-bottom-6px p-2 text-primary">
                                 <i class="la-3x mb-2 las la-credit-card cart-animate"
@@ -88,7 +88,7 @@
                                                     <img src="{{ asset('assets/Sala/zin.png') }}"
                                                         class="img-fit mb-3 mt-3">
                                                     <span class="d-block text-center">
-                                                        <span class="d-block fw-600 fs-15">{{ translate('زين كاش ') }}</span>
+                                                        <span class="d-block fw-600 fs-15">{{ translate('Zine Cache') }}</span>
                                                     </span>
                                                 </span>
                                             </label>
@@ -135,7 +135,7 @@
                             <!-- Agree Box -->
                             <div class="pt-3 px-4 fs-14">
                                 <label class="aiz-checkbox">
-                                    <input type="checkbox" required id="agree_checkbox">
+                                    <input type="checkbox"oninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required id="agree_checkbox">
                                     <span class="aiz-square-check"></span>
                                     <span>{{ translate('I agree to the') }}</span>
                                 </label>

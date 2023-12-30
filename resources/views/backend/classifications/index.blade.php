@@ -1,10 +1,25 @@
 @extends('backend.layouts.app')
 
 @section('content')
+    <div class="row">
+        <div class="col-lg-6">
+            <ul class="breadcrumb bg-transparent p-0 justify-content-center justify-content-lg-start">
+                <li class="breadcrumb-item has-transition opacity-60 hov-opacity-100">
+                    <a class="text-reset" href="{{ route('admin.dashboard') }}">{{ translate('Home') }}</a>
+                </li>
+                <li class="text-dark fw-600 breadcrumb-item">
+                    "{{ translate('Classifications') }}"
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
 
+        </div>
+
+    </div>
     <div class="aiz-titlebar text-left mt-2 mb-3">
         <div class="align-items-center">
-            <h1 class="h3">تصنيفات العملاء </h1>
+            <h1 class="h3">  {{ translate('Classifications') }}</h1>
         </div>
     </div>
 
@@ -13,7 +28,7 @@
             <div class="card">
                 <div class="card-header row gutters-5">
                     <div class="col text-center text-md-left">
-                        <h5 class="mb-md-0 h6">تصنيفات العملاء</h5>
+                        <h5 class="mb-md-0 h6">{{translate('Customers Classifications')}} </h5>
                     </div>
                     <div class="col-md-4">
                         <form class="" id="sort_classifications" action="" method="GET">
@@ -63,7 +78,7 @@
                                             <i class="las la-edit"></i>
                                         </a>
 {{--                                    @endcan--}}
-                                    <a class="btn btn-soft-success btn-icon btn-circle btn-sm" href="{{route('classifications.show', [$brand->id] )}}" title="{{ translate('عرض') }}">
+                                    <a class="btn btn-soft-success btn-icon btn-circle btn-sm" href="{{route('classifications.show', [$brand->id] )}}" title="{{ translate('Show') }}">
                                         <i class="las la-eye"></i>
                                     </a>
 {{--                                    @can('delete_brand')--}}
@@ -86,17 +101,17 @@
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="mb-0 h6">أضافة تصنيف للعملاء </h5>
+                        <h5 class="mb-0 h6">{{translate("Add Classification To Customer")}}   </h5>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('classifications.store') }}" method="POST">
                             @csrf
                             <div class="form-group mb-3">
                                 <label for="name">{{translate('Name')}}</label>
-                                <input type="text" placeholder="{{translate('Name')}}" name="name" class="form-control" required>
+                                <input type="text" placeholder="{{translate('Name')}}" name="name" class="form-control">
                             </div>
                             <div class="form-group mb-3">
-                                <label for="name">الوصف </label>
+                                <label for="name">{{translate("Description")}} </label>
                                 <textarea name="description" rows="5" class="form-control"></textarea>
                             </div>
                             <div class="form-group mb-3">
@@ -112,34 +127,34 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-md-12 col-form-label">العلاقة </label>
+                                <label class="col-md-12 col-form-label">{{translate("Relation")}} </label>
                                 <div class="col-md-12">
                                     <select class="select2 form-control aiz-selectpicker" id="related" name="related" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true">
-                                        <option disabled selected>من فضل أختار العلاقة </option>
-                                        <option value="orders_sum_grand_total">المبلغ </option>
-                                        <option value="orders_count">عدد الطلبات </option>
-                                        <option value="category">فئة</option>
-                                        <option value="badge">وسم </option>
+                                        <option disabled selected>{{translate("Please Choose Relation")}} </option>
+                                        <option value="orders_sum_grand_total">{{translate("Amount")}} </option>
+                                        <option value="orders_count">{{translate("Orders Count")}}  </option>
+                                        <option value="category">{{translate("Category")}}</option>
+                                        <option value="badge">{{translate("Badge")}} </option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-group row" style="display: none" id="minDiv">
                                 <div class="col-md-6">
-                                    <label for="min">{{translate('بداية العدد')}}</label>
-                                    <input type="number" placeholder="بداية العدد" name="min" class="form-control" >
+                                    <label for="min">{{translate('Min Value')}}</label>
+                                    <input type="number" placeholder="{{translate("Min Value")}} " name="min" class="form-control" >
                                 </div>
 
 
                                 <div class="col-md-6">
-                                    <label for="max">{{translate('نهاية العدد')}}</label>
+                                    <label for="max">{{translate('Max Value')}}</label>
 
-                                    <input type="number" placeholder="نهاية العدد" name="max" class="form-control" >
+                                    <input type="number" placeholder="{{translate("Max Value")}} " name="max" class="form-control" >
                                 </div>
 
                             </div>
                             <div class="form-group row" style="display: none" id="badgeDiv">
-                                <label class="col-md-12 col-form-label">الوسم </label>
+                                <label class="col-md-12 col-form-label">{{translate("Badge")}} </label>
                                 <div class="col-md-12">
                                     <select class="select2 form-control aiz-selectpicker" name="badge_id" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true" >
                                         @foreach (\App\Models\Badge::all() as $attribute)
@@ -149,7 +164,7 @@
                                 </div>
                             </div>
                             <div class="form-group row" style="display: none" id="categoryDiv">
-                                <label class="col-md-12 col-form-label">الفئة </label>
+                                <label class="col-md-12 col-form-label">{{translate("Category")}} </label>
                                 <div class="col-md-12">
                                     <select class="select2 form-control aiz-selectpicker" name="category_id" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true" >
                                         @foreach (\App\Models\Category::all() as $attribute)

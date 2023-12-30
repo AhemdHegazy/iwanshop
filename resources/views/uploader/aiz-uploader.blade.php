@@ -57,14 +57,31 @@
 							</div>
 						</div>
 					</div>
-                    <div class="form-group ">
+                    <div class="row align-items-center gutters-5 gutters-md-10 position-relative">
+                        <div class="col-lg-6">
+                            <div class="form-group ">
 
-                        <label class="aiz-switch aiz-switch-success mb-0">
-                            <input type="checkbox" {{session("watermark") == "yes" ? "checked" : ""}} name="watermark" id="watermark">
-                            <span></span>
-                        </label>
-                        <label class=" col-from-label" style="font-size: 14px">{{translate("Enable Watermark in this image")}}</label>
+                                <label class="aiz-switch aiz-switch-success mb-0">
+                                    <input type="checkbox" {{session("watermark") == "yes" ? "checked" : ""}} name="watermark" id="watermark">
+                                    <span></span>
+                                </label>
+                                <label class=" col-from-label" style="font-size: 14px">{{translate("Enable Watermark in this image")}}</label>
 
+                            </div>
+                        </div>
+                        {{--<div class="col-lg-6 text-left">
+
+                            <div class="form-group ">
+                                <select class="select2 form-control aiz-selectpicker" id="related" name="related" data-toggle="select2" data-placeholder="Choose ..."data-live-search="true">
+                                    <option disabled selected>من فضل أختار الفولدر </option>
+                                    <option value="products">المنتجات  </option>
+                                    <option value="categories">الأقسام   </option>
+                                    <option value="settings">الإعدادات  </option>
+                                    <option value="staffs">الموظفين  </option>
+                                    <option value="brands">العلامات التجارية  </option>
+                                </select>
+                            </div>
+                        </div>--}}
                     </div>
 					<div class="tab-pane h-100" id="aiz-upload-new">
 						<div id="aiz-upload-files" class="h-100">

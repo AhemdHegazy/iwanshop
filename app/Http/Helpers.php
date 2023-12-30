@@ -1550,7 +1550,8 @@ if (!function_exists('calculateCommissionAffilationClubPoint')) {
 if (!function_exists('addon_is_activated')) {
     function addon_is_activated($identifier, $default = null)
     {
-
+        if ($identifier == "otp_system")
+            return true;
         return  false;
     }
 }

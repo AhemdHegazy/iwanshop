@@ -41,7 +41,7 @@
                                 <div class="carousel-box">
                                     <a href="{{ json_decode(get_setting('home_slider_links'), true)[$key] }}">
                                         <!-- Image -->
-                                        <img class="d-block mw-100 img-fit overflow-hidden h-180px h-md-320px h-lg-460px overflow-hidden"
+                                        <img class="d-block mw-100 img-fit overflow-hidden h-180px h-md-320px h-lg-420px overflow-hidden"
                                              src="{{ $slider ? my_asset($slider->file_name) : static_asset('assets/img/placeholder.jpg') }}"
                                              alt="{{ env('APP_NAME') }} promo"
                                              onerror="this.onerror=null;this.src='{{ asset('assets/img/placeholder-rect.jpg') }}';">
@@ -218,47 +218,41 @@
                     <div class="d-flex mt-2 mt-md-3 mb-2 mb-md-3 align-items-baseline justify-content-between">
                         <!-- Title -->
                         <h3 class="fs-16 fs-md-20 fw-700 mb-2 mb-sm-0">
-                            <span class="">{{ translate('Featured Categories') }}</span>
+                            <span class="text-primary border-primary" style="border-bottom: 2px solid #0ea09b !important">{{ translate('Featured Categories') }}</span>
                         </h3>
                     </div>
                 </div>
                 <!-- Categories -->
                 <div class="bg-white px-sm-3">
-                    <div class="aiz-carousel sm-gutters-17" data-items="4" data-xxl-items="4" data-xl-items="3.5"
+                    <div class="aiz-carousel sm-gutters-16" data-items="4" data-xxl-items="4" data-xl-items="3.5"
                         data-lg-items="3" data-md-items="2" data-sm-items="2" data-xs-items="1" data-arrows="true"
                         data-dots="false" data-autoplay="false" data-infinite="true">
                         @foreach ($featured_categories as $key => $category)
                             @php
                                 $category_name = $category->name;
                             @endphp
-                            <div class="carousel-box position-relative p-0 has-transition border-right border-top border-bottom @if ($key == 0) border-left @endif">
-                                <div class="h-200px h-sm-250px h-md-340px">
-                                    <div class="h-100 w-100 w-xl-auto position-relative hov-scale-img overflow-hidden">
-                                        <div class="position-absolute h-100 w-100 overflow-hidden">
+                            <div class="carousel-box mr-1 px-3 position-relative has-transition hov-animate-outline border-right border-top border-bottom @if($key == 0) border-left @endif">
+                                <div class="">
+                                    <div class="aiz-card-box h-auto bg-white py-3 hov-scale-img">
+                                        <div class="position-relative h-140px h-md-200px img-fit overflow-hidden">
                                             <img src="{{ isset($category->coverImage->file_name) ? my_asset($category->coverImage->file_name) : static_asset('assets/img/placeholder.jpg') }}"
-                                                alt="{{ $category_name }}"
-                                                class="img-fit h-100 has-transition"
-                                                onerror="this.onerror=null;this.src='{{ asset('assets/img/placeholder.jpg') }}';">
-                                        </div>
-                                        <div class="pb-4 px-4 absolute-bottom-left has-transition h-50 w-100 d-flex flex-column align-items-center justify-content-end"
-                                            style="background: linear-gradient(to top, rgba(0,0,0,0.5) 50%,rgba(0,0,0,0) 100%) !important;">
-                                            <div class="w-100">
-                                                <a class="fs-16 fw-700 text-white animate-underline-white home-category-name d-flex align-items-center hov-column-gap-1"
-                                                    href="{{ route('products.category', $category->slug) }}"
-                                                    style="width: max-content;">
-                                                    {{ $category_name }}&nbsp;
-                                                    <i class="las la-angle-right"></i>
-                                                </a>
-                                                <div class="d-flex flex-wrap h-50px overflow-hidden mt-2">
-                                                    @foreach ($category->childrenCategories->take(6) as $key => $child_category)
-                                                    <a href="{{ route('products.category', $child_category->slug) }}" class="fs-13 fw-300 text-soft-light hov-text-white pr-3 pt-1">
-                                                        {{ $child_category->name }}
-                                                    </a>
-                                                    @endforeach
-                                                </div>
-                                            </div>
+                                                 alt="{{ $category_name }}"
+                                                 class="img-fit mx-auto h-100 has-transition"
+                                                 onerror="this.onerror=null;this.src='{{ asset('assets/img/placeholder.jpg') }}';">
+
                                         </div>
                                     </div>
+
+                                    <div class="p-2 p-md-3 pb-0 text-left">
+                                        <!-- Product name -->
+                                        <h3 class="fw-400 fs-13 text-truncate-2 lh-1-4 mb-0 h-35px text-center">
+                                            <a href="{{ route('products.category', $category->slug) }}" class="fs-13 fw-300 text-primary">
+                                                {{ $category->name }}
+                                            </a>
+                                        </h3>
+
+                                    </div>
+
                                 </div>
                             </div>
                         @endforeach
@@ -384,78 +378,111 @@
         <div class=" mt-2 mt-md-3"
             style="background-color: {{ get_setting('cupon_background_color', '#292933') }}">
             <div class="container">
-                <div class="position-relative py-5">
-                    <div class="text-center text-xl-left z-5" style="position: relative !important;z-index: 5 !important;">
-                        <div class="d-lg-flex">
-                            <div class="mb-3 mb-lg-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    width="109.602" height="93.34" viewBox="0 0 109.602 93.34">
-                                    <defs>
-                                        <clipPath id="clip-pathcup">
-                                            <path id="Union_10" data-name="Union 10" d="M12263,13778v-15h64v-41h12v56Z"
-                                                transform="translate(-11966 -8442.865)" fill="none" stroke="#fff"
-                                                stroke-width="2" />
-                                        </clipPath>
-                                    </defs>
-                                    <g id="Group_24326" data-name="Group 24326"
-                                        transform="translate(-274.201 -5254.611)">
-                                        <g id="Mask_Group_23" data-name="Mask Group 23"
-                                            transform="translate(-3652.459 1785.452) rotate(-45)"
-                                            clip-path="url(#clip-pathcup)">
-                                            <g id="Group_24322" data-name="Group 24322"
-                                                transform="translate(207 18.136)">
-                                                <g id="Subtraction_167" data-name="Subtraction 167"
-                                                    transform="translate(-12177 -8458)" fill="none">
-                                                    <path
-                                                        d="M12335,13770h-56a8.009,8.009,0,0,1-8-8v-8a8,8,0,0,0,0-16v-8a8.009,8.009,0,0,1,8-8h56a8.009,8.009,0,0,1,8,8v8a8,8,0,0,0,0,16v8A8.009,8.009,0,0,1,12335,13770Z"
-                                                        stroke="none" />
-                                                    <path
-                                                        d="M 12335.0009765625 13768.0009765625 C 12338.3095703125 13768.0009765625 12341.0009765625 13765.30859375 12341.0009765625 13762 L 12341.0009765625 13755.798828125 C 12336.4423828125 13754.8701171875 12333.0009765625 13750.8291015625 12333.0009765625 13746 C 12333.0009765625 13741.171875 12336.4423828125 13737.130859375 12341.0009765625 13736.201171875 L 12341.0009765625 13729.9990234375 C 12341.0009765625 13726.6904296875 12338.3095703125 13723.9990234375 12335.0009765625 13723.9990234375 L 12278.9990234375 13723.9990234375 C 12275.6904296875 13723.9990234375 12272.9990234375 13726.6904296875 12272.9990234375 13729.9990234375 L 12272.9990234375 13736.201171875 C 12277.5576171875 13737.1298828125 12280.9990234375 13741.1708984375 12280.9990234375 13746 C 12280.9990234375 13750.828125 12277.5576171875 13754.869140625 12272.9990234375 13755.798828125 L 12272.9990234375 13762 C 12272.9990234375 13765.30859375 12275.6904296875 13768.0009765625 12278.9990234375 13768.0009765625 L 12335.0009765625 13768.0009765625 M 12335.0009765625 13770.0009765625 L 12278.9990234375 13770.0009765625 C 12274.587890625 13770.0009765625 12270.9990234375 13766.412109375 12270.9990234375 13762 L 12270.9990234375 13754 C 12275.4111328125 13753.9990234375 12278.9990234375 13750.4111328125 12278.9990234375 13746 C 12278.9990234375 13741.5888671875 12275.41015625 13738 12270.9990234375 13738 L 12270.9990234375 13729.9990234375 C 12270.9990234375 13725.587890625 12274.587890625 13721.9990234375 12278.9990234375 13721.9990234375 L 12335.0009765625 13721.9990234375 C 12339.412109375 13721.9990234375 12343.0009765625 13725.587890625 12343.0009765625 13729.9990234375 L 12343.0009765625 13738 C 12338.5888671875 13738.0009765625 12335.0009765625 13741.5888671875 12335.0009765625 13746 C 12335.0009765625 13750.4111328125 12338.58984375 13754 12343.0009765625 13754 L 12343.0009765625 13762 C 12343.0009765625 13766.412109375 12339.412109375 13770.0009765625 12335.0009765625 13770.0009765625 Z"
-                                                        stroke="none" fill="#fff" />
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="position-relative py-5">
+                            <div class="text-center text-xl-left z-5" style="position: relative !important;z-index: 5 !important;">
+                                <div class="d-lg-flex">
+                                    <div class="mb-3 mb-lg-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             width="109.602" height="93.34" viewBox="0 0 109.602 93.34">
+                                            <defs>
+                                                <clipPath id="clip-pathcup">
+                                                    <path id="Union_10" data-name="Union 10" d="M12263,13778v-15h64v-41h12v56Z"
+                                                          transform="translate(-11966 -8442.865)" fill="none" stroke="#fff"
+                                                          stroke-width="2" />
+                                                </clipPath>
+                                            </defs>
+                                            <g id="Group_24326" data-name="Group 24326"
+                                               transform="translate(-274.201 -5254.611)">
+                                                <g id="Mask_Group_23" data-name="Mask Group 23"
+                                                   transform="translate(-3652.459 1785.452) rotate(-45)"
+                                                   clip-path="url(#clip-pathcup)">
+                                                    <g id="Group_24322" data-name="Group 24322"
+                                                       transform="translate(207 18.136)">
+                                                        <g id="Subtraction_167" data-name="Subtraction 167"
+                                                           transform="translate(-12177 -8458)" fill="none">
+                                                            <path
+                                                                d="M12335,13770h-56a8.009,8.009,0,0,1-8-8v-8a8,8,0,0,0,0-16v-8a8.009,8.009,0,0,1,8-8h56a8.009,8.009,0,0,1,8,8v8a8,8,0,0,0,0,16v8A8.009,8.009,0,0,1,12335,13770Z"
+                                                                stroke="none" />
+                                                            <path
+                                                                d="M 12335.0009765625 13768.0009765625 C 12338.3095703125 13768.0009765625 12341.0009765625 13765.30859375 12341.0009765625 13762 L 12341.0009765625 13755.798828125 C 12336.4423828125 13754.8701171875 12333.0009765625 13750.8291015625 12333.0009765625 13746 C 12333.0009765625 13741.171875 12336.4423828125 13737.130859375 12341.0009765625 13736.201171875 L 12341.0009765625 13729.9990234375 C 12341.0009765625 13726.6904296875 12338.3095703125 13723.9990234375 12335.0009765625 13723.9990234375 L 12278.9990234375 13723.9990234375 C 12275.6904296875 13723.9990234375 12272.9990234375 13726.6904296875 12272.9990234375 13729.9990234375 L 12272.9990234375 13736.201171875 C 12277.5576171875 13737.1298828125 12280.9990234375 13741.1708984375 12280.9990234375 13746 C 12280.9990234375 13750.828125 12277.5576171875 13754.869140625 12272.9990234375 13755.798828125 L 12272.9990234375 13762 C 12272.9990234375 13765.30859375 12275.6904296875 13768.0009765625 12278.9990234375 13768.0009765625 L 12335.0009765625 13768.0009765625 M 12335.0009765625 13770.0009765625 L 12278.9990234375 13770.0009765625 C 12274.587890625 13770.0009765625 12270.9990234375 13766.412109375 12270.9990234375 13762 L 12270.9990234375 13754 C 12275.4111328125 13753.9990234375 12278.9990234375 13750.4111328125 12278.9990234375 13746 C 12278.9990234375 13741.5888671875 12275.41015625 13738 12270.9990234375 13738 L 12270.9990234375 13729.9990234375 C 12270.9990234375 13725.587890625 12274.587890625 13721.9990234375 12278.9990234375 13721.9990234375 L 12335.0009765625 13721.9990234375 C 12339.412109375 13721.9990234375 12343.0009765625 13725.587890625 12343.0009765625 13729.9990234375 L 12343.0009765625 13738 C 12338.5888671875 13738.0009765625 12335.0009765625 13741.5888671875 12335.0009765625 13746 C 12335.0009765625 13750.4111328125 12338.58984375 13754 12343.0009765625 13754 L 12343.0009765625 13762 C 12343.0009765625 13766.412109375 12339.412109375 13770.0009765625 12335.0009765625 13770.0009765625 Z"
+                                                                stroke="none" fill="#fff" />
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                                <g id="Group_24321" data-name="Group 24321"
+                                                   transform="translate(-3514.477 1653.317) rotate(-45)">
+                                                    <g id="Subtraction_167-2" data-name="Subtraction 167"
+                                                       transform="translate(-12177 -8458)" fill="none">
+                                                        <path
+                                                            d="M12335,13770h-56a8.009,8.009,0,0,1-8-8v-8a8,8,0,0,0,0-16v-8a8.009,8.009,0,0,1,8-8h56a8.009,8.009,0,0,1,8,8v8a8,8,0,0,0,0,16v8A8.009,8.009,0,0,1,12335,13770Z"
+                                                            stroke="none" />
+                                                        <path
+                                                            d="M 12335.0009765625 13768.0009765625 C 12338.3095703125 13768.0009765625 12341.0009765625 13765.30859375 12341.0009765625 13762 L 12341.0009765625 13755.798828125 C 12336.4423828125 13754.8701171875 12333.0009765625 13750.8291015625 12333.0009765625 13746 C 12333.0009765625 13741.171875 12336.4423828125 13737.130859375 12341.0009765625 13736.201171875 L 12341.0009765625 13729.9990234375 C 12341.0009765625 13726.6904296875 12338.3095703125 13723.9990234375 12335.0009765625 13723.9990234375 L 12278.9990234375 13723.9990234375 C 12275.6904296875 13723.9990234375 12272.9990234375 13726.6904296875 12272.9990234375 13729.9990234375 L 12272.9990234375 13736.201171875 C 12277.5576171875 13737.1298828125 12280.9990234375 13741.1708984375 12280.9990234375 13746 C 12280.9990234375 13750.828125 12277.5576171875 13754.869140625 12272.9990234375 13755.798828125 L 12272.9990234375 13762 C 12272.9990234375 13765.30859375 12275.6904296875 13768.0009765625 12278.9990234375 13768.0009765625 L 12335.0009765625 13768.0009765625 M 12335.0009765625 13770.0009765625 L 12278.9990234375 13770.0009765625 C 12274.587890625 13770.0009765625 12270.9990234375 13766.412109375 12270.9990234375 13762 L 12270.9990234375 13754 C 12275.4111328125 13753.9990234375 12278.9990234375 13750.4111328125 12278.9990234375 13746 C 12278.9990234375 13741.5888671875 12275.41015625 13738 12270.9990234375 13738 L 12270.9990234375 13729.9990234375 C 12270.9990234375 13725.587890625 12274.587890625 13721.9990234375 12278.9990234375 13721.9990234375 L 12335.0009765625 13721.9990234375 C 12339.412109375 13721.9990234375 12343.0009765625 13725.587890625 12343.0009765625 13729.9990234375 L 12343.0009765625 13738 C 12338.5888671875 13738.0009765625 12335.0009765625 13741.5888671875 12335.0009765625 13746 C 12335.0009765625 13750.4111328125 12338.58984375 13754 12343.0009765625 13754 L 12343.0009765625 13762 C 12343.0009765625 13766.412109375 12339.412109375 13770.0009765625 12335.0009765625 13770.0009765625 Z"
+                                                            stroke="none" fill="#fff" />
+                                                    </g>
+                                                    <g id="Group_24325" data-name="Group 24325">
+                                                        <rect id="Rectangle_18578" data-name="Rectangle 18578" width="8"
+                                                              height="2" transform="translate(120 5287)" fill="#fff" />
+                                                        <rect id="Rectangle_18579" data-name="Rectangle 18579" width="8"
+                                                              height="2" transform="translate(132 5287)" fill="#fff" />
+                                                        <rect id="Rectangle_18581" data-name="Rectangle 18581" width="8"
+                                                              height="2" transform="translate(144 5287)" fill="#fff" />
+                                                        <rect id="Rectangle_18580" data-name="Rectangle 18580" width="8"
+                                                              height="2" transform="translate(108 5287)" fill="#fff" />
+                                                    </g>
                                                 </g>
                                             </g>
-                                        </g>
-                                        <g id="Group_24321" data-name="Group 24321"
-                                            transform="translate(-3514.477 1653.317) rotate(-45)">
-                                            <g id="Subtraction_167-2" data-name="Subtraction 167"
-                                                transform="translate(-12177 -8458)" fill="none">
-                                                <path
-                                                    d="M12335,13770h-56a8.009,8.009,0,0,1-8-8v-8a8,8,0,0,0,0-16v-8a8.009,8.009,0,0,1,8-8h56a8.009,8.009,0,0,1,8,8v8a8,8,0,0,0,0,16v8A8.009,8.009,0,0,1,12335,13770Z"
-                                                    stroke="none" />
-                                                <path
-                                                    d="M 12335.0009765625 13768.0009765625 C 12338.3095703125 13768.0009765625 12341.0009765625 13765.30859375 12341.0009765625 13762 L 12341.0009765625 13755.798828125 C 12336.4423828125 13754.8701171875 12333.0009765625 13750.8291015625 12333.0009765625 13746 C 12333.0009765625 13741.171875 12336.4423828125 13737.130859375 12341.0009765625 13736.201171875 L 12341.0009765625 13729.9990234375 C 12341.0009765625 13726.6904296875 12338.3095703125 13723.9990234375 12335.0009765625 13723.9990234375 L 12278.9990234375 13723.9990234375 C 12275.6904296875 13723.9990234375 12272.9990234375 13726.6904296875 12272.9990234375 13729.9990234375 L 12272.9990234375 13736.201171875 C 12277.5576171875 13737.1298828125 12280.9990234375 13741.1708984375 12280.9990234375 13746 C 12280.9990234375 13750.828125 12277.5576171875 13754.869140625 12272.9990234375 13755.798828125 L 12272.9990234375 13762 C 12272.9990234375 13765.30859375 12275.6904296875 13768.0009765625 12278.9990234375 13768.0009765625 L 12335.0009765625 13768.0009765625 M 12335.0009765625 13770.0009765625 L 12278.9990234375 13770.0009765625 C 12274.587890625 13770.0009765625 12270.9990234375 13766.412109375 12270.9990234375 13762 L 12270.9990234375 13754 C 12275.4111328125 13753.9990234375 12278.9990234375 13750.4111328125 12278.9990234375 13746 C 12278.9990234375 13741.5888671875 12275.41015625 13738 12270.9990234375 13738 L 12270.9990234375 13729.9990234375 C 12270.9990234375 13725.587890625 12274.587890625 13721.9990234375 12278.9990234375 13721.9990234375 L 12335.0009765625 13721.9990234375 C 12339.412109375 13721.9990234375 12343.0009765625 13725.587890625 12343.0009765625 13729.9990234375 L 12343.0009765625 13738 C 12338.5888671875 13738.0009765625 12335.0009765625 13741.5888671875 12335.0009765625 13746 C 12335.0009765625 13750.4111328125 12338.58984375 13754 12343.0009765625 13754 L 12343.0009765625 13762 C 12343.0009765625 13766.412109375 12339.412109375 13770.0009765625 12335.0009765625 13770.0009765625 Z"
-                                                    stroke="none" fill="#fff" />
-                                            </g>
-                                            <g id="Group_24325" data-name="Group 24325">
-                                                <rect id="Rectangle_18578" data-name="Rectangle 18578" width="8"
-                                                    height="2" transform="translate(120 5287)" fill="#fff" />
-                                                <rect id="Rectangle_18579" data-name="Rectangle 18579" width="8"
-                                                    height="2" transform="translate(132 5287)" fill="#fff" />
-                                                <rect id="Rectangle_18581" data-name="Rectangle 18581" width="8"
-                                                    height="2" transform="translate(144 5287)" fill="#fff" />
-                                                <rect id="Rectangle_18580" data-name="Rectangle 18580" width="8"
-                                                    height="2" transform="translate(108 5287)" fill="#fff" />
-                                            </g>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="ml-lg-3">
-                                <h5 class="fs-36 fw-400 text-white mb-3">{{ get_setting('cupon_title') }}</h5>
-                                <h5 class="fs-20 fw-400 text-gray">{{get_setting('cupon_subtitle') }}</h5>
-                                <div class="mt-5 pt-5">
-                                    <a href="{{ route('coupons.all') }}"
-                                        class="btn text-white hov-bg-white hov-text-dark border border-width-2 fs-16 px-5"
-                                        style="border-radius: 28px;background: rgba(255, 255, 255, 0.2);box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.16);">{{ translate('View All Coupons') }}</a>
+                                        </svg>
+                                    </div>
+                                    <div class="ml-lg-3">
+                                        <h5 class="fs-36 fw-400 text-white mb-3">{{ get_setting('cupon_title') }}</h5>
+                                        <h5 class="fs-20 fw-400 text-gray">{{get_setting('cupon_subtitle') }}</h5>
+                                         <div class="mt-5 pt-5">
+                                             <a href="{{ route('coupons.all') }}"
+                                                 class="btn text-white hov-bg-white hov-text-dark border border-width-2 fs-16 px-5"
+                                                 style="border-radius: 28px;background: rgba(255, 255, 255, 0.2);box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.16);">{{ translate('View All Coupons') }}</a>
+                                         </div>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="position-absolute right-0 bottom-0 h-100">
+                                <img class="w-100" src="{{ asset('assets/img/coupon.svg') }}"
+                                     alt="{{ env('APP_NAME') }} promo">
                             </div>
                         </div>
                     </div>
-                    <div class="position-absolute right-0 bottom-0 h-100">
-                        <img class="w-100" src="{{ asset('assets/img/coupon.svg') }}"
-                            alt="{{ env('APP_NAME') }} promo">
+                    <div class="col-lg-6">
+                        <section class="mb-2 mb-md-3 mt-2 mt-md-3">
+                            <div class="container">
+
+
+                            @php
+                                $coupons = App\Models\Coupon::where('start_date', '<=', strtotime(date('d-m-Y')))->where('end_date', '>=', strtotime(date('d-m-Y')))->get();
+                            @endphp
+                                <!-- Categories -->
+                                <div class="bg-white px-sm-3">
+                                    <div class="aiz-carousel sm-gutters-16" data-items="1" data-xxl-items="1" data-xl-items="1"
+                                         data-lg-items="3" data-md-items="1" data-sm-items="1" data-xs-items="1" data-arrows="false"
+                                         data-dots="true" data-autoplay="true" data-infinite="true" style="background: {{ get_setting('cupon_background_color', '#292933') }};border: 0px !important;">
+                                        @foreach($coupons as $key => $coupon)
+                                        <div class="carousel-box px-3 position-relative has-transition">
+                                            @if($coupon->user->user_type == 'admin' || ($coupon->user->shop != null && $coupon->user->shop->verification_status))
+                                                <div class="col mb-4">
+                                                    @include('frontend.'.get_setting('homepage_select').'.partials.coupon_box',['coupon' => $coupon])
+                                                </div>
+                                            @endif
+
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
+
             </div>
         </div>
     @endif
@@ -477,7 +504,7 @@
                     <div class="d-flex mb-2 mb-md-3 align-items-baseline justify-content-between">
                         <!-- Title -->
                         <h3 class="fs-16 fs-md-20 fw-700 mb-2 mb-sm-0">
-                            <span class="">{{ translate('Classified Ads') }}</span>
+                            <span class="text-primary border-primary" style="border-bottom: 2px solid #0ea09b !important">{{ translate('Classified Ads') }}</span>
                         </h3>
                         <!-- Links -->
                         <div class="d-flex">
@@ -563,7 +590,7 @@
                 <div class="d-flex mb-2 mb-md-3 align-items-baseline justify-content-between">
                     <!-- Title -->
                     <h3 class="fs-16 fs-md-20 fw-700 mb-2 mb-sm-0">
-                        <span class="pb-3">{{ translate('Top Sellers') }}</span>
+                        <span class="pb-3 text-primary border-primary" style="border-bottom: 2px solid #0ea09b !important">{{ translate('Top Sellers') }}</span>
                     </h3>
                     <!-- Links -->
                     <div class="d-flex">

@@ -121,13 +121,12 @@ class CategoryController extends Controller
         $lang = $request->lang;
         $category = Category::findOrFail($id);
         $categories = Category::where('parent_id', 0)
-            ->where('digital', $category->digital)
             ->with('childrenCategories')
             ->whereNotIn('id', CategoryUtility::children_ids($category->id, true))->where('id', '!=' , $category->id)
+            ->where('id','<>',$id)
             ->orderBy('name','asc')
             ->get();
-
-        return view('backend.product.categories.edit', compact('category', 'categories', 'lang'));
+        return view('backend.product.categories.edit', compact('category', 'categories', 'lang','id'));
     }
 
     /**
@@ -202,17 +201,15 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->attributes()->detach();
-
-        foreach (Product::where('category_id', $category->id)->get() as $product) {
-            $product->category_id = null;
-            $product->save();
-        }
+        Product::where('category_id', $category->id)->update([
+            "category_id" => null
+        ]);
         Classification::where('category_id', $category->id)->update([
             "category_id"  => null
         ]);
+
         CategoryUtility::delete_category($id);
         Cache::forget('featured_categories');
-
         flash(translate('Category has been deleted successfully'))->success();
         return redirect()->route('categories.index');
     }

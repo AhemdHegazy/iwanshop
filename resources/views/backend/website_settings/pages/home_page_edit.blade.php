@@ -41,7 +41,7 @@
 										<div class="col-md">
 											<div class="form-group">
 												<input type="hidden" name="types[]" value="home_slider_links">
-												<input type="text" class="form-control" placeholder="http://" name="home_slider_links[]" value="{{ json_decode(get_setting('home_slider_links'), true)[$key] }}">
+												<input type="text" class="form-control" placeholder="{{translate("http:// Or https:")}}" name="home_slider_links[]" value="{{ json_decode(get_setting('home_slider_links'), true)[$key] }}">
 											</div>
 										</div>
 										<div class="col-md-auto">
@@ -78,7 +78,7 @@
 								<div class="col-md">
 									<div class="form-group">
 										<input type="hidden" name="types[]" value="home_slider_links">
-										<input type="text" class="form-control" placeholder="http://" name="home_slider_links[]">
+										<input type="text" class="form-control" placeholder="{{translate("http:// Or https:")}}" name="home_slider_links[]">
 									</div>
 								</div>
 								<div class="col-md-auto">
@@ -177,7 +177,7 @@
 										<div class="col-md">
 											<div class="form-group">
 												<input type="hidden" name="types[]" value="home_banner1_links">
-												<input type="text" class="form-control" placeholder="http://" name="home_banner1_links[]" value="{{ json_decode(get_setting('home_banner1_links'), true)[$key] }}">
+												<input type="text" class="form-control" placeholder="{{translate("http:// Or https:")}}" name="home_banner1_links[]" value="{{ json_decode(get_setting('home_banner1_links'), true)[$key] }}">
 											</div>
 										</div>
 										<div class="col-md-auto">
@@ -214,7 +214,7 @@
 								<div class="col-md">
 									<div class="form-group">
 										<input type="hidden" name="types[]" value="home_banner1_links">
-										<input type="text" class="form-control" placeholder="http://" name="home_banner1_links[]">
+										<input type="text" class="form-control" placeholder="{{translate("http:// Or https:")}}" name="home_banner1_links[]">
 									</div>
 								</div>
 								<div class="col-md-auto">
@@ -269,7 +269,7 @@
 										<div class="col-md">
 											<div class="form-group">
 												<input type="hidden" name="types[]" value="home_banner2_links">
-												<input type="text" class="form-control" placeholder="http://" name="home_banner2_links[]" value="{{ json_decode(get_setting('home_banner2_links'), true)[$key] }}">
+												<input type="text" class="form-control" placeholder="{{translate("http:// Or https:")}}" name="home_banner2_links[]" value="{{ json_decode(get_setting('home_banner2_links'), true)[$key] }}">
 											</div>
 										</div>
 										<div class="col-md-auto">
@@ -306,7 +306,7 @@
 								<div class="col-md">
 									<div class="form-group">
 										<input type="hidden" name="types[]" value="home_banner2_links">
-										<input type="text" class="form-control" placeholder="http://" name="home_banner2_links[]">
+										<input type="text" class="form-control" placeholder="{{translate("http:// Or https:")}}" name="home_banner2_links[]">
 									</div>
 								</div>
 								<div class="col-md-auto">
@@ -361,7 +361,7 @@
 										<div class="col-md">
 											<div class="form-group">
 												<input type="hidden" name="types[]" value="home_banner3_links">
-												<input type="text" class="form-control" placeholder="http://" name="home_banner3_links[]" value="{{ json_decode(get_setting('home_banner3_links'), true)[$key] }}">
+												<input type="text" class="form-control" placeholder="{{translate("http:// Or https:")}}" name="home_banner3_links[]" value="{{ json_decode(get_setting('home_banner3_links'), true)[$key] }}">
 											</div>
 										</div>
 										<div class="col-md-auto">
@@ -398,7 +398,7 @@
 								<div class="col-md">
 									<div class="form-group">
 										<input type="hidden" name="types[]" value="home_banner3_links">
-										<input type="text" class="form-control" placeholder="http://" name="home_banner3_links[]">
+										<input type="text" class="form-control" placeholder="{{translate("http:// Or https:")}}" name="home_banner3_links[]">
 									</div>
 								</div>
 								<div class="col-md-auto">

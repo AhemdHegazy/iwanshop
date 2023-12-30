@@ -37,11 +37,11 @@
 
                 </div>
               <div class="form-group row">
-                  <label class="col-sm-3 col-from-label" for="email">الجوال</label>
+                  <label class="col-sm-3 col-from-label" for="email">{{translate("Phone")}}</label>
                   <div class="col-sm-9">
                       <div class="input-group  mb-3">
 
-                          <input type="tel" id="phone-code" class="form-control rounded-0"  value="{{$user->phone}}" placeholder="رقم الجوال" name="phone" autocomplete="off">
+                          <input type="tel" id="phone" class="form-control rounded-0"  value="{{$user->phone}}" placeholder="{{translate("Phone Number")}} " name="phone" autocomplete="off">
                           <div class="input-group-prepend">
                               <span  class="input-group-text" style="height: 42px;" id="basic-addon1">  +964  <img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
                           </div>

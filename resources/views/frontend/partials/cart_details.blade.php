@@ -34,7 +34,7 @@
                                         <!-- Quantity -->
                                         <div class="col-md-1 col order-1 order-md-0">
                                             @if ($cartItem['digital'] != 1 && $product->auction_product == 0)
-                                                <div class="d-flex flex-column align-items-start aiz-plus-minus mr-2 ml-0">
+                                                <div class="text-center aiz-plus-minu">
                                                     <button
                                                         class="btn col-auto btn-icon btn-sm btn-circle btn-light"
                                                         type="button" data-type="plus"
@@ -42,11 +42,11 @@
                                                         <i class="las la-plus"></i>
                                                     </button>
                                                     <input type="number" name="quantity[{{ $cartItem['id'] }}]"
-                                                        class="col border-0 text-left px-0 flex-grow-1 fs-14 input-number"
+                                                        class="col border-0 text-center px-0 flex-grow-1 fs-14 input-number"
                                                         placeholder="1" value="{{ $cartItem['quantity'] }}"
                                                         min="{{ $product->min_qty }}" readonly
                                                         max="{{--{{ $product_stock->qty }}--}}{{ $product->max_qty }}"
-                                                        onchange="updateQuantity({{ $cartItem['id'] }}, this)" style="padding-left:0.75rem !important;">
+                                                        onchange="updateQuantity({{ $cartItem['id'] }}, this)" style="">
                                                     <button
                                                         class="btn col-auto btn-icon btn-sm btn-circle btn-light"
                                                         type="button" data-type="minus"

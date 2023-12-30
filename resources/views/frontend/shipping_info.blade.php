@@ -21,13 +21,13 @@
                                 </h3>
                             </div>
                         </div>
-                        <div class="col">
+                        {{--<div class="col">
                             <div class="text-center border border-bottom-6px p-2">
                                 <i class="la-3x mb-2 opacity-50 las la-truck"></i>
                                 <h3 class="fs-14 fw-600 d-none d-lg-block opacity-50">{{ translate('3. Delivery info') }}
                                 </h3>
                             </div>
-                        </div>
+                        </div>--}}
                         <div class="col">
                             <div class="text-center border border-bottom-6px p-2">
                                 <i class="la-3x mb-2 opacity-50 las la-credit-card"></i>
@@ -69,13 +69,21 @@
                                                     <span class="aiz-rounded-check flex-shrink-0 mt-1"></span>
                                                     <!-- Address -->
                                                     <span class="flex-grow-1 pl-3 text-left">
+                                                           <div class="row">
+                                                            <span class="fs-14 text-secondary col-3">{{ translate('Name') }}</span>
+                                                            <span class="fs-14 text-dark fw-500 ml-2 col">{{ $address->name }}</span>
+                                                        </div>
                                                         <div class="row">
                                                             <span class="fs-14 text-secondary col-3">{{ translate('Address') }}</span>
                                                             <span class="fs-14 text-dark fw-500 ml-2 col">{{ $address->address }}</span>
                                                         </div>
+                                                          <div class="row">
+                                                            <span class="fs-14 text-secondary col-3">{{ translate('Phone') }}</span>
+                                                            <span class="fs-14 text-dark fw-500 ml-2 col">964{{ $address->phone }}+<img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
+                                                        </div>
                                                         <div class="row">
-                                                            <span class="fs-14 text-secondary col-3">{{ translate('Postal Code') }}</span>
-                                                            <span class="fs-14 text-dark fw-500 ml-2 col">{{ $address->postal_code }}</span>
+                                                            <span class="fs-14 text-secondary col-3">{{ translate('Second Phone') }}</span>
+                                                            <span class="fs-14 text-dark fw-500 ml-2 col">964{{ $address->postal_code }}+<img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
                                                         </div>
                                                         <div class="row">
                                                             <span class="fs-14 text-secondary col-3">{{ translate('City') }}</span>
@@ -90,21 +98,23 @@
                                                             <span class="fs-14 text-dark fw-500 ml-2 col">{{ optional($address->country)->name }}</span>
                                                         </div>
                                                         <div class="row">
-                                                            <span class="fs-14 text-secondary col-3">{{ translate('Phone') }}</span>
-                                                            <span class="fs-14 text-dark fw-500 ml-2 col">{{ $address->phone }}</span>
+                                                            <span class="fs-14 text-secondary col-3"><i class="la la-{{$address->social_type}}"></i></span>
+                                                            <span class="fs-14 text-dark fw-500 ml-2 col"><a
+                                                                    href="{{$address->url }}" target="_blank">{{$address->url }}</a></span>
                                                         </div>
+
                                                     </span>
                                                 </span>
                                             </label>
                                         </div>
                                         <!-- Edit Address Button -->
                                         <div class="col-md-4 p-3 text-right">
-                                            <a class="btn btn-sm btn-secondary-base text-white mr-4 rounded-0 px-4" onclick="edit_address('{{$address->id}}')">{{ translate('Change') }}</a>
+                                            <a class="btn btn-sm btn-secondary text-white mr-4 rounded-0 px-4" onclick="edit_address('{{$address->id}}')">{{ translate('Change') }}</a>
                                         </div>
                                     </div>
                                 </div>
                                 @endforeach
-                                
+
                                 <input type="hidden" name="checkout_type" value="logged">
                                 <!-- Add New Address -->
                                 <div class="mb-5" >

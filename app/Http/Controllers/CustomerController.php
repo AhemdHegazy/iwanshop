@@ -65,6 +65,13 @@ class CustomerController extends Controller
             'phone' =>          'regex:/^7[3-9]\d{8}$/|unique:users',
 
             'password' => 'required|string|min:6|confirmed',
+        ],[
+            "name.required"  => "الأسم مطلوب",
+            "email.required"  => "البريد الإلكتروني مطلوب",
+            "password.required"  => "كلمة المرور   مطلوب",
+            "password.confirmed"  => "كلمة المرور   وتأكيد كلمة المرور غير متطابقين",
+            "email.unique"  => "البريد الإلكتروني موجود مسبقا",
+            "phone.regex"  => "صيغة الجوال غير صحية لابد ان يكون 10 ارقام ولا يبدأ ب 0 يبدأ ب 7",
         ]);
 
 
@@ -76,7 +83,7 @@ class CustomerController extends Controller
         ]);
         $data = $request->all();
         $user = User::create($data);
-        flash(translate('تم إنشاء العميل بنجاح'))->success();
+        flash(translate('Client created successfully'))->success();
         return redirect()->route('customers.index');
     }
 
@@ -125,12 +132,19 @@ class CustomerController extends Controller
             $array=[
                 'name'                   => 'required',
                 'email'                  => 'required',
-                'phone' =>          'regex:/^07[3-9]\d{8}$/',
+                'phone' =>          'regex:/^7[3-9]\d{8}$/',
                 'password' => 'string|min:6|confirmed',
             ];
             $password= Hash::make($request->password);
         }
-        $request->validate($array);
+        $request->validate($array,[
+            "name.required"  => "الأسم مطلوب",
+            "email.required"  => "البريد الإلكتروني مطلوب",
+            "password.required"  => "كلمة المرور   مطلوب",
+            "password.confirmed"  => "كلمة المرور   وتأكيد كلمة المرور غير متطابقين",
+            "email.unique"  => "البريد الإلكتروني موجود مسبقا",
+            "phone.regex"  => "صيغة الجوال غير صحية لابد ان يكون 10 ارقام ولا يبدأ ب 0 يبدأ ب 7",
+        ]);
         $delivery_boy->name      = $request->name;
         $delivery_boy->email     = $request->email;
         $delivery_boy->phone     = $request->phone;
@@ -155,7 +169,7 @@ class CustomerController extends Controller
         $customer->customer_products()->delete();
 
         User::destroy($id);
-        flash(translate('تم حذف العميل بنجاح'))->success();
+        flash(translate('Client deleted successfully'))->success();
         return redirect()->route('customers.index');
     }
 
@@ -169,7 +183,7 @@ class CustomerController extends Controller
                 "classification_id"   => $item,
             ]);
         }
-        flash(translate('تم   أضافة التصنيفات'))->success();
+        flash(translate('Classifications added'))->success();
         return redirect()->route('customers.index');
     }
 

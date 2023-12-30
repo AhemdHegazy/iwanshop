@@ -43,13 +43,20 @@ class SubscriberController extends Controller
      */
     public function store(Request $request)
     {
+         $request->validate([
+             'email' =>          'regex:/^7[3-9]\d{8}$/',
+         ],[
+             "email.regex"  => "صيغة الجوال غير صحية لابد ان يكون 10 ارقام ولا يبدأ ب 0 يبدأ ب 7",
+         ]);
         $subscriber = Subscriber::where('email', $request->email)->first();
         if ($subscriber == null) {
             $subscriber = new Subscriber;
             $subscriber->email = $request->email;
             $subscriber->save();
+            session()->put("subscribed",1);
             flash(translate('You have subscribed successfully'))->success();
         } else {
+            session()->put("subscribed",1);
             flash(translate('You are  already a subscriber'))->success();
         }
         return back();

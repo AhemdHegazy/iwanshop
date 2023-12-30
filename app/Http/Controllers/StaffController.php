@@ -74,7 +74,7 @@ class StaffController extends Controller
         }
 
         flash(translate('Email already used'))->error();
-        return back();
+        return redirect()->route('staffs.index');
     }
 
     /**
@@ -136,7 +136,7 @@ class StaffController extends Controller
         }
 
         flash(translate('Something went wrong'))->error();
-        return back();
+        return redirect()->route('staffs.index');
     }
 
     /**

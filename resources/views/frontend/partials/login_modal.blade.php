@@ -18,7 +18,7 @@
                             <div class="form-group phone-form-group mb-1">
 
                                 <div class="input-group  mb-3">
-                                    <input type="tel" id="phone-code"
+                                    <input type="tel" id="phone"
                                            class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
                                            value="{{ old('phone') }}" placeholder="" name="phone" autocomplete="off">                                    <div class="input-group-prepend">
                                         <span  class="input-group-text" style="height: 42px;" id="basic-addon1">  +964  <img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
@@ -62,7 +62,7 @@
                         <!-- Password -->
                         <div class="form-group">
                             <div class="input-group mb-2 mr-sm-2">
-                                <input type="password" name="password" id="password" class="form-control h-auto rounded-0 form-control-lg"
+                                <input type="password" name="password" id="password" class="form-control h-auto rounded-0"
                                 placeholder="{{ translate('Password') }}">
                                 <div class="input-group-prepend" onclick="showPassword('password')">
                                     <div  class="input-group-text" style="height: 42px;"><i class="la la-eye-slash" style="font-size: 16px;" id="eye_password"></i></div>

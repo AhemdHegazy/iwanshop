@@ -24,7 +24,7 @@
                             <input type="text" class="form-control" name="name" placeholder="{{ translate('Name') }}" value="{{ $tax->name }}" required>
                         </div>
                     </div>
-                    
+
                     <div class="form-group mb-0 text-right">
                         <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>
                     </div>

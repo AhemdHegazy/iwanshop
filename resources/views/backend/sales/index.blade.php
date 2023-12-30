@@ -25,7 +25,7 @@
                 </button>
                 @if(request()->all())
                 <a  class="btn btn-danger" href="{{route("all_orders.index")}}">
-                  <i class="la la-times"></i> {{translate("Clear Filter")}}
+                  <i clacss="la la-times"></i> {{translate("Clear Filter")}}
                 </a>
                 @endif
 
@@ -43,10 +43,10 @@
                                 <div class="row">
                                     <input type="hidden" name="country_id" value="{{\App\Models\Country::first()->id}}">
                                     <div class="col-lg-6  pt-3">
-                                        <label for="state_id" class="col-form-label">المحافظة / الولاية</label>
+                                        <label for="state_id" class="col-form-label"> {{translate("Governorate / State")}} </label>
 
                                         <select class="form-control mb-3 aiz-selectpicker" id="state_id" data-live-search="true" name="state_id" >
-                                            <option value="">المحافظة / الولاية</option>
+                                            <option value="">{{translate("Governorate / State")}}</option>
                                         </select>
 
                                     </div>
@@ -128,7 +128,7 @@
                         <a href="{{route("all_orders.index")}}?delivery_status=pending">
                             <div class="card">
                                 <div class="card-body pb-0 text-white text-center" style="background: #e0c23e">
-                                    <p><i class="la la-history"></i>  قيد المراجعه </p>
+                                    <p><i class="la la-history"></i> {{translate("Under Processing")}} </p>
                                 </div>
                             </div>
                         </a>
@@ -138,7 +138,7 @@
                         <a href="{{route("all_orders.index")}}?delivery_status=rejected">
                             <div class="card">
                                 <div class="card-body pb-0 text-white text-center" style="background: #e03e3e">
-                                    <p><i class="la la-times"></i>  تم الرفض  </p>
+                                    <p><i class="la la-times"></i>  {{translate("Refused")}}  </p>
                                 </div>
                             </div>
                         </a>
@@ -147,7 +147,7 @@
                         <a href="{{route("all_orders.index")}}?delivery_status=cancelled">
                             <div class="card">
                                 <div class="card-body pb-0 text-white text-center" style="background: #494949">
-                                    <p><i class="la la-times-circle"></i>  تم الإلغاء  </p>
+                                    <p><i class="la la-times-circle"></i>   {{translate("Canceled")}}  </p>
                                 </div>
                             </div>
                         </a>
@@ -156,7 +156,7 @@
                         <a href="{{route("all_orders.index")}}?delivery_status=on_the_way">
                             <div class="card">
                                 <div class="card-body pb-0 text-white text-center" style="background: #ed56fb">
-                                    <p><i class="la la-truck"></i>  قيد التوصيل   </p>
+                                    <p><i class="la la-truck"></i>   {{translate("On Delivery")}}   </p>
                                 </div>
                             </div>
                         </a>
@@ -165,7 +165,7 @@
                         <a href="{{route("all_orders.index")}}?delivery_status=delivered">
                             <div class="card">
                                 <div class="card-body pb-0 text-white text-center" style="background: #56e8fb">
-                                    <p><i class="la la-handshake"></i>  تم التسليم     </p>
+                                    <p><i class="la la-handshake"></i>   {{translate("Delivered")}}     </p>
                                 </div>
                             </div>
                         </a>
@@ -174,7 +174,7 @@
                         <a href="{{route("all_orders.index")}}?payment_status=paid">
                             <div class="card">
                                 <div class="card-body pb-0 text-white text-center" style="background: #004fe1">
-                                    <p><i class="la la-coins"></i>  تم الدفع      </p>
+                                    <p><i class="la la-coins"></i>  {{translate("Paid")}}       </p>
                                 </div>
                             </div>
                         </a>
@@ -201,12 +201,13 @@
                         @endif
 
                         <th>{{ translate('Order Code:') }}</th>
-                        <th data-breakpoints="md">{{ translate('Num. of Products') }}</th>
-                        <th data-breakpoints="md">{{ translate('Customer') }}</th>
+                        <th data-breakpoints="md">{{ translate('Order Date') }}</th>
+                        <th data-breakpoints="md">{{ translate('Customer Name') }}</th>
+                        <th data-breakpoints="md">{{ translate('Customer Mobile') }}</th>
                         {{--                            <th data-breakpoints="md">{{ translate('Seller') }}</th>--}}
-                        <th data-breakpoints="md">{{ translate('Amount') }}</th>
+                        <th data-breakpoints="md">{{ translate('Order Amount') }}</th>
                         <th data-breakpoints="md">{{ translate('Delivery Status') }}</th>
-                        <th data-breakpoints="md">{{ translate('Payment method') }}</th>
+                       {{-- <th data-breakpoints="md">{{ translate('Payment method') }}</th>--}}
                         <th data-breakpoints="md">{{ translate('Payment Status') }}</th>
                         @if (addon_is_activated('refund_request'))
                             <th>{{ translate('Refund') }}</th>
@@ -249,11 +250,18 @@
                                 @endif
                             </td>
                             <td>
-                                {{ count($order->orderDetails) }}
+                                {{ date("Y-m-d",strtotime($order->created_at)) }}
                             </td>
                             <td>
                                 @if ($order->user != null)
                                     {{ $order->user->name }}
+                                @else
+                                    Guest ({{ $order->guest_id }})
+                                @endif
+                            </td>
+                            <td>
+                                @if ($order->user != null)
+                                    {{ $order->user->phone }}
                                 @else
                                     Guest ({{ $order->guest_id }})
                                 @endif
@@ -266,19 +274,18 @@
                             {{--                                    @endif--}}
                             {{--                                </td>--}}
                             <td>
-                                {{ single_price($order->grand_total) }}
+                                <span class="text-primary">
+                                    {{ single_price($order->grand_total) }}
+                                </span>
                             </td>
                             <td>
-                                {{ translate(ucfirst(str_replace('_', ' ', $order->delivery_status))) }}
-                            </td>
-                            <td>
-                                {{ translate(ucfirst(str_replace('_', ' ', $order->payment_type))) }}
+                                <span class="badge badge-inline badge-primary btn-block">{{ translate(ucfirst(str_replace('_', ' ', $order->delivery_status))) }}</span>
                             </td>
                             <td>
                                 @if ($order->payment_status == 'paid')
-                                    <span class="badge badge-inline badge-success">{{ translate('Paid') }}</span>
+                                    <span class="badge badge-inline badge-success btn-block">{{ translate('Paid') }}</span>
                                 @else
-                                    <span class="badge badge-inline badge-danger">{{ translate('Unpaid') }}</span>
+                                    <span class="badge badge-inline badge-danger btn-block">{{ translate('Unpaid') }}</span>
                                 @endif
                             </td>
                             @if (addon_is_activated('refund_request'))
@@ -292,7 +299,7 @@
                             @endif
                             <td class="text-right">
                                 @if (addon_is_activated('pos_system') && $order->order_from == 'pos')
-                                    <a class="btn btn-soft-success btn-icon btn-circle btn-sm"
+                                    <a class="btn btn-soft-success btn-sm"
                                        href="{{ route('admin.invoice.thermal_printer', $order->id) }}" target="_blank"
                                        title="{{ translate('Thermal Printer') }}">
                                         <i class="las la-print"></i>
@@ -310,23 +317,23 @@
                                             $order_detail_route = route('inhouse_orders.show', encrypt($order->id));
                                         }
                                     @endphp
-                                    <a class="btn btn-soft-primary btn-icon btn-circle btn-sm"
+                                    <a class="btn btn-soft-primary btn-sm"
                                        href="{{ $order_detail_route }}" title="{{ translate('View') }}">
                                         <i class="las la-eye"></i>
                                     </a>
                                 @endcan
-                                <a class="btn btn-soft-info btn-icon btn-circle btn-sm"
+                                <a class="btn btn-soft-info btn-sm"
                                    href="{{ route('invoice.download', $order->id) }}"
                                    title="{{ translate('Download Invoice') }}">
                                     <i class="las la-download"></i>
                                 </a>
-                                <a class="btn btn-soft-info btn-icon btn-circle btn-sm"
+                                <a class="btn btn-soft-info btn-sm"
                                    href="{{ route('invoice.image', $order->id) }}" target="_blank" title="تحميل كصورة">
                                     <i class="la la-image"></i>
                                 </a>
                                 @can('delete_order')
                                     <a href="#"
-                                       class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete"
+                                       class="btn btn-soft-danger btn-sm confirm-delete"
                                        data-href="{{ route('orders.destroy', $order->id) }}"
                                        title="{{ translate('Delete') }}">
                                         <i class="las la-trash"></i>

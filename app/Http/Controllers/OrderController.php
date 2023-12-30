@@ -183,7 +183,6 @@ class OrderController extends Controller
         }
 
         $address = Address::where('id', $carts[0]['address_id'])->first();
-
         $shippingAddress = [];
         if ($address != null) {
             $shippingAddress['name']        = Auth::user()->name;

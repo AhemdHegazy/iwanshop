@@ -44,7 +44,11 @@
                     $product = get_single_product($cartItem['product_id']);
                 @endphp
                 @if ($product != null)
-                    <li class="list-group-item border-0 hov-scale-img">
+                    <li class="list-group-item border-0 hov-scale-img" style="
+    background: #eee;
+    margin: 5px;
+    border-radius: 5px;
+">
                         <span class="d-flex align-items-center">
                             <a href="{{ route('product', $product->slug) }}"
                                 class="text-reset d-flex align-items-center flex-grow-1">
@@ -63,8 +67,13 @@
                             </a>
                             <span class="">
                                 <button onclick="removeFromCart({{ $cartItem['id'] }})"
-                                    class="btn btn-sm btn-icon stop-propagation">
-                                    <i class="la la-close fs-18 fw-600 text-secondary"></i>
+                                    class="btn btn-sm btn-icon stop-propagation btn-danger" style="
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff !important;
+">
+                                    <i class="la la-close fs-18 fw-600 text-white"></i>
                                 </button>
                             </span>
                         </span>

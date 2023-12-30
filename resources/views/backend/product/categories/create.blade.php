@@ -25,7 +25,7 @@
                   {{--  <div class="form-group row">
                         <label class="col-md-3 col-form-label">{{translate('Type')}}</label>
                         <div class="col-md-9">
-                            <select name="digital" onchange="categoriesByType(this.value)" required class="form-control aiz-selectpicker mb-2 mb-md-0">
+                            <select name="digital" onchange="categoriesByType(this.value)"oninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required class="form-control aiz-selectpicker mb-2 mb-md-0">
                                 <option value="0">{{translate('Physical')}}</option>
                                 <option value="1">{{translate('Digital')}}</option>
                             </select>
@@ -36,7 +36,7 @@
                         <label class="col-md-3 col-form-label">{{translate('Parent Category')}}</label>
                         <div class="col-md-9">
                             <select class="select2 form-control aiz-selectpicker" name="parent_id" data-toggle="select2" data-placeholder="Choose ..." data-live-search="true">
-                                @include('backend.product.categories.categories_option', ['categories' => $categories])
+                                @include('backend.product.categories.categories_option', ['categories' => $categories,"id"=> 0])
                                 {{-- <option value="0">{{ translate('No Parent') }}</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>

@@ -19,15 +19,15 @@
                         </label>
                         <div class="col-sm-9">
                             <input type="text" placeholder="{{ translate('Attribute Value') }}" id="value"
-                                name="value" class="form-control" required value="{{ $attribute_value->value }}">
+                                name="value" class="form-control"oninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required value="{{ $attribute_value->value }}">
                         </div>
                     </div>
                     {{-- <div class="form-group row">
                   <label class="col-sm-3 col-from-label" for="code">
-                      {{ translate('Color Code')}} 
+                      {{ translate('Color Code')}}
                   </label>
                   <div class="col-sm-9">
-                      <input type="text" placeholder="{{ translate('Color Code')}}" id="code" name="code" class="form-control" required value="{{ $attribute_value->code }}">
+                      <input type="text" placeholder="{{ translate('Color Code')}}" id="code" name="code" class="form-control"oninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required value="{{ $attribute_value->code }}">
                   </div>
               </div> --}}
                     <div class="form-group mb-0 text-right">

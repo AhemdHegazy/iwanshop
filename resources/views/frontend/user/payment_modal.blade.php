@@ -22,7 +22,7 @@
             </div>
             @endforeach
         </div>
-        
+
         <div id="manual_payment_data">
             <!-- Payment description -->
             <div class="card mb-3 p-3 d-none">

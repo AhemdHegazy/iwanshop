@@ -58,7 +58,7 @@ class BadgesController extends Controller
         $badge->logo = $request->logo;
         $badge->save();
 
-        flash(translate('تم أنشاء البدج بنجاح'))->success();
+        flash(translate('Badge Created Successfully'))->success();
         return redirect()->route('badges.index');
 
     }
@@ -102,8 +102,8 @@ class BadgesController extends Controller
         $badge->logo = $request->logo;
         $badge->save();
 
-        flash(translate('تم حفظ البادج بنجاح'))->success();
-        return back();
+        flash(translate('Badge Updated Successfully'))->success();
+        return redirect()->route('badges.index');
 
     }
 
@@ -121,7 +121,7 @@ class BadgesController extends Controller
         ]);
         Badge::destroy($id);
 
-        flash(translate('تم حذف البادج بنجاح '))->success();
+        flash(translate('Badge Deleted Successfully'))->success();
         return redirect()->route('badges.index');
 
     }

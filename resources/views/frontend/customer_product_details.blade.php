@@ -67,7 +67,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-7 col-lg-6">
+                    <div class="col-xl-6 col-lg-6">
                         <div class="text-left">
                             <!-- Product Name -->
                             <h1 class="mb-4 fs-16 fw-700 text-dark">

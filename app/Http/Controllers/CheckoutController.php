@@ -147,8 +147,30 @@ class CheckoutController extends Controller
             })->orWhere('free_shipping', 1);
             $carrier_list = $carrier_query->get();
         }
+        $shipping_info = Address::where('id', $carts[0]['address_id'])->first();
+        $total = 0;
+        $tax = 0;
+        $shipping = 0;
+        $subtotal = 0;
 
-        return view('frontend.delivery_info', compact('carts','carrier_list'));
+        if ($carts && count($carts) > 0) {
+            foreach ($carts as $key => $cartItem) {
+                $product = Product::find($cartItem['product_id']);
+                $tax += cart_product_tax($cartItem, $product, false) * $cartItem['quantity'];
+                $subtotal += cart_product_price($cartItem, $product, false, false) * $cartItem['quantity'];
+
+                $cartItem['shipping_type'] = 'carrier';
+                $cartItem['carrier_id'] = $request['carrier_id_' . $product->user_id];
+                $cartItem['shipping_cost'] = getShippingCost($carts, $key, $cartItem['carrier_id']);
+
+
+                $shipping += $cartItem['shipping_cost'];
+                $cartItem->save();
+            }
+            $total = $subtotal + $tax + $shipping;
+
+            return view('frontend.payment_select', compact('carts', 'shipping_info', 'total'));
+        }
     }
 
     public function store_delivery_info(Request $request)

@@ -368,12 +368,12 @@
                                 </li>
                                 <li class="aiz-side-nav-item">
                                     <a href="{{ route('badges.index') }}" class="aiz-side-nav-link">
-                                        <span class="aiz-side-nav-text">البادج (الوسوم)</span>
+                                        <span class="aiz-side-nav-text">{{translate("Badges")}}</span>
                                     </a>
                                 </li>
                                 <li class="aiz-side-nav-item">
                                     <a href="{{ route('classifications.index') }}" class="aiz-side-nav-link">
-                                        <span class="aiz-side-nav-text">تصنيفات العملاء</span>
+                                        <span class="aiz-side-nav-text"> {{translate('Customers Classifications')}}</span>
                                     </a>
                                 </li>
                             @endcan
@@ -912,7 +912,7 @@
                 @endif
 
                 <!--OTP addon -->
-                @if (addon_is_activated('otp_system'))
+                @if (addon_is_activated('otp_system') &&  1==0)
                     @canany(['otp_configurations','sms_templates','sms_providers_configurations','send_bulk_sms'])
                         <li class="aiz-side-nav-item">
                             <a href="#" class="aiz-side-nav-link">
@@ -1128,7 +1128,7 @@
                             @can('smtp_settings')
                                 <li class="aiz-side-nav-item">
                                     <a href="{{ route('smtp_settings.index') }}" class="aiz-side-nav-link">
-                                        <span class="aiz-side-nav-text">{{__('SMTP Settings')}}</span>
+                                        <span class="aiz-side-nav-text">{{translate('SMTP Settings')}}</span>
                                     </a>
                                 </li>
                             @endcan
@@ -1236,14 +1236,14 @@
                             @can('product_bulk_import')
                                 <li class="aiz-side-nav-item">
                                     <a href="{{ route('product_bulk_upload.index') }}" class="aiz-side-nav-link" >
-                                        <span class="aiz-side-nav-text">أستيراد المنتجات أكسيل</span>
+                                        <span class="aiz-side-nav-text">{{translate("Bulk Import Products Excel")}}  </span>
                                     </a>
                                 </li>
                             @endcan
                             @can('product_bulk_export')
                                 <li class="aiz-side-nav-item">
                                     <a href="{{route('product_bulk_export.index')}}" class="aiz-side-nav-link">
-                                        <span class="aiz-side-nav-text">تصدير المنتجات أكسيل </span>
+                                        <span class="aiz-side-nav-text">{{translate("Bulk Export Products Excel")}}</span>
                                     </a>
                                 </li>
                             @endcan

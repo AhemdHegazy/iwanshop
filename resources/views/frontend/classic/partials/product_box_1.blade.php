@@ -97,7 +97,7 @@
                 <!-- Previous price -->
                 @if (home_base_price($product) != home_discounted_base_price($product))
                     <div class="disc-amount has-transition">
-                        <del class="fw-400 text-secondary mr-1">{{ home_base_price($product) }}</del>
+                        <del class="fw-400 text-danger mr-1">{{ home_base_price($product) }}</del>
                     </div>
                 @endif
                 <!-- price -->

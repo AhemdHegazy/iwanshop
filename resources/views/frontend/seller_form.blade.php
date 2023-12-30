@@ -124,7 +124,7 @@
 @section('script')
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script type="text/javascript">
-    // making the CAPTCHA  a required field for form submission
+    // making the CAPTCHA  aoninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required field for form submission
     $(document).ready(function(){
         $("#shop").on("submit", function(evt)
         {

@@ -4,32 +4,78 @@
         <!-- Address -->
         <div class="row">
             <div class="col-md-2">
-                <label>{{ translate('Address')}}</label>
+                <label>{{ translate('Name')}}</label>
             </div>
             <div class="col-md-10">
-                <textarea class="form-control mb-3 rounded-0" placeholder="{{ translate('Your Address')}}" rows="2" name="address" required>{{ $address_data->address }}</textarea>
+                <input class="form-control mb-3" id="name" placeholder="{{translate("Name")}}" value="{{$address_data->name}}" name="name" required>
+
+                </input>
+            </div>
+        </div>
+        <style>
+            /* Style for the checked state */
+            input[type="radio"]:checked +.icon {
+                color: #fff; /* Example text color for the checked state */
+            }
+        </style>
+        <div class="row">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-10">
+                <div class="input-group mb-3">
+
+                    <input type="url" class="form-control" name="url" id="url" value="{{$address_data->url}}" aria-label="Text input with radio button">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text facebook p-0">
+                            <input type="radio" id="facebook"  name="socialType" onclick="changeSocial('facebook')" value="facebook" aria-label="Radio button for following text input" style="display: none">
+                            <label for="facebook" style="padding: 10px;margin: 0" class="la la-facebook icon"></label>
+                        </div>
+                        <div class="input-group-text instagram p-0">
+                            <input type="radio" id="instagram" name="socialType" onclick="changeSocial('instagram')" value="instagram" aria-label="Radio button for following text input" style="display: none">
+                            <label for="instagram" style="padding: 10px;margin: 0" class="la la-instagram icon"></label>
+                        </div>
+                        <div class="input-group-text whatsapp p-0">
+                            <input type="radio" id="whatsapp" name="socialType" onclick="changeSocial('whatsapp')" value="whatsapp"  aria-label="Radio button for following text input"   style="display: none">
+                            <label for="whatsapp" style="padding: 10px;margin: 0" class="la la-whatsapp icon"></label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Country -->
-<!--        <div class="row">
+        <input type="hidden" name="country_id" value="{{\App\Models\Country::first()->id}}">
+        <input type="hidden" name="social_type" id="social_type" value="facebook">
+
+
+        <!-- Phone -->
+        <div class="row">
             <div class="col-md-2">
-                <label>{{ translate('Country')}}</label>
+                <label>{{ translate('Phone')}}</label>
             </div>
             <div class="col-md-10">
-                <div class="mb-3">
-                    <select class="form-control aiz-selectpicker rounded-0" data-live-search="true" data-placeholder="{{ translate('Select your country')}}" name="country_id" id="edit_country" required>
-                        <option value="">{{ translate('Select your country') }}</option>
-                        @foreach (get_active_countries() as $key => $country)
-                        <option value="{{ $country->id }}" @if($address_data->country_id == $country->id) selected @endif>
-                            {{ $country->name }}
-                        </option>
-                        @endforeach
-                    </select>
+
+                <div class="input-group  mb-3">
+                    <input type="text" class="form-control mb-3 rounded-0" placeholder="{{ translate('+880')}}" value="{{ $address_data->phone }}" name="phone" value="" required>
+                    <div class="input-group-prepend">
+                        <span  class="input-group-text" style="height: 42px;" id="basic-addon1">  +964  <img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
+                    </div>
                 </div>
             </div>
-        </div>-->
-
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label>{{ translate('Another Phone')}}</label>
+            </div>
+            <div class="col-md-10">
+                <div class="input-group  mb-3">
+                    <input type="text" class="form-control mb-3 rounded-0" placeholder="{{ translate('+880')}}" value="{{ $address_data->postal_code }}" name="postal_code"  required>
+                    <div class="input-group-prepend">
+                        <span  class="input-group-text" style="height: 42px;" id="basic-addon1">  +964  <img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- State -->
         <div class="row">
             <div class="col-md-2">
@@ -95,32 +141,15 @@
             </div>
         @endif
 
-        <!-- Postal Code -->
+
         <div class="row">
             <div class="col-md-2">
-                <label>{{ translate('Postal Code')}}</label>
+                <label>{{ translate('Address')}}</label>
             </div>
             <div class="col-md-10">
-                <input type="text" class="form-control mb-3 rounded-0" placeholder="{{ translate('Your Postal Code')}}" value="{{ $address_data->postal_code }}" name="postal_code" value="" required>
+                <textarea class="form-control mb-3 rounded-0" placeholder="{{ translate('Your Address')}}" rows="2" name="address" required>{{ $address_data->address }}</textarea>
             </div>
         </div>
-
-        <!-- Phone -->
-        <div class="row">
-            <div class="col-md-2">
-                <label>{{ translate('Phone')}}</label>
-            </div>
-            <div class="col-md-10">
-
-                <div class="input-group  mb-3">
-                    <input type="text" class="form-control mb-3 rounded-0" placeholder="{{ translate('+880')}}" value="{{ $address_data->phone }}" name="phone" value="" required>
-                    <div class="input-group-prepend">
-                        <span  class="input-group-text" style="height: 42px;" id="basic-addon1">  +964  <img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Save button -->
         <div class="form-group text-right">
             <button type="submit" class="btn btn-primary rounded-0 w-150px">{{translate('Save')}}</button>

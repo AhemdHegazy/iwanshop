@@ -44,7 +44,11 @@
                     $product = get_single_product($cartItem['product_id']);
                 @endphp
                 @if ($product != null)
-                    <li class="list-group-item border-0 hov-scale-img">
+                    <li class="list-group-item border-0 hov-scale-img" style="
+    background: #eee;
+    margin: 5px;
+    border-radius: 5px;
+">
                         <span class="d-flex align-items-center">
                             <a href="{{ route('product', $product->slug) }}"
                                 class="text-reset d-flex align-items-center flex-grow-1">
@@ -57,14 +61,21 @@
                                     <span class="fw-700 fs-13 text-dark mb-2 text-truncate-2" title="{{ $product->name }}">
                                         {{ $product->name }}
                                     </span>
-                                    <span class="fs-14 fw-400 text-secondary">{{ $cartItem['quantity'] }}x</span>
-                                    <span class="fs-14 fw-400 text-secondary">{{ cart_product_price($cartItem, $product) }}</span>
+                                    <span class="fs-14 fw-400 text-dark text-truncate-2">العدد : {{ $cartItem['quantity'] }}</span>
+                                    <span class="fs-14 fw-400 text-primary text-truncate-2">السعر: {{ cart_product_price($cartItem, $product) }}</span>
                                 </span>
                             </a>
                             <span class="">
                                 <button onclick="removeFromCart({{ $cartItem['id'] }})"
-                                    class="btn btn-sm btn-icon stop-propagation">
-                                    <i class="la la-close fs-18 fw-600 text-secondary"></i>
+                                    class="btn btn-sm btn-icon stop-propagation btn-danger p-1" style="
+    position: absolute;
+    top: 5px;
+    width: calc(1.7rem + 2px);
+    height: calc(1.7rem + 2px);
+    left: 5px;
+    color: #fff !important;
+">
+                                    <i class="la la-close fs-10 fw-600 text-white"></i>
                                 </button>
                             </span>
                         </span>
@@ -75,19 +86,19 @@
         <!-- Subtotal -->
         <div class="px-3 py-2 fs-15 border-top d-flex justify-content-between mx-4" style="border-color: #e5e5e5 !important;">
             <span class="fs-14 fw-400 text-secondary">{{ translate('Subtotal') }}</span>
-            <span class="fs-16 fw-700 text-dark">{{ single_price($total) }}</span>
+            <span class="fs-16 fw-400 text-dark">{{ single_price($total) }}</span>
         </div>
         <!-- View cart & Checkout Buttons -->
         <div class="py-3 text-center border-top mx-4" style="border-color: #e5e5e5 !important;">
             <div class="row gutters-10 justify-content-center">
-                <div class="col-sm-6 mb-2">
-                    <a href="{{ route('cart') }}" class="btn btn-secondary-base btn-sm btn-block rounded-4 text-white">
+                <div class="col-sm-8 mb-2">
+                    <a href="{{ route('cart') }}" class="btn btn-primary btn-sm btn-block rounded-1 text-white">
                         {{ translate('View cart') }}
                     </a>
                 </div>
                 @if (Auth::check())
-                <div class="col-sm-6">
-                    <a href="{{ route('checkout.shipping_info') }}" class="btn btn-primary btn-sm btn-block rounded-4">
+                <div class="col-sm-4">
+                    <a href="{{ route('checkout.shipping_info') }}" class="btn btn-primary btn-sm btn-block rounded-1">
                         {{ translate('Checkout') }}
                     </a>
                 </div>

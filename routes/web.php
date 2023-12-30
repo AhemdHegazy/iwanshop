@@ -72,7 +72,8 @@ Route::controller(DemoController::class)->group(function () {
 });
 
 Route::get('/refresh-csrf', function () {
-    return csrf_token();
+    session()->forget("subscribed");
+    return redirect()->back();
 });
 Route::get('/refreshs-csrf', function () {
     foreach (\App\Models\ProductStock::whereHas("product",function ($q){

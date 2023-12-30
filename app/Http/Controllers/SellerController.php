@@ -110,7 +110,7 @@ class SellerController extends Controller
             }
         }
         flash(translate('Something went wrong'))->error();
-        return back();
+        return redirect()->route('seller.index');
     }
 
     /**
@@ -160,7 +160,7 @@ class SellerController extends Controller
         }
 
         flash(translate('Something went wrong'))->error();
-        return back();
+        return redirect()->route('seller.index');
     }
 
     /**

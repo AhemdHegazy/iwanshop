@@ -38,13 +38,25 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'                   => 'required',
+            'phone' =>          'regex:/^7[3-9]\d{8}$/|unique:users',
+            'postal_code' =>          'regex:/^7[3-9]\d{8}$/|unique:users',
+        ],[
+            "name.required"  => "الأسم مطلوب",
+            "phone.regex"  => "صيغة الجوال غير صحية لابد ان يكون 10 ارقام ولا يبدأ ب 0 يبدأ ب 7",
+            "postal_code.regex"  => "صيغة الجوال  الثاني غير صحية لابد ان يكون 10 ارقام ولا يبدأ ب 0 يبدأ ب 7",
+        ]);
         $address = new Address;
         if ($request->has('customer_id')) {
             $address->user_id   = $request->customer_id;
         } else {
             $address->user_id   = Auth::user()->id;
         }
+        $address->url       = $request->url;
+        $address->name       = $request->name;
         $address->address       = $request->address;
+        $address->social_type       = $request->social_type;
         $address->country_id    = $request->country_id;
         $address->state_id      = $request->state_id;
         $address->city_id       = $request->city_id;
@@ -95,6 +107,13 @@ class AddressController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name'                   => 'required',
+            'phone' =>          'regex:/^7[3-9]\d{8}$/|unique:users',
+        ],[
+            "name.required"  => "الأسم مطلوب",
+            "phone.regex"  => "صيغة الجوال غير صحية لابد ان يكون 10 ارقام ولا يبدأ ب 0 يبدأ ب 7",
+        ]);
         $address = Address::findOrFail($id);
 
         $address->address       = $request->address;

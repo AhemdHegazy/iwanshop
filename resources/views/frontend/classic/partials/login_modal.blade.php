@@ -18,7 +18,7 @@
                             <div class="form-group phone-form-group mb-1">
 
                                 <div class="input-group  mb-3">
-                                    <input type="tel" id="phone-code"
+                                    <input type="tel" id="phone"
                                            class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
                                            value="{{ old('phone') }}" placeholder="" name="phone" autocomplete="off">
                                     <div class="input-group-prepend">
@@ -63,7 +63,7 @@
                         <!-- Password -->
                         <div class="form-group">
                             <div class="input-group mb-2 mr-sm-2">
-                            <input type="password" id="password" name="password" class="form-control h-auto rounded-0 form-control-lg"
+                            <input type="password" id="password" name="password" class="form-control h-auto rounded-0"
                                 placeholder="{{ translate('Password') }}">
                                 <div class="input-group-prepend" onclick="showPassword('password')">
                                     <div  class="input-group-text" style="height: 42px;"><i class="la la-eye-slash" style="font-size: 16px;" id="eye_password"></i></div>

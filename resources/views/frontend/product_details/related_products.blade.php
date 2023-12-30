@@ -1,15 +1,15 @@
 <div class="bg-white border">
     <div class="p-3 p-sm-4">
         <h3 class="fs-16 fw-700 mb-0">
-            <span class="mr-4">{{ translate('Related products') }}</span>
+            <span class="mr-4 fs-19 text-primary fw-700 border-bottom" style="border-bottom: 2px solid #07928e !important">{{ translate('Related products') }}</span>
         </h3>
     </div>
     <div class="px-4">
         <div class="aiz-carousel gutters-5 half-outside-arrow" data-items="5" data-xl-items="3"
-            data-lg-items="4" data-md-items="3" data-sm-items="2" data-xs-items="2"
+            data-lg-items="3" data-md-items="4" data-sm-items="2" data-xs-items="2"
             data-arrows='true' data-infinite='true'>
             @foreach (get_related_products($detailedProduct) as $key => $related_product)
-                <div class="carousel-box">
+                <div class="carousel-box px-3 rounded-2 position-relative has-transition border-right border-top border-bottom border-left  hov-animate-outline">
                     <div class="aiz-card-box hov-shadow-md my-2 has-transition hov-scale-img">
                         <div class="">
                             <a href="{{ route('product', $related_product->slug) }}"

@@ -18,7 +18,7 @@
                                     <div class="form-group phone-form-group mb-1">
 
                                         <div class="input-group  mb-3">
-                                            <input type="tel" id="phone-code"
+                                            <input type="tel" id="phone"
                                                    class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
                                                    value="{{ old('phone') }}" placeholder="" name="phone" autocomplete="off">
                                             <div class="input-group-prepend">

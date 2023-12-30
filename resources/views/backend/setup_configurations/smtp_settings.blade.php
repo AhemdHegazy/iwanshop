@@ -5,7 +5,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0 h6">{{__('SMTP Settings')}}</h5>
+                <h5 class="mb-0 h6">{{translate('SMTP Settings')}}</h5>
             </div>
             <div class="card-body">
                 <form class="form-horizontal" action="{{ route('env_key_update.update') }}" method="POST">

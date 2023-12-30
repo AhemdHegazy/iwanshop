@@ -8,9 +8,9 @@
       <p class="text-sm text-muted">{{ $shop->name }}</p>
 
       <div class="pad-ver btn-groups">
-          <a href="{{ $shop->facebook }}" class="btn btn-icon demo-pli-facebook icon-lg add-tooltip" data-original-title="Facebook" data-container="body"></a>
-          <a href="{{ $shop->twitter }}" class="btn btn-icon demo-pli-twitter icon-lg add-tooltip" data-original-title="Twitter" data-container="body"></a>
-          <a href="{{ $shop->google }}" class="btn btn-icon demo-pli-google-plus icon-lg add-tooltip" data-original-title="Google+" data-container="body"></a>
+          <a href="{{ $shop->facebook }}" class="btn btn-icon demo-pli-facebook icon-lg add-tooltip" data-original-title="{{translate("Facebook")}}" data-container="body"></a>
+          <a href="{{ $shop->twitter }}" class="btn btn-icon demo-pli-twitter icon-lg add-tooltip" data-original-title="{{translate("Twitter")}}Twitter" data-container="body"></a>
+          <a href="{{ $shop->google }}" class="btn btn-icon demo-pli-google-plus icon-lg add-tooltip" data-original-title="{{translate("Google+")}}" data-container="body"></a>
       </div>
   </div>
   <hr>

@@ -19,20 +19,14 @@
 
         <!-- Discount percentage tag -->
         @if (discount_in_percentage($product) > 0)
-            <span class="absolute-top-left bg-primary ml-1 mt-1 fs-11 fw-700 text-white w-35px text-center"
-                style="padding-top:2px;padding-bottom:2px;">-{{ discount_in_percentage($product) }}%</span>
+            <span class="absolute-top-left bg-danger ml-1 mt-1 fs-11 fw-700 rounded-1 text-white w-35px text-center"
+                style="padding:5px;"   data-toggle="tooltip" data-title="{{ translate('Discount')." ".discount_in_percentage($product)." %" }}" data-placement="left">{{ discount_in_percentage($product) }}%</span>
         @endif
-        <!-- Wholesale tag -->
-        @if ($product->wholesale_product)
-            <span class="absolute-top-left fs-11 text-white fw-700 px-2 lh-1-8 ml-1 mt-1"
-                style="background-color: #455a64; @if (discount_in_percentage($product) > 0) top:25px; @endif">
-                {{ translate('Wholesale') }}
-            </span>
-        @endif
+
         @if ($product->auction_product == 0)
             <!-- wishlisht & compare icons -->
             <div class="absolute-top-right aiz-p-hov-icon">
-                <a href="javascript:void(0)" class="hov-svg-white" onclick="addToWishList({{ $product->id }})"
+                <a href="javascript:void(0)" class="hov-svg-white rounded-1" onclick="addToWishList({{ $product->id }})"
                     data-toggle="tooltip" data-title="{{ translate('Add to wishlist') }}" data-placement="left">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14.4" viewBox="0 0 16 14.4">
                         <g id="_51a3dbe0e593ba390ac13cba118295e4" data-name="51a3dbe0e593ba390ac13cba118295e4"
@@ -98,12 +92,12 @@
                 <!-- Previous price -->
                 @if (home_base_price($product) != home_discounted_base_price($product))
                     <div class="disc-amount has-transition">
-                        <del class="fw-400 text-secondary mr-1">{{ home_base_price($product) }}</del>
+                        <del class="fw-400  text-danger ">{{ home_base_price($product) }}</del>
                     </div>
                 @endif
                 <!-- price -->
                 <div class="">
-                    <span class="fw-700 text-primary">{{ home_discounted_base_price($product) }}</span>
+                    <span class="fw-700 fs-16 ml-3 text-primary">{{ home_discounted_base_price($product) }}</span>
                 </div>
             @endif
             @if ($product->auction_product == 1)

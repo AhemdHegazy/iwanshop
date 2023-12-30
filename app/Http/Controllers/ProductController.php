@@ -208,8 +208,9 @@ class ProductController extends Controller
         $request->merge(['product_id' => $product->id]);
         //Product categories
         $name = "category_ids_".$request->category_id;
-
-        $product->categories()->attach($request->$name);
+        if ($request->$name){
+            $product->categories()->attach($request->$name);
+        }
         $product->categories()->attach($request->category_id);
 
         //VAT & Tax

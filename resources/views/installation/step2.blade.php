@@ -82,7 +82,7 @@
 
                 <!-- Common file -->
                 @include('installation.common')
-                
+
             </div>
         </div>
     </div>

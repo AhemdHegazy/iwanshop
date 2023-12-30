@@ -59,12 +59,12 @@ class StateController extends Controller
 
         $state->name        = $request->name;
         $state->cost  = $request->cost;
-        $state->country_id  = $request->country_id;
+        $state->country_id  =1;
 
         $state->save();
 
         flash(translate('State has been inserted successfully'))->success();
-        return back();
+        return redirect()->route('states.index');
     }
 
 
@@ -114,14 +114,14 @@ class StateController extends Controller
 
         $state->name        = $request->name;
         $state->cost        = $request->cost;
-        $state->country_id  = $request->country_id;
+        $state->country_id  = 1;
 
         $state->save();
         $state->cities()->update([
            "cost"   => $request->cost
         ]);
         flash(translate('State has been updated successfully'))->success();
-        return back();
+        return redirect()->route('states.index');
     }
 
     /**

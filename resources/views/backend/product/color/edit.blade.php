@@ -23,18 +23,18 @@
                 @csrf
                 <div class="form-group row">
                     <label class="col-sm-3 col-from-label" for="name">
-                        {{ translate('Name')}} 
+                        {{ translate('Name')}}
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" placeholder="{{ translate('Name')}}" id="name" name="name" class="form-control" required value="{{ $color->name }}">
+                        <input type="text" placeholder="{{ translate('Name')}}" id="name" name="name" class="form-control"oninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required value="{{ $color->name }}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-from-label" for="code">
-                        {{ translate('Color Code')}} 
+                        {{ translate('Color Code')}}
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" placeholder="{{ translate('Color Code')}}" id="code" name="code" class="form-control" required value="{{ $color->code }}">
+                        <input type="text" placeholder="{{ translate('Color Code')}}" id="code" name="code" class="form-control"oninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required value="{{ $color->code }}">
                     </div>
                 </div>
                 <div class="form-group mb-0 text-right">

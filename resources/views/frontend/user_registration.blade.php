@@ -35,14 +35,18 @@
                                                     <div class="form-group phone-form-group mb-1">
                                                         <label for="phone" class="fs-12 fw-700 text-soft-dark">{{  translate('Phone') }}</label>
                                                         <div class="input-group  mb-3">
-                                                            <input type="tel" id="phone-code" class="form-control rounded-0{{ $errors->has('phone') ? ' is-invalid' : '' }}" value="{{ old('phone') }}" placeholder="" name="phone" autocomplete="off">
+                                                            <input type="tel" id="phone" class="form-control rounded-0{{ $errors->has('phone') ? ' is-invalid' : '' }}" value="{{ old('phone') }}" placeholder="" name="phone" autocomplete="off">
                                                             <div class="input-group-prepend">
                                                                 <span  class="input-group-text" style="height: 42px;" id="basic-addon1">  +964  <img src="{{asset("assets/img/flags/iq.png")}}" style="padding-right: 3px;margin-top: -3px" alt=""></span>
                                                             </div>
                                                         </div>
+                                                        @error("phone")
+                                                        <span class="text-danger">{{$message}}</span>
+                                                        @enderror
+
                                                     </div>
 
-                                                    <input type="hidden" name="country_code" value="">
+                                                    <input type="hidden" name="country_code" value="+964">
 
                                                     <div class="form-group email-form-group mb-1 d-none">
                                                         <label for="email" class="fs-12 fw-700 text-soft-dark">{{  translate('Email') }}</label>
@@ -195,7 +199,7 @@
     <script type="text/javascript">
 
         @if(get_setting('google_recaptcha') == 1)
-        // making the CAPTCHA  a required field for form submission
+        // making the CAPTCHA  aoninvalid="this.setCustomValidity('هذا المدخل مطلوب')"  oninput="this.setCustomValidity('')" required field for form submission
         $(document).ready(function(){
             $("#reg-form").on("submit", function(evt)
             {

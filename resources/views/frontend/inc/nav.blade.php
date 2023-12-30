@@ -18,7 +18,7 @@
                 <img src="{{ $topbar_banner_small != null ? uploaded_asset($topbar_banner_small) : $topbar_banner_asset }}"
                     class="d-md-none img-fit h-100" alt="{{ translate('topbar_banner') }}">
             </a>
-            <button class="btn text-white h-100 absolute-top-right set-session" data-key="top-banner"
+            <button class="btn text-white h-100 absolute-top-left set-session" data-key="top-banner"
                 data-value="removed" data-toggle="remove-parent" data-parent=".top-banner">
                 <i class="la la-close la-2x"></i>
             </button>
@@ -72,13 +72,13 @@
 {{--            </div>--}}
 {{--        </div>--}}
 {{--    </div>--}}
-    <div class="top-navbar bg-white z-1035 h-35px h-sm-auto" style="background: #19a09c !important;">
+  {{--  <div class="top-navbar bg-white z-1035 h-35px h-sm-auto" style="background: #19a09c !important;">
         <div class="container">
             <div class="row pt-1">
 
             </div>
         </div>
-    </div>
+    </div>--}}
     <header class="@if (get_setting('header_stikcy') == 'on') sticky-top @endif z-1020 bg-white">
         <!-- Search Bar -->
         <div class="position-relative logo-bar-area border-bottom border-md-nonea z-1025">
@@ -177,92 +177,111 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Compare -->
-<!--                    <div class="d-none d-lg-block ml-3 mr-0">
+                    <div class="d-none d-lg-block ml-5 mr-0">
                         <div class="" id="compare">
-                            @include('frontend.'.get_setting('homepage_select').'.partials.compare')
-                        </div>
-                    </div>-->
-                    <!-- Wishlist -->
-                    <div class="d-none d-lg-block mr-3" style="margin-left: 36px;">
-                        <div class="" id="wishlist">
-                            @include('frontend.'.get_setting('homepage_select').'.partials.wishlist')
+
                         </div>
                     </div>
+                    <div class="d-none d-lg-block ml-5 mr-0">
+                        <div class="" id="compare">
+
+                        </div>
+                    </div>
+                    @if(auth()->check())
+
                     @if (!isAdmin())
+                        <!-- Wishlist -->
+                            <div class="d-none d-lg-block mr-3" style="margin-left: 36px;">
+                                <div class="" id="wishlist">
+                                    @include('frontend.'.get_setting('homepage_select').'.partials.wishlist')
+                                </div>
+                            </div>
                         <!-- Notifications -->
-                        <ul class="list-inline mb-0 h-100 d-none d-xl-flex justify-content-end align-items-center">
-                            <li class="list-inline-item ml-3 mr-3 pr-3 pl-0 dropdown">
-                                <a class="dropdown-toggle no-arrow text-secondary fs-12" data-toggle="dropdown"
-                                    href="javascript:void(0);" role="button" aria-haspopup="false"
-                                    aria-expanded="false">
+                            <ul class="list-inline mb-0 h-100 d-none d-xl-flex justify-content-end align-items-center">
+                                <li class="list-inline-item ml-3 mr-3 pr-3 pl-0 dropdown">
+                                    <a class="dropdown-toggle no-arrow text-secondary fs-12" data-toggle="dropdown"
+                                       href="javascript:void(0);" role="button" aria-haspopup="false"
+                                       aria-expanded="false">
                                     <span class="">
                                         <span class="position-relative d-inline-block">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14.668" height="16"
-                                                viewBox="0 0 14.668 16">
+                                                 viewBox="0 0 14.668 16">
                                                 <path id="_26._Notification" data-name="26. Notification"
-                                                    d="M8.333,16A3.34,3.34,0,0,0,11,14.667H5.666A3.34,3.34,0,0,0,8.333,16ZM15.06,9.78a2.457,2.457,0,0,1-.727-1.747V6a6,6,0,1,0-12,0V8.033A2.457,2.457,0,0,1,1.606,9.78,2.083,2.083,0,0,0,3.08,13.333H13.586A2.083,2.083,0,0,0,15.06,9.78Z"
-                                                    transform="translate(-0.999)" fill="#91919b" />
+                                                      d="M8.333,16A3.34,3.34,0,0,0,11,14.667H5.666A3.34,3.34,0,0,0,8.333,16ZM15.06,9.78a2.457,2.457,0,0,1-.727-1.747V6a6,6,0,1,0-12,0V8.033A2.457,2.457,0,0,1,1.606,9.78,2.083,2.083,0,0,0,3.08,13.333H13.586A2.083,2.083,0,0,0,15.06,9.78Z"
+                                                      transform="translate(-0.999)" fill="#91919b" />
                                             </svg>
                                             @if (Auth::check() && count($user->unreadNotifications) > 0)
                                                 <span
                                                     class="badge badge-primary badge-inline badge-pill absolute-top-right--10px">{{ count($user->unreadNotifications) }}</span>
                                             @endif
                                         </span>
-                                </a>
+                                    </a>
 
-                                @auth
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg py-0 rounded-0">
-                                        <div class="p-3 bg-light border-bottom">
-                                            <h6 class="mb-0">{{ translate('Notifications') }}</h6>
-                                        </div>
-                                        <div class="px-3 c-scrollbar-light overflow-auto " style="max-height:300px;">
-                                            <ul class="list-group list-group-flush">
-                                                @forelse($user->unreadNotifications as $notification)
-                                                    <li class="list-group-item">
-{{--                                                        @if ($notification->type == 'App\Notifications\OrderNotification')--}}
+                                    @auth
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg py-0 rounded-0">
+                                            <div class="p-3 bg-light border-bottom">
+                                                <h6 class="mb-0">{{ translate('Notifications') }}</h6>
+                                            </div>
+                                            <div class="px-3 c-scrollbar-light overflow-auto " style="max-height:300px;">
+                                                <ul class="list-group list-group-flush">
+                                                    @forelse($user->unreadNotifications as $notification)
+                                                        <li class="list-group-item">
+                                                            {{--                                                        @if ($notification->type == 'App\Notifications\OrderNotification')--}}
                                                             @if ($user->user_type == 'customer')
                                                                 <a href="{{ route('purchase_history.details', encrypt($notification->data['order_id'])) }}?notify_id={{$notification["id"]}}"
-                                                                    class="text-secondary fs-12">
+                                                                   class="text-secondary fs-12">
                                                                     <span class="ml-2">
                                                                         {{ translate('Order code: ') }}
                                                                         {{ $notification->data['order_code'] }}
                                                                         {{ translate('has been ' . ucfirst(str_replace('_', ' ', $notification->data['status']))) }}
                                                                     </span>
                                                                 </a>
-{{--                                                            @elseif ($user->user_type == 'seller')--}}
-{{--                                                                <a href="{{ route('seller.orders.show', encrypt($notification->data['order_id'])) }}"--}}
-{{--                                                                    class="text-secondary fs-12">--}}
-{{--                                                                    <span class="ml-2">--}}
-{{--                                                                        {{ translate('Order code: ') }}--}}
-{{--                                                                        {{ $notification->data['order_code'] }}--}}
-{{--                                                                        {{ translate('has been ' . ucfirst(str_replace('_', ' ', $notification->data['status']))) }}--}}
-{{--                                                                    </span>--}}
-{{--                                                                </a>--}}
-{{--                                                            @endif--}}
-                                                        @endif
-                                                    </li>
-                                                @empty
-                                                    <li class="list-group-item">
-                                                        <div class="py-4 text-center fs-16">
-                                                            {{ translate('No notification found') }}
-                                                        </div>
-                                                    </li>
-                                                @endforelse
-                                            </ul>
+                                                                {{--                                                            @elseif ($user->user_type == 'seller')--}}
+                                                                {{--                                                                <a href="{{ route('seller.orders.show', encrypt($notification->data['order_id'])) }}"--}}
+                                                                {{--                                                                    class="text-secondary fs-12">--}}
+                                                                {{--                                                                    <span class="ml-2">--}}
+                                                                {{--                                                                        {{ translate('Order code: ') }}--}}
+                                                                {{--                                                                        {{ $notification->data['order_code'] }}--}}
+                                                                {{--                                                                        {{ translate('has been ' . ucfirst(str_replace('_', ' ', $notification->data['status']))) }}--}}
+                                                                {{--                                                                    </span>--}}
+                                                                {{--                                                                </a>--}}
+                                                                {{--                                                            @endif--}}
+                                                            @endif
+                                                        </li>
+                                                    @empty
+                                                        <li class="list-group-item">
+                                                            <div class="py-4 text-center fs-16">
+                                                                {{ translate('No notification found') }}
+                                                            </div>
+                                                        </li>
+                                                    @endforelse
+                                                </ul>
+                                            </div>
+                                            <div class="text-center border-top">
+                                                <a href="{{ route('all-notifications') }}"
+                                                   class="text-secondary fs-12 d-block py-2">
+                                                    {{ translate('View All Notifications') }}
+                                                </a>
+                                            </div>
                                         </div>
-                                        <div class="text-center border-top">
-                                            <a href="{{ route('all-notifications') }}"
-                                                class="text-secondary fs-12 d-block py-2">
-                                                {{ translate('View All Notifications') }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endauth
-                            </li>
-                        </ul>
-                    @endif
+                                    @endauth
+                                </li>
+                            </ul>
+                        @else
+                            <div class="d-none d-lg-block ml-5 mr-0">
+                                <div class="" id="compare">
 
+                                </div>
+                            </div>
+                        @endif
+
+                    @else
+                            <div class="d-none d-lg-block ml-5 mr-0">
+                                <div class="" id="compare">
+
+                                </div>
+                            </div>
+                    @endif
                     <div class="d-none d-xl-block ml-auto mr-0">
                         @auth
                             <span

@@ -63,7 +63,7 @@
                             </a>
                             <span class="">
                                 <button onclick="removeFromCart({{ $cartItem['id'] }})"
-                                    class="btn btn-sm btn-icon stop-propagation">
+                                    class="btn btn-sm btn-icon stop-propagation btn-danger">
                                     <i class="la la-close fs-18 fw-600 text-secondary"></i>
                                 </button>
                             </span>
@@ -81,7 +81,7 @@
         <div class="py-3 text-center border-top mx-4" style="border-color: #e5e5e5 !important;">
             <div class="row gutters-10 justify-content-center">
                 <div class="col-sm-6 mb-2">
-                    <a href="{{ route('cart') }}" class="btn btn-secondary-base btn-sm btn-block rounded-4 text-white">
+                    <a href="{{ route('cart') }}" class="btn btn-secondary btn-sm btn-block rounded-4 text-white">
                         {{ translate('View cart') }}
                     </a>
                 </div>

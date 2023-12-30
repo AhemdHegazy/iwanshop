@@ -1435,9 +1435,11 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                 $('.aiz-share').jsSocials({
                     showLabel: false,
                     showCount: false,
+                    theme:"plain",
                     shares: [
                         {
                             share: "email",
+
                             logo: "lar la-envelope"
                         },
                         {
@@ -1449,12 +1451,16 @@ $.fn.toggleAttr = function (attr, attr1, attr2) {
                             logo: "lab la-facebook-f"
                         },
                         {
-                            share: "linkedin",
-                            logo: "lab la-linkedin-in"
-                        },
-                        {
                             share: "whatsapp",
                             logo: "lab la-whatsapp"
+                        },
+                        {
+                            share:"messenger",
+                            logo: "la la-commenting"
+                        },
+                        {
+                            share:"telegram",
+                            logo: "la la-paper-plane"
                         }
                     ]
                 });

@@ -64,14 +64,26 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        if (addon_is_activated('otp_system')){
+            return Validator::make($data, [
+                'name' => 'required|string|max:255',
+                'password' => 'required|string|min:6|confirmed',
+                'phone' => 'regex:/^7[3-9]\d{8}$/|unique:users',
 
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'password' => 'required|string|min:6|confirmed',
-            'g-recaptcha-response' => [
-                Rule::when(get_setting('google_recaptcha') == 1, ['required', new Recaptcha()], ['sometimes'])
-            ]
-        ]);
+                'g-recaptcha-response' => [
+                    Rule::when(get_setting('google_recaptcha') == 1, ['required', new Recaptcha()], ['sometimes'])
+                ]
+            ]);
+        }else{
+            return Validator::make($data, [
+                'name' => 'required|string|max:255',
+                'password' => 'required|string|min:6|confirmed',
+                'g-recaptcha-response' => [
+                    Rule::when(get_setting('google_recaptcha') == 1, ['required', new Recaptcha()], ['sometimes'])
+                ]
+            ]);
+        }
+
     }
 
     /**
@@ -93,7 +105,7 @@ class RegisterController extends Controller
             if (addon_is_activated('otp_system')){
                 $user = User::create([
                     'name' => $data['name'],
-                    'phone' => '+'.$data['country_code'].$data['phone'],
+                    'phone' => '+964'.$data['phone'],
                     'password' => Hash::make($data['password']),
                     'verification_code' => rand(100000, 999999)
                 ]);
